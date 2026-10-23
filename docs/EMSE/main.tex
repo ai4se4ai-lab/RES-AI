@@ -1,0 +1,158 @@
+\documentclass[pdflatex,sn-mathphys-num]{sn-jnl}
+\usepackage{url}
+\usepackage{subcaption}
+\usepackage{placeins}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepgfplotslibrary{fillbetween}
+\usepgfplotslibrary{statistics}
+\usetikzlibrary{intersections}
+
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage{upquote}
+
+
+%%%% Standard Packages
+\usepackage{graphicx}%
+\usepackage{multirow}%
+\usepackage{amsmath,amssymb,amsfonts}%
+\usepackage{amsthm}%
+\usepackage{mathrsfs}%
+\usepackage[title]{appendix}%
+\usepackage{xcolor}%
+\usepackage{manyfoot}%
+\usepackage{booktabs}%
+\usepackage{algorithm}%
+\usepackage{algorithmicx}%
+\usepackage[noend]{algpseudocode}%
+\usepackage{listings}%
+\usepackage{tikz}
+\usepackage{tabularx}
+\usepackage{microtype}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins, breakable}
+\usepackage{threeparttable}
+\usepackage{rotating}
+\usepackage{enumitem}
+\usepackage{pifont}
+\usepackage{stmaryrd}
+\usepackage{hyperref}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric,fit,backgrounds,calc}
+
+\hypersetup{colorlinks=true, linkcolor=black, urlcolor=black, citecolor=black}
+
+% ---------------- theorem-like environments (sn-jnl styles)
+\theoremstyle{thmstyleone}%
+\newtheorem{theorem}{Theorem}%
+\newtheorem{proposition}[theorem]{Proposition}%
+\theoremstyle{thmstyletwo}%
+\newtheorem{example}{Example}%
+\newtheorem{remark}{Remark}%
+\theoremstyle{thmstylethree}%
+\newtheorem{definition}{Definition}%
+
+\raggedbottom
+\renewcommand{\topfraction}{0.92}
+\renewcommand{\bottomfraction}{0.6}
+\renewcommand{\textfraction}{0.08}
+\renewcommand{\floatpagefraction}{0.85}
+\setcounter{topnumber}{3}
+\setcounter{bottomnumber}{2}
+\setcounter{totalnumber}{5}
+\setlength{\textfloatsep}{12pt plus 2pt minus 4pt}
+\setlength{\floatsep}{10pt plus 2pt minus 2pt}
+
+% ---------------- shorthands
+\newcommand{\tool}{\textsc{AgentHOT}}
+\newcommand{\auto}{\textsc{AutoM2M}}
+\newcommand{\devteam}{\textsc{DevTeam}}
+\newcommand{\Team}{\Theta}
+\newcommand{\W}[1]{\textsf{W#1}}
+\newcommand{\D}[1]{\textsf{D#1}}
+\newcommand{\MM}{\mathit{MM}}
+\newcommand{\Mods}[1]{\mathcal{M}(#1)}
+\newcommand{\TL}{\mathit{TL}}
+\newcommand{\fp}{\mathit{fp}}
+\newcommand{\Stale}{\mathit{Stale}}
+\newcommand{\chk}{\mathit{chk}}
+\newcommand{\cls}[1]{\textsf{#1}}
+\newcommand{\code}[1]{\texttt{#1}}
+\newcommand{\RQ}[1]{\textbf{RQ#1}}
+\newcommand{\cmark}{\ding{51}}
+\newcommand{\xmark}{\ding{55}}
+\newcommand{\pmark}{\ding{109}}
+\newcommand{\conformsTo}{\mathrel{\chi}}
+\algnewcommand{\LineComment}[1]{\State \(\triangleright\) \textit{#1}}
+
+% ---------------- colours and listings
+\definecolor{rawbg}{RGB}{255,248,230}
+\definecolor{rawbar}{RGB}{214,150,40}
+\definecolor{modelbg}{RGB}{235,244,255}
+\definecolor{modelbar}{RGB}{60,110,180}
+\definecolor{enginebg}{RGB}{236,250,238}
+\definecolor{enginebar}{RGB}{60,145,80}
+\definecolor{llmbg}{RGB}{248,238,252}
+\definecolor{llmbar}{RGB}{140,80,160}
+
+\lstdefinelanguage{ATL}{
+  morekeywords={module,create,from,rule,to,uses,and,or,not,in,handoff,agents,writes,goal,done,tools,views,class,attribute,reference},
+  morekeywords=[2]{@llm,@check}, alsoletter={@},
+  sensitive=true, morecomment=[l]{--}, morestring=[b]'}
+\lstdefinelanguage{KM3}{
+  morekeywords={package,class,attribute,reference,container,enumeration,literal,datatype},
+  sensitive=true, morecomment=[l]{--}}
+\lstset{frame=l, framerule=2pt, framesep=6pt, xleftmargin=9pt, framexleftmargin=0pt,
+        basicstyle=\ttfamily\fontsize{6.8}{7.9}\selectfont, breaklines=false, columns=fullflexible,
+        keepspaces=true, showstringspaces=false, numbers=none, upquote=true,
+        keywordstyle=\bfseries, keywordstyle={[2]\bfseries\color{purple}},
+        commentstyle=\itshape\color{black!55}, captionpos=t, float=tbp, aboveskip=6pt, belowskip=4pt,
+        literate={->}{{$\rightarrow$}}2 {<-}{{$\leftarrow$}}2}
+\lstdefinestyle{raw}{backgroundcolor=\color{rawbg}, rulecolor=\color{rawbar}, literate={}}
+\lstdefinestyle{model}{backgroundcolor=\color{modelbg}, rulecolor=\color{modelbar}}
+\lstdefinestyle{engine}{backgroundcolor=\color{enginebg}, rulecolor=\color{enginebar}, literate={}}
+\renewcommand{\lstlistingname}{Listing}
+
+
+
+% run-in paragraph headings (as in Springer's svjour3 layout used by EMSE)
+\makeatletter
+\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
+  {6pt \@plus 2pt \@minus 1pt}{-0.6em}{\normalfont\normalsize\bfseries}}
+\makeatother
+
+\begin{document}
+
+\title[RES-AI: Robust Empirical Strategy for AI-Driven Software Engineering Experiments on Shared HPC Infrastructure]{RES-AI: Robust Empirical Strategy for AI-Driven Software Engineering Experiments on Shared HPC Infrastructure}
+
+\author*[1]{\fnm{Majid} \sur{Babaei}}\email{majid.babaei@ufv.ca}
+\affil*[1]{\orgdiv{School of Computing}, \orgname{University of the Fraser Valley}, \orgaddress{\state{BC}, \country{Canada}}}
+
+\abstract{}
+
+\keywords{{LLM-based multi-agent systems, team builders, model-driven engineering, model-to-model transformation, ATL, static analysis, failure attribution, empirical study}}
+
+\maketitle
+
+\section{Introduction}\label{sec:introduction}
+
+
+\section*{Declarations}
+
+\textbf{Funding.} [To be completed.]
+\textbf{Conflict of interest.} The author declares no conflict of interest.
+\textbf{Ethical approval.} Not applicable: the study involves no human
+participants; the coders are the author and research assistants acting as
+investigators.
+\textbf{Acknowledgements.} We thank the graduate research assistants who
+coded failures and validated defects [names to be added].
+\textbf{Use of generative AI.} LLMs are the object of study; their use in
+preparing the manuscript is [to be declared according to the journal's
+policy].
+
+
+\bibliography{bibliography}
+
+\end{document}
