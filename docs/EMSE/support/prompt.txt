@@ -1,0 +1,104 @@
+You are an expert academic writer and senior software engineering researcher specializing in empirical software engineering, high-performance computing (HPC) orchestration, and AI-driven systems. Your task is to draft three core sections—Introduction, Background, and Approach—for a target manuscript to be submitted to Empirical Software Engineering (EMSE).
+
+### Context & Vision
+- **Core Premise:** In the age of AI, everyone is or will soon become a researcher in or for AI systems. With the explosive speed of AI development and its pervasive impact across all facets of engineering and society, empirical software engineering (ESE) research faces an unprecedented bottleneck: evaluating large-scale AI models requires massive compute resources (GPUs/TPUs) shared across multi-tenant HPC environments (e.g., Slurm clusters like the Digital Research Alliance of Canada). 
+- **The Problem:** Researchers routinely submit multi-day or multi-week long-running jobs to shared clusters without adequate pre-flight validation, leading to silent failures, wasted compute quotas, queue starvation, and tedious, costly trial-and-error cycles.
+- **The Solution:** A systematic, resource-aware orchestration framework (let's refer to it conceptually as RES-AI / the system) that treats compute infrastructure as a first-class participant in the experimental loop. It retrieves network/node topologies, acquires short-term priority slices for rapid multi-iteration smoke tests, refines the approach in an automated feedback loop, and only dispatches fully mature jobs to long-queue production. Furthermore, this system is exposed not merely as static scripts, but as an accessible Model Context Protocol (MCP) server, equipping generative AI agents to autonomously plan, test, and execute rigorous empirical studies.
+- **Empirical Grounding:** The study builds upon foundational insights from empirical evaluations of open-source AI models in top-tier software engineering venues (ICSE, FSE, ASE, EMSE), establishing that methodological reproducibility depends directly on resource determinism and early-stage fault isolation. 
+
+NOTE: I have done recently a relevant work called use-hpc which is skill file to use slurm systems for running experiments (use-hpc.tex) but since the work is still under the review you can use the information in use-hpc.tex and the code in https://github.com/ai4se4ai-lab/use-hpc but it should come in different name.
+
+- you can start the paper with something like "Everyone more or less is/will be an researcher in/for ai system. With the speed of AI develpment and its impact in all aspect of our lives ..."
+
+---
+
+### Section 1: Introduction
+- **Opening Hook:** Start precisely with the following thematic premise (or a polished academic equivalent): 
+  *"Everyone more or less is or will be a researcher in or for AI systems. With the speed of AI development and its impact in all aspects of our lives..."*
+- **Motivation:** Detail the paradigm shift in software engineering research—moving from static code analysis to dynamic, compute-heavy evaluation of stochastic AI models (e.g., LLMs, code generation agents, automated program repair tools).
+- **The Research Gap:** Highlight the friction between academic agility and shared HPC realities (queuing delays, network bottlenecks, ephemeral GPU availability, and the high cost of failed multi-day jobs).
+- **Contributions:** Clearly enumerate 3 to 4 distinct contributions of the paper:
+  1. A formal characterization of the empirical validation crisis in AI-for-SE research under shared HPC constraints.
+  2. A systematic resource-orchestration framework integrating cluster topology awareness, dynamic priority acquisition, and rapid multi-iteration smoke testing.
+  3. A closed-loop adjustment mechanism that ensures long-running jobs (days/weeks) are mature and resilient prior to full-scale dispatch.
+  4. An MCP-native system architecture enabling AI agents to interact directly with cluster resources, ensuring reproducible, clean, and verifiable experimentation.
+
+Please note: if other steps or substeps needed to clarify the approach and build more rubust technique do not hesitate to consider.
+---
+
+### Section 2: Background & Running Example
+- **Theoretical Foundations:** Provide rigorous definitions for:
+  - *Shared HPC & Slurm Job Scheduling:* Queuing models, fair-share policies, partition constraints, and node interconnect topologies.
+  - *Empirical AI Software Engineering:* Evaluating stochastic, data-intensive models on open-source benchmarks under resource scarcity.
+  - *Shift-Left Experimental Validation:* Catching configuration, memory, and hyperparameter faults during fast pre-flight cycles rather than post-submission failures.
+- **The Running Example:** Introduce a concrete, relatable running example throughout this section: *A research team evaluating a multi-agent LLM code-generation framework across 64 GPUs using a distributed benchmark.* Walk through how a naive submission fails on day 3 due to an unhandled CUDA out-of-memory exception or inter-node communication deadlock, contrasting it with how the proposed system catches and resolves the fault within 15 minutes during the smoke-test phase.
+- **Mathematical / Formal Definitions:** Establish formal notations for:
+  - Cluster Node Topology Graph: $G = (V, E)$ where vertices $V$ represent compute nodes/GPUs and edges $E$ represent interconnect bandwidth/latency.
+  - Resource Allocation State & Priority Function: $\mathcal{P}(j, t)$ for job $j$ at time $t$.
+  - Smoke Test Convergence Metric: $\Delta_{smoke}$ governing the closed-loop adjustment threshold.
+
+---
+
+### Section 3: Approach (System Architecture & Algorithmic Design)
+- **Top-Level Formal Pseudocode Blocks:** Build interconnected, rigorous pseudocode blocks placed at the top of the section. They must be mathematically and logically consistent, feeding directly into one another:
+  1. *Algorithm 1: Topology Discovery & Resource Profiling (`DiscoverClusterTopology()`)* — Interrogates Slurm and network interfaces to construct $G=(V,E)$ and identify available partition capacities.
+  2. *Algorithm 2: Dynamic Priority Acquisition & Rapid Smoke Testing (`ExecuteSmokeTestLoop()`)* — Leverages short-time limits and backfill partitions to execute iterative mini-experiments across multiple aspects of the approach.
+  3. *Algorithm 3: Closed-Loop Refinement & Production Dispatch (`OrchestrateFullExperiment()`)* — Analyzes smoke test telemetry, adjusts hyperparameters/fault-tolerance wrappers, and schedules the production job only when convergence criteria are met.
+- **System Architecture & MCP Integration:** Detail how these algorithmic modules are encapsulated into a production-grade system exposed via a **Model Context Protocol (MCP) Server**. Explain how external Generative AI clients can query cluster health, invoke smoke tests, inspect telemetry loops, and safely trigger long-running empirical evaluations through standardized tool interfaces.
+
+---
+### Section 4: related work 
+Writing a compelling and rigorous **Related Work** section for top-tier software engineering journals like **IEEE Transactions on Software Engineering (TSE)** or **Empirical Software Engineering (EMSE)** requires moving far beyond a simple "laundry list" of prior papers. Reviewers at these venues look for a critical synthesis that strategically positions your paper's unique contribution against the state-of-the-art.
+
+Here is a practical guide with key instructions and structural subsections to help you craft a high-impact Related Work section.
+
+---
+
+#### 1. Structure the Section Thematically
+
+Instead of dedicating a paragraph to each individual paper (e.g., "Smith et al. did X. Jones et al. did Y."), organize the section into **2 to 3 thematic subsections** that reflect the core dimensions of your problem space.
+
+* **Example Structure for an Empirical/Tool Paper:**
+* `### A. Traditional Approaches to [Problem Domain]` (Covers legacy methods, baseline techniques, or rule-based heuristics).
+* `### B. Recent Advances in [Specific Technique, e.g., Deep Learning for Code]` (Covers contemporary SOTA approaches that you are directly comparing against or improving upon).
+* `### C. Limitations of Existing Metrics/Frameworks` (Bridges the gap directly into your paper's novelty).
+
+
+
+#### 2. Provide Critical Synthesis, Not Just Summaries
+
+TSE and EMSE reviewers expect you to analyze *how* prior work operates, rather than just stating what they did.
+
+* Group similar methodologies together and discuss their collective strengths and limitations.
+* Highlight the underlying assumptions of prior techniques (e.g., *"While these approaches achieve high accuracy, they assume access to large, labeled datasets, which is rarely feasible in industrial settings..."*).
+
+#### 3. Explicitly Contrast and Position Your Work (The "Gap Analysis")
+
+The ultimate goal of the Related Work section is to make the reader say: *"Ah, yes, previous work failed to address this specific angle, and this paper solves it."*
+
+* Conclude each thematic subsection—or the entire section—with a direct comparison table or paragraph.
+* Clearly delineate your approach using dimensions such as **methodology, scale of evaluation, threat mitigation, or granularity**.
+* *Pro Tip:* Create a summary comparison table mapping out existing techniques against yours across key criteria (e.g., *Scalability, Empirical Validation, Tool Support, Real-time Processing*). Reviewers love well-structured comparison tables.
+
+#### 4. Maintain Balance, Fairness, and Up-to-Date Citations
+
+Top-tier journal reviewers are often the authors of the very papers you are citing.
+
+* **Be fair and objective:** Acknowledge the foundational value of seminal papers before pointing out their limitations. Avoid dismissive language.
+* **Incorporate recent literature:** Ensure you cite the most relevant papers up to the current year, including recent conference papers (ICSE, FSE, ASE, ISSTA) that have just emerged since your study began.
+
+---
+
+Would you like me to draft a customized outline or paragraph template for your specific research topic?
+---
+### Tone & Style Requirements
+- First you need to learn from the work published in TSE, EMSE to understan how to develop a very strong scietific paper around this idea. Also, you need to learn how to build strong background section. also you need to learn how to create clear but scietific pesudo code for the approach and how to clarify it in text using running example.
+- In the background section you must motivate the study via explaining the improtance of this work in today's reserach and mentioning at least 3 problems that have not been addressed properly in relvant studies.
+- for all definition, new concepts, algorithm you must provide a few sentence motivation before them to make sure the paper smoothly read and easilty understand by the reader.
+- In for every new concept or fucntion in definitions or psudocodes you must explain why it is needed and how it works. don't need to have a spearete paragraph for them just clarify them in text and if it is needed use the running example. 
+- Write in an authoritative, objective, and rigorous academic register suitable for an archival journal like *Empirical Software Engineering*.
+- in this study you must emphesise on the need to take the most out of shared resources in develping qulity experiment for reserach engineering. you must use studies published in tope software engineering or AI venues that disscuss this need which is not just important for the researcher but for the venues to evaluate the work or the companies that want to adopt the approach. 
+- Avoid informal filler; ensure every paragraph advances either a theoretical argument, a structural definition, or an empirical justification.
+- use the template main.tex and also sn-jnl.cls, sn-mathphys-num.bst, and bibliography.bib
+- use three agents to critically review the work at the level of TSE, EMSE reviwer and revise the work while you are developing. finally when everything is done use an ai agent to check if the information in the paper is consistante fully and fix any issues. for writing you should follow the same strategy as paper is writen based on, i.e., make sure the paper is understable for a normal phd student in software engineering and it is not too dense. 
+- For this version you don't need to be worry about the evaluation section.
