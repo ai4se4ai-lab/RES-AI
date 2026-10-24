@@ -3,11 +3,11 @@
 Read the live snapshot below to see where the project stands. Section 14 is the append-only update history. All timestamps use UTC. The snapshot is generated from collected evidence; the remaining sections record scope, decisions, and operating instructions.
 
 <!-- experiment-status:start -->
-**Last checked: 2026-10-24T04:40:18Z (UTC).**
+**Last checked: 2026-10-24T16:57:43Z (UTC).**
 
-**Where we are: PILOT MILESTONE COMPLETE — broader campaign needs review.**
+**Where we are: PILOTS COMPLETE; TWELVE-ARTIFACT CAMPAIGN FEASIBILITY_AND_COMPARISON.**
 
-The implemented controller, CUDA, and one-artifact/two-model pipelines have collected results. The twelve-artifact comparative campaign has not been executed. No experiment is currently recorded as running in the collected status files.
+The implemented controller, CUDA, and one-artifact/two-model pipelines have collected results. The full campaign is authorized and underway; completed comparative episodes are reported separately below. Last recorded active work (live Nibi state not checked): twelve-artifact campaign: FEASIBILITY_AND_COMPARISON.
 
 | Experiment / deliverable | Status | Verified evidence |
 |---|---|---|
@@ -16,15 +16,37 @@ The implemented controller, CUDA, and one-artifact/two-model pipelines have coll
 | MapCoder / Qwen2.5-Coder-7B | COMPLETE | 2/2 HumanEval/0 repeats solved; 16 calls; collection-time gate passed; 335.276 timed process seconds |
 | MapCoder / Qwen3.8-27B Q4_K_M | COMPLETE | 2/2 HumanEval/0 repeats solved; 16 calls; collection-time gate passed; 454.072 timed process seconds |
 | Collected data integrity | COMPLETE | 4 collected archive SHA-256 checksums verified, including the failed attempt and retired-run history |
-| Twelve-artifact comparison | NOT STARTED | 12 candidates inventoried; runnable configurations and comparative results remain pending |
+| Campaign collection integrity | COMPLETE | 4 collected archive SHA-256 checksums verified, including the failed attempt and retired-run history |
+| Twelve-artifact comparison | FEASIBILITY_AND_COMPARISON | 0/1680 potential comparative episodes reported complete; H100 allocated 437 s, reserved 4680 s; initial cap 24 GPU-hours; last campaign report 2026-10-24T16:57:28.550463+00:00 |
 
-**Current next step:** review the pilot evidence and manuscript; agree on eligible subjects, comparison conditions, budgets, and acceptance criteria before implementing the larger campaign.
+**Campaign preparation:** 12/12 source snapshots acquired; 3 dependency import checks passed. These are preparation checks, not completed comparative episodes.
+
+| Candidate | Source check | Latest dependency check | Native validation | Comparative episodes |
+|---|---|---|---|---|
+| SWE-agent | SOURCE_ACQUIRED_ADAPTER_PENDING | DEPENDENCY_IMPORT_PASSED_LOCAL_RUNTIME_PASSED_NATIVE_WORKFLOW_PENDING | GPU_PENDING | 0 |
+| OpenHands | SOURCE_ACQUIRED_ADAPTER_PENDING | NOT_VALIDATED | NOT_RUN | 0 |
+| AutoCodeRover | SOURCE_ACQUIRED_ADAPTER_PENDING | NOT_VALIDATED | NOT_RUN | 0 |
+| MetaGPT | SOURCE_ACQUIRED_ADAPTER_PENDING | DEPENDENCY_CHECK_FAILED | NOT_RUN | 0 |
+| ChatDev | SOURCE_ACQUIRED_ADAPTER_PENDING | DEPENDENCY_IMPORT_PASSED_NATIVE_WORKFLOW_PENDING | PASSED | 0 |
+| AgentCoder | SOURCE_ACQUIRED_ADAPTER_PENDING | DEPENDENCY_IMPORT_PASSED_NATIVE_WORKFLOW_PENDING | GPU_PENDING | 0 |
+| MapCoder | SOURCE_ACQUIRED_ADAPTER_PENDING | NOT_VALIDATED | NOT_RUN | 0 |
+| RepairAgent | SOURCE_ACQUIRED_ADAPTER_PENDING | DEPENDENCY_CHECK_FAILED | NOT_RUN | 0 |
+| ExecutionAgent | SOURCE_ACQUIRED_ADAPTER_PENDING | DEPENDENCY_CHECK_FAILED | NOT_RUN | 0 |
+| CodeAct | SOURCE_ACQUIRED_ADAPTER_PENDING | NOT_VALIDATED | NOT_RUN | 0 |
+| HyperAgent | SOURCE_ACQUIRED_ADAPTER_PENDING | NOT_VALIDATED | NOT_RUN | 0 |
+| AgileCoder | SOURCE_ACQUIRED_ADAPTER_PENDING | INSTALLING | NOT_RUN | 0 |
+
+**Native feasibility allocations (not comparative episodes):** AgentCoder job `24925674`: PENDING; 2460 H100 seconds originally reserved including termination headroom; collector `24925675`; SWE-agent job `24927834`: PENDING; 1260 H100 seconds originally reserved including termination headroom; collector `24927835`.
+
+**ChatDev comparative subset:** RUNNING_OR_QUEUED; 0/140 episodes resolved; 1 submitted.
+
+**Current next step:** Inspect native feasibility job 24925674 (PENDING), job 24927834 (PENDING). ChatDev comparative subset: RUNNING_OR_QUEUED. Finish remaining artifact native environment/workflow and oracle checks; collect comparative data under the frozen per-artifact protocols and initial GPU cap.
 
 **Accounting:** CUDA pilot: 81 MIG-instance seconds. Original MapCoder pilot: 383 H100 seconds. Qwen3.8: 548 successful H100 seconds plus 86 for the retained failed attempt (634 total). These are historical collected measurements with different accounting boundaries; this is not a resource-savings comparison.
 
 **Data:** [experiments/results/COLLECTION.md](../../../experiments/results/COLLECTION.md); [experiments/results/mapcoder-attempts.csv](../../../experiments/results/mapcoder-attempts.csv); [experiments/results/mapcoder-qwen38/provenance/sacct-final.psv](../../../experiments/results/mapcoder-qwen38/provenance/sacct-final.psv).
 
-**Hourly updater:** Windows Task Scheduler `RES-AI-Experiment-Status-Hourly`; every 1 hour; next nominal update 2026-10-24T05:39:15Z; registration verified 2026-10-24T04:39:17.5174681Z; computer on and user signed in required. Checks collected local evidence and appends section 14 on every invocation, including unchanged checks. It does not authenticate to Nibi, collect new remote outputs, launch jobs, or independently verify the live queue. Future remote runs must supply updated local evidence/status files; queued/running or missing records are flagged for investigation. An hourly document timestamp is an evidence-check timestamp, not a new experiment execution timestamp.
+**Hourly updater:** Windows Task Scheduler `RES-AI-Experiment-Status-Hourly`; every 1 hour; next nominal update 2026-10-24T17:39:15Z; registration verified 2026-10-24T04:39:17.5174681Z; computer on and user signed in required. Checks collected local evidence and appends section 14 on every invocation, including unchanged checks. It does not authenticate to Nibi, collect new remote outputs, launch jobs, or independently verify the live queue. Future remote runs must supply updated local evidence/status files; queued/running or missing records are flagged for investigation. An hourly document timestamp is an evidence-check timestamp, not a new experiment execution timestamp.
 <!-- experiment-status:end -->
 
 ## 1. Project identity
@@ -40,7 +62,7 @@ The implemented controller, CUDA, and one-artifact/two-model pipelines have coll
 
 RES-AI checks whether execution evidence is adequate for a declared experiment plan. The current milestone comprises synthetic controller conformance, a real CUDA integration check, and one MapCoder task deployed with two local models. Its purpose is to establish bounded execution/readiness behavior before a larger comparative study.
 
-**Current milestone:** execution and collection complete, subject to the live evidence checks above. **Overall research project:** needs author review before expansion. The prospective twelve-artifact campaign has no reported comparative execution results.
+**Pilot milestone:** execution, collection and Qwen3.8 paper integration complete, subject to the evidence checks above. **Overall research project:** full campaign authorized and in feasibility. The user authorized the full twelve-artifact campaign on 2026-10-24 with an initial 24 H100 GPU-hour cap. Comparative results are not yet available.
 
 The additional model is Ollama `qwen3.8:27b`, Q4_K_M, Ollama 0.40.10, thinking disabled, greedy decoding. MapCoder uses HumanEval/0, k=3, t=5, one outer attempt, at most 12,288 input and 4,096 generated tokens per call, and two fresh repeated processes.
 
@@ -54,8 +76,11 @@ The additional model is Ollama `qwen3.8:27b`, Q4_K_M, Ollama 0.40.10, thinking d
 | REQ-04 | Preserve unsuccessful attempts | Earlier canceled runs and the failed model-identity check remain in logs and accounting |
 | REQ-05 | Maintain one readable status file | This document shows current scope, verified status, limitations, next actions, and evidence links |
 | REQ-06 | Refresh every hour and retain a record | Registered scheduled task; successful updater receipt; a new section-14 journal row on every invocation |
+| REQ-07 | Integrate collected Qwen3.8 evidence into the paper | Generated two-model results, methods, failure cost and limitations in the rebuilt, visually checked PDF; complete |
+| REQ-08 | Execute the authorized larger campaign | Native adapters, held-out probes and artifact-specific oracles validated before comparative runs; all conditions use the same frozen scientific configuration; currently in feasibility |
+| REQ-09 | Enforce the initial 24 H100 GPU-hour cap | Charge new setup, failures, retries and pending reservations; retain Slurm parent-allocation accounting; report CPU costs separately |
 
-Completion means outputs and acceptance checks agree, not merely that a job was submitted or exited zero. Future larger-study requirements must be agreed and added before that study can be marked complete.
+Completion means outputs and acceptance checks agree, not merely that a job was submitted or exited zero. Source/dependency checks are preparation. Full-study reporting must preserve ineligible, failed, timed-out and budget-limited cases and distinguish them from completed comparisons.
 
 ## 4. Architecture and design
 
@@ -79,8 +104,8 @@ Scientific identity, execution identity, model manifest bytes, and Ollama's adve
 | Additional Qwen3.8 deployment | COMPLETE | Corrected run repeated task, traces, assessment, accounting |
 | Collection and evidence audit | COMPLETE | Four downloaded archives checksum-verified; unsuccessful attempts retained |
 | Hourly status maintenance | See live snapshot and section 14 | Hourly scheduled execution and append-only history |
-| Author review and protocol agreement | NEEDS HUMAN REVIEW | Review pilot; agree budgets, comparators, eligibility, metrics, fault design |
-| Twelve-artifact implementation/execution | NOT STARTED | Implement eligible runnable configurations after protocol review |
+| Full campaign authorization | COMPLETE | User authorized full execution with an initial 24 H100 GPU-hour cap; scientific eligibility and adapter checks still apply |
+| Twelve-artifact implementation/execution | FEASIBILITY | Frozen 1,680-episode design; Nibi CPU source/environment audit job 24904387; no comparative episodes completed yet |
 | Full comparative analysis and publication handover | NOT STARTED | Requires comparative campaign data and author declarations |
 
 The phase table describes the dated milestone. The generated snapshot takes precedence if current evidence checks identify missing or inconsistent data.
@@ -95,6 +120,16 @@ The phase table describes the dated milestone. The generated snapshot takes prec
 | `resai-mapcoder-qwen38-20261024` | GPU `24900967`; collector `24902502` | Failed before inference: incorrect digest-identity comparison; retained | [Failed-attempt evidence](../../../experiments/results/mapcoder-qwen38/failed-24900967/assessment/evidence.json) |
 | `resai-mapcoder-qwen38-v2-20261024` | Identity preflight `24902704`; GPU `24902711`; collector `24902997` | Both repeats solved HumanEval/0; gate passed | [Qwen3.8 assessment](../../../experiments/results/mapcoder-qwen38/assessment/assessment.json) |
 | Qwen3.8 preparation | Download `24900715`, `24900729`; resume/check `24900970`; prepare `24900907`; inspection `24902522` | Download/version and identity problems recovered; provenance retained | [Final accounting](../../../experiments/results/mapcoder-qwen38/provenance/sacct-final.psv) |
+| Campaign exact-source audit | CPU `24904387`; ChatDev legacy selection `24904650` | Source acquisition and static inventory; native workflow validation pending | [Campaign snapshot](../../../experiments/results/campaign/STATUS.json) |
+| Native dependency preparation | CPU `24904527`; array `24904649` | Failed setup attempts retained; AgentCoder package import passed; native workflow pending | [Campaign snapshot](../../../experiments/results/campaign/STATUS.json) |
+| Site-compatible native environments | CPU image `24904849`; environment array `24905002` | Apptainer Python smoke passed; four isolated dependency checks submitted | [Campaign snapshot](../../../experiments/results/campaign/STATUS.json) |
+| ChatDev dependency repair | CPU `24905241` | OpenAI client imports passed with a separate `httpx==0.27.2` overlay; initial failure preserved | [Campaign snapshot](../../../experiments/results/campaign/STATUS.json) |
+| Native ChatDev / Qwen3.8 feasibility | Failed GPU `24905744`; corrected CPU `24906075`, GPU `24906078`, collector `24906079` | PASSED: 12 model calls and independent 12-case oracle. Allocation 199 H100 seconds; retained startup failure 238 seconds. These are native validations, not comparative episodes | [Collected native validation](../../../experiments/results/campaign/native-validation/24906078/collected/) |
+| Native AgentCoder / Qwen3.8 feasibility | CPU `24925673`; GPU `24925674`; collector `24925675` | CPU evaluator/oracle and native-control checks passed; GPU validation pending at 16:40 UTC. HumanEval/2 selected because /0 and /1 occur in native few-shot examples | [Campaign snapshot](../../../experiments/results/campaign/STATUS.json) |
+| Native SWE-agent setup and validation | Startup CPU `24926368`; full control CPU `24927831`; GPU `24927834`; collector `24927835` | Full native repair, review and submission loop passed with three explicitly labeled fixture responses; positive/negative oracle checks passed. GPU validation queued; no SWE-agent model result yet | [Campaign snapshot](../../../experiments/results/campaign/STATUS.json) |
+| ChatDev comparative subset | CPU `24927154`; first GPU `24927183`; collector `24927184` | Frozen 140-case subset: seven conditions, five paired seeds/tasks, four episode classes. CPU preflight passed; first episode pending at 16:40 UTC; zero comparative outcomes collected | [Campaign protocol implementation](../../../experiments/campaign/README.md) |
+| Additional native dependency screening | CPU array `24927936`; retry array `24927985` (RepairAgent, ExecutionAgent, AgileCoder) | RepairAgent and ExecutionAgent first attempts hit shared-filesystem environment-creation timeouts; separate retries retain history. AgileCoder remains in preparation, with a recorded inactive Vertex credential-initialization adaptation. No model calls or workflow success implied | [Campaign snapshot](../../../experiments/results/campaign/STATUS.json) |
+| CPU preparation collection | CPU `24905179` | Runs after the original source/environment jobs, preserving successful and failed preparation attempts | [Campaign snapshot](../../../experiments/results/campaign/STATUS.json) |
 
 The twelve prospective subjects are SWE-agent, OpenHands, AutoCodeRover, MetaGPT, ChatDev, AgentCoder, MapCoder, RepairAgent, ExecutionAgent, CodeAct, HyperAgent, and AgileCoder; see the [candidate inventory](../../../experiments/subjects.json). This inventory is not a completed screening funnel or proof of execution eligibility. The bounded MapCoder pilot does not mean the prospective MapCoder campaign condition has been executed.
 
@@ -115,7 +150,7 @@ Remote status is historical unless a new authenticated scheduler observation is 
 | Ollama too old for Qwen3.8 | Initial download failed; isolated Ollama 0.40.10 installed with release checksum verification | Qwen3.8 `provenance/download/` |
 | Download exceeded initial walltime estimate | Partial bytes preserved; continuation job completed and verified the download | Download and continuation logs |
 | Manifest checksum confused with API model digest | First GPU attempt failed before inference; both identities separately pinned; CPU regression/preflight passed; fresh GPU run succeeded | Failed archive plus corrected source and traces |
-| Scope expansion mistaken for completion | Larger campaign remains NOT STARTED until its own execution evidence exists | Review checklist and candidate inventory |
+| Scope expansion mistaken for completion | Campaign preparation and executed comparative episodes have separate statuses and counts | Campaign status, native receipts and candidate inventory |
 | Workstation asleep/off or user signed out | Hourly local updates cannot run; Task Scheduler catches up when available | Check last-updated timestamp and scheduler state |
 
 Do not erase failed records after recovery. Additional experiments or changes to scientific settings require explicit scope/plan updates; this maintenance schedule does not authorize them.
@@ -140,18 +175,20 @@ Repeated correctness on one task is not aggregate benchmark accuracy. Memory sta
 - [Collection index](../../../experiments/results/COLLECTION.md): entry point for all collected data.
 - [Attempt-level CSV](../../../experiments/results/mapcoder-attempts.csv): four successful repeated-run records.
 - [Archive checksum inventory](../../../experiments/results/COLLECTED-SHA256SUMS.txt): four downloaded archives, including unsuccessful/retired history.
+- [Campaign snapshot](../../../experiments/results/campaign/STATUS.json): source, environment, native validation, reservations and provisional accounting; comparative count remains zero.
+- [Campaign preparation and validation checksums](../../../experiments/results/campaign/COLLECTED-SHA256SUMS.txt): initial 82-file preparation archive, a new 357-file preparation archive (CPU repair/control traces and frozen comparative inputs), plus failed and successful ChatDev native-validation archives. Includes calls, generated code, oracles, logs and accounting. Large upstream caches and pending results remain on Nibi.
 - [Original MapCoder data](../../../experiments/results/mapcoder/): traces, source, logs, and assessment.
 - [Qwen3.8 data](../../../experiments/results/mapcoder-qwen38/): corrected and failed runs, traces, source, setup provenance, accounting.
-- [Compiled manuscript](../main.pdf): review draft, with original MapCoder completion status updated. The additional Qwen3.8 data is documented in the collection/operating guide; full manuscript integration remains an author-review task.
+- [Compiled manuscript](../main.pdf): review draft, with original MapCoder completion status updated. Qwen3.8 methods, outcomes, allocation/process costs, recovery, and limitations are now integrated; the rebuilt 35-page PDF was visually checked.
 - [Operating guide](../../../hpc/docs/hpc-guide.md): run identities and reproducible execution/collection procedures.
 
 ## 11. Current decisions and next actions
 
-1. **Author review:** inspect the manuscript, raw traces, two-model pilot evidence, and failed-attempt costs. Decide what to integrate into the manuscript.
-2. **Campaign design:** confirm eligible subjects/models/sandboxes, budgets, comparison conditions, failure penalties, equivalence margins, artifact-level analysis, and independent fault design.
-3. **Campaign implementation:** turn agreed prospective conditions into runnable configurations, execute bounded validation, then collect actual comparison data before reporting campaign outcomes.
+1. **Paper integration (complete):** both model configurations, all four successful repeats, failed-attempt cost and measurement limitations are integrated into the rebuilt manuscript.
+2. **Campaign feasibility (active):** all twelve exact source snapshots acquired; three dependency import checks passed. ChatDev native validation passed; AgentCoder and SWE-agent native GPU validations are queued. SWE-agent's full native control loop and independent oracle passed on CPU using labeled fixture responses, excluded from model results. Finish remaining native workflows and artifact-specific oracles. The approved initial cap is 24 H100 GPU-hours, including new setup and failed allocations.
+3. **Campaign execution (active):** ChatDev's frozen 140-case comparative subset has passed CPU preflight and its first episode is queued. Collect each allocation and outcome before advancing its serial queue; stop on unresolved implementation failures or budget limits. As of the 16:45 UTC accounting report, 437 H100 seconds were allocated and 4,680 seconds reserved, including the newly queued SWE-agent validation. Remaining artifacts still require native and comparative adapter validation; zero comparative episodes are complete. Refresh this document and retain all failures throughout execution.
 
-There is no recorded blocker to the completed pilot collection. The larger campaign depends on protocol decisions and implementation; it is not silently queued by this hourly schedule.
+The pilot collection and Qwen3.8 manuscript integration are complete. The full campaign is now explicitly authorized and in feasibility under the 24 GPU-hour initial cap. Native adapters, datasets/oracles, and environment compatibility must pass before comparative GPU submission. Source acquisition is not a completed comparative experiment.
 
 ## 12. AI agent operating instructions
 
@@ -182,3 +219,28 @@ Every real updater invocation appends one record below, even when the evidence i
 | 2026-10-24T04:39:13Z | initial project status reconciliation; evidence changed; 5/5 evidence checks complete; twelve-artifact campaign NOT STARTED |
 | 2026-10-24T04:39:45Z | hourly scheduled evidence check; no evidence changes; 5/5 evidence checks complete; twelve-artifact campaign NOT STARTED |
 | 2026-10-24T04:40:18Z | scheduler verified; 18 tests passed; initial setup complete; no evidence changes; 5/5 evidence checks complete; twelve-artifact campaign NOT STARTED |
+| 2026-10-24T05:10:18Z | Qwen3.8 paper integration complete; campaign feasibility running as Nibi job 24904387; initial cap 24 H100 GPU-hours; evidence changed; 5/5 evidence checks complete; twelve-artifact campaign FEASIBILITY, 0/1680 potential episodes, cap 24 H100 hours |
+| 2026-10-24T05:22:17Z | Collected Nibi feasibility and CPU accounting snapshot; evidence changed; 5/5 evidence checks complete; twelve-artifact campaign FEASIBILITY, 0/1680 potential episodes, cap 24 H100 hours |
+| 2026-10-24T05:30:34Z | Added per-candidate preparation reporting and recorded container-native environment jobs; no evidence changes; 5/5 evidence checks complete; twelve-artifact campaign FEASIBILITY, 0/1680 potential episodes, cap 24 H100 hours |
+| 2026-10-24T05:31:45Z | Collected current container-native preparation status; comparative execution remains pending; evidence changed; 5/5 evidence checks complete; twelve-artifact campaign FEASIBILITY, 0/1680 potential episodes, cap 24 H100 hours |
+| 2026-10-24T05:39:15Z | hourly scheduled evidence check; no evidence changes; 5/5 evidence checks complete; twelve-artifact campaign FEASIBILITY, 0/1680 potential episodes, cap 24 H100 hours |
+| 2026-10-24T05:46:24Z | All twelve sources acquired; ChatDev native GPU validation 24905744 submitted under budget; no comparative episodes yet; evidence changed; 5/5 evidence checks complete; twelve-artifact campaign FEASIBILITY, 0/1680 potential episodes, cap 24 H100 hours |
+| 2026-10-24T05:49:45Z | Collected 82 preparation evidence files; native ChatDev validation queued; hourly task verified successful at 05:39 UTC; no evidence changes; 5/5 evidence checks complete; twelve-artifact campaign FEASIBILITY, 0/1680 potential episodes, cap 24 H100 hours |
+| 2026-10-24T06:39:16Z | hourly scheduled evidence check; no evidence changes; 5/5 evidence checks complete; twelve-artifact campaign FEASIBILITY, 0/1680 potential episodes, cap 24 H100 hours |
+| 2026-10-24T07:39:16Z | hourly scheduled evidence check; no evidence changes; 5/5 evidence checks complete; twelve-artifact campaign FEASIBILITY, 0/1680 potential episodes, cap 24 H100 hours |
+| 2026-10-24T08:39:16Z | hourly scheduled evidence check; no evidence changes; 5/5 evidence checks complete; twelve-artifact campaign FEASIBILITY, 0/1680 potential episodes, cap 24 H100 hours |
+| 2026-10-24T09:39:16Z | hourly scheduled evidence check; no evidence changes; 5/5 evidence checks complete; twelve-artifact campaign FEASIBILITY, 0/1680 potential episodes, cap 24 H100 hours |
+| 2026-10-24T10:39:16Z | hourly scheduled evidence check; no evidence changes; 5/5 evidence checks complete; twelve-artifact campaign FEASIBILITY, 0/1680 potential episodes, cap 24 H100 hours |
+| 2026-10-24T11:39:16Z | hourly scheduled evidence check; no evidence changes; 5/5 evidence checks complete; twelve-artifact campaign FEASIBILITY, 0/1680 potential episodes, cap 24 H100 hours |
+| 2026-10-24T12:39:16Z | hourly scheduled evidence check; no evidence changes; 5/5 evidence checks complete; twelve-artifact campaign FEASIBILITY, 0/1680 potential episodes, cap 24 H100 hours |
+| 2026-10-24T13:39:16Z | hourly scheduled evidence check; no evidence changes; 5/5 evidence checks complete; twelve-artifact campaign FEASIBILITY, 0/1680 potential episodes, cap 24 H100 hours |
+| 2026-10-24T14:39:16Z | hourly scheduled evidence check; no evidence changes; 5/5 evidence checks complete; twelve-artifact campaign FEASIBILITY, 0/1680 potential episodes, cap 24 H100 hours |
+| 2026-10-24T15:39:16Z | hourly scheduled evidence check; no evidence changes; 5/5 evidence checks complete; twelve-artifact campaign FEASIBILITY, 0/1680 potential episodes, cap 24 H100 hours |
+| 2026-10-24T15:40:35Z | Collected successful native ChatDev validation: 12 model calls, independent oracle passed; total campaign 437 H100 seconds including failure; evidence changed; 5/5 evidence checks complete; twelve-artifact campaign FEASIBILITY, 0/1680 potential episodes, cap 24 H100 hours |
+| 2026-10-24T16:39:16Z | hourly scheduled evidence check; no evidence changes; 5/5 evidence checks complete; twelve-artifact campaign FEASIBILITY, 0/1680 potential episodes, cap 24 H100 hours |
+| 2026-10-24T16:40:43Z | ChatDev native validation collected; AgentCoder native and first ChatDev comparative episode queued; SWE-agent CPU setup passed; 437 H100 seconds allocated and 3420 reserved; evidence changed; 5/5 evidence checks complete; twelve-artifact campaign FEASIBILITY_AND_COMPARISON, 0/1680 potential episodes, cap 24 H100 hours |
+| 2026-10-24T16:44:43Z | SWE-agent native tool transport and independent repair oracle implemented; 32 local verification tests passed; preparing CPU control-flow validation; no evidence changes; 5/5 evidence checks complete; twelve-artifact campaign FEASIBILITY_AND_COMPARISON, 0/1680 potential episodes, cap 24 H100 hours |
+| 2026-10-24T16:45:59Z | SWE-agent CPU native repair/review/submission fixture passed; GPU 24927834 and collector 24927835 queued; campaign budget reconciled; evidence changed; 5/5 evidence checks complete; twelve-artifact campaign FEASIBILITY_AND_COMPARISON, 0/1680 potential episodes, cap 24 H100 hours |
+| 2026-10-24T16:51:33Z | Additional dependency screening CPU array 24927936 submitted; shared-filesystem environment-creation timeouts preserved and separate retries prepared; campaign archives now included in integrity checks; evidence changed; 6/6 evidence checks complete; twelve-artifact campaign FEASIBILITY_AND_COMPARISON, 0/1680 potential episodes, cap 24 H100 hours |
+| 2026-10-24T16:56:44Z | Collected and checksum-verified 357-file preparation archive; SWE-agent native GPU validation queued; three GPU jobs pending in 16:55 UTC report; 437 H100 seconds allocated and 4680 reserved; 32 tests and paper claims check passed; evidence changed; 6/6 evidence checks complete; twelve-artifact campaign FEASIBILITY_AND_COMPARISON, 0/1680 potential episodes, cap 24 H100 hours |
+| 2026-10-24T16:57:43Z | Final Nibi queue/accounting refresh; ChatDev subset eligibility recorded separately from remaining artifact preparation; zero comparative outcomes complete; evidence changed; 6/6 evidence checks complete; twelve-artifact campaign FEASIBILITY_AND_COMPARISON, 0/1680 potential episodes, cap 24 H100 hours |

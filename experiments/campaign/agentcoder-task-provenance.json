@@ -1,0 +1,9 @@
+{
+  "repository": "openai/human-eval",
+  "revision": "b9453e8f1865df0a0057a1383767caa400acfbcf",
+  "path": "data/HumanEval.jsonl.gz",
+  "archive_sha256": "b796127e635a67f93fb35c04f4cb03cf06f38c8072ee7cee8833d7bee06979ef",
+  "task_sha256": "9a88046ef141afac2d85ca66647ca4357174eecc21edaa8bb5f059fe6b349ab2",
+  "task_id": "HumanEval/2",
+  "selection": "HumanEval/0 and /1 occur in native AgentCoder few-shot examples; select /2 and verify no entry-point overlap before model execution"
+}

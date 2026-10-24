@@ -80,12 +80,12 @@ def inspect_evidence(root):
         seconds = sum(r["gpu_seconds"] for r in evidence)
         return f"{solved}/2 HumanEval/0 repeats solved; {calls} calls; collection-time gate {'passed' if assessment['ready'] else 'blocked'}; {seconds:.3f} timed process seconds"
 
-    def archives():
+    def archives(directory=results):
         count = 0
-        for line in (results/"COLLECTED-SHA256SUMS.txt").read_text().splitlines():
+        for line in (directory/"COLLECTED-SHA256SUMS.txt").read_text().splitlines():
             digest, name = line.split("  ", 1)
-            path = (results/name).resolve()
-            if not path.is_relative_to(results.resolve()):
+            path = (directory/name).resolve()
+            if not path.is_relative_to(directory.resolve()):
                 raise ValueError("archive path escapes results directory")
             with path.open("rb") as stream:
                 if hashlib.file_digest(stream, "sha256").hexdigest() != digest:
@@ -100,31 +100,71 @@ def inspect_evidence(root):
     check("MapCoder / Qwen2.5-Coder-7B", lambda: model("mapcoder"))
     check("MapCoder / Qwen3.8-27B Q4_K_M", lambda: model("mapcoder-qwen38"))
     check("Collected data integrity", archives)
+    if (results/'campaign/COLLECTED-SHA256SUMS.txt').exists():
+        check("Campaign collection integrity", lambda: archives(results/'campaign'))
     try:
         subjects = read_json(root/"experiments/subjects.json")["subjects"]
     except Exception as exc:
         subjects = []
         problems.append("Candidate inventory unavailable: "+str(exc))
     candidates = ", ".join(s["name"] for s in subjects)
+    campaign = None
+    campaign_path = results/'campaign/STATUS.json'
+    if campaign_path.exists():
+        campaign = read_json(campaign_path)
+        if campaign.get('accounting_query_error'):
+            problems.append('Nibi accounting query failed; current allocation state is unknown: '+campaign['accounting_query_error'])
+        plan_path = root/'experiments/campaign/plan.json'
+        if hashlib.sha256(plan_path.read_bytes()).hexdigest() != campaign['protocol_sha256']:
+            problems.append('Campaign protocol differs from its frozen status identity')
+        if campaign.get('h100_allocated_seconds',0)+campaign.get('h100_reserved_seconds',0) > campaign['initial_h100_budget_seconds']:
+            problems.append('Campaign allocation/reservation exceeds the initial GPU budget')
+        if campaign['status'] not in ('COMPLETE','NOT_STARTED'):
+            active.append('twelve-artifact campaign: '+campaign['status'])
     # Inventory entries describe prospective subjects, not completed executions.
     return {"checks": checks, "problems": problems, "candidates": candidates,
-            "candidate_count": len(subjects), "active": active}
+            "candidate_count": len(subjects), "active": active, "campaign": campaign}
 
 
 def render_snapshot(snapshot, stamp, scheduler):
     state = "ATTENTION — evidence needs investigation" if snapshot["problems"] else "PILOT MILESTONE COMPLETE — broader campaign needs review"
+    campaign = snapshot.get('campaign')
+    campaign_state = campaign['status'] if campaign else 'NOT STARTED'
+    if campaign and not snapshot['problems']:
+        state = 'PILOTS COMPLETE; TWELVE-ARTIFACT CAMPAIGN '+campaign_state
     lines = [BEGIN, f"**Last checked: {stamp} (UTC).**", "",
              f"**Where we are: {state}.**", "",
              "The implemented controller, CUDA, and one-artifact/two-model pipelines have collected results. "
-             "The twelve-artifact comparative campaign has not been executed. "
+             +("The full campaign is authorized and underway; completed comparative episodes are reported separately below. " if campaign else "The twelve-artifact comparative campaign has not been executed. ")
              +("Last recorded active work (live Nibi state not checked): "+", ".join(snapshot["active"])+"." if snapshot["active"] else "No experiment is currently recorded as running in the collected status files."), "",
              "| Experiment / deliverable | Status | Verified evidence |",
              "|---|---|---|"]
     for row in snapshot["checks"]:
         detail = row["detail"].replace("|", "/").replace("\n", " ")
         lines.append(f"| {row['name']} | {row['status']} | {detail} |")
-    lines += [f"| Twelve-artifact comparison | NOT STARTED | {snapshot['candidate_count']} candidates inventoried; runnable configurations and comparative results remain pending |", "",
-              "**Current next step:** review the pilot evidence and manuscript; agree on eligible subjects, comparison conditions, budgets, and acceptance criteria before implementing the larger campaign.", "",
+    campaign_detail = (f"{campaign.get('comparative_episodes_completed',0)}/{campaign['potential_episodes']} potential comparative episodes reported complete; H100 allocated {campaign.get('h100_allocated_seconds',0)} s, reserved {campaign.get('h100_reserved_seconds',0)} s; initial cap {campaign['initial_h100_budget_seconds']/3600:g} GPU-hours; last campaign report {campaign['updated_at_utc']}" if campaign else f"{snapshot['candidate_count']} candidates inventoried; runnable configurations and comparative results remain pending")
+    lines += [f"| Twelve-artifact comparison | {campaign_state} | {campaign_detail} |", ""]
+    if campaign and campaign.get('subjects'):
+        lines += [f"**Campaign preparation:** {campaign.get('source_snapshots_acquired',0)}/{len(campaign['subjects'])} source snapshots acquired; {campaign.get('dependency_import_checks_passed',0)} dependency import checks passed. These are preparation checks, not completed comparative episodes.","",
+                  '| Candidate | Source check | Latest dependency check | Native validation | Comparative episodes |',
+                  '|---|---|---|---|---|']
+        for subject in campaign['subjects']:
+            values=[subject['name'],subject['campaign_status'],subject.get('latest_dependency_status','NOT_VALIDATED'),subject.get('latest_native_status','NOT_RUN'),str(subject.get('comparative_episodes_completed',0))]
+            lines.append('| '+' | '.join(v.replace('|','/').replace('\n',' ') for v in values)+' |')
+        lines.append('')
+        pending=[r for r in campaign.get('gpu_budget_ledger',{}).get('reservations',[]) if r.get('job_id') and not r.get('settled') and r.get('purpose')=='native_validation']
+        if pending:
+            lines += ['**Native feasibility allocations (not comparative episodes):** '+ '; '.join(f"{r['subject']} job `{r['job_id']}`: {r.get('last_observed_state','unknown')}; {r['reserved_seconds']} H100 seconds originally reserved including termination headroom; collector `{r.get('collector_job_id','not recorded')}`" for r in pending)+'.', '']
+        for name,subset in campaign.get('comparative_subsets',{}).items():
+            lines += [(f"**{name} comparative subset:** {subset['status']}; {subset['comparative_episodes_completed']}/{subset['potential_episodes']} episodes resolved; {subset['comparative_episodes_submitted']} submitted. "+(subset.get('error') or '')).rstrip(),'']
+    if campaign:
+        observed=dt.datetime.fromisoformat(campaign['updated_at_utc'].replace('Z','+00:00'))
+        checked=dt.datetime.fromisoformat(stamp.replace('Z','+00:00'))
+        age=max(0,(checked-observed).total_seconds())
+        if age > 7200 and campaign_state not in ('COMPLETE','NOT_STARTED'):
+            lines += [f'**Nibi observation is stale:** the latest collected campaign report is {age/3600:.1f} hours old. Current queue state and progress are unknown until a fresh report is collected.', '']
+    lines += [
+              "**Current next step:** "+(campaign['next_action'] if campaign else 'review the pilot evidence and manuscript; agree on eligible subjects, comparison conditions, budgets, and acceptance criteria before implementing the larger campaign.'), "",
               "**Accounting:** CUDA pilot: 81 MIG-instance seconds. Original MapCoder pilot: 383 H100 seconds. "
               "Qwen3.8: 548 successful H100 seconds plus 86 for the retained failed attempt (634 total). "
               "These are historical collected measurements with different accounting boundaries; this is not a resource-savings comparison.", "",
@@ -172,7 +212,9 @@ def main():
         previous = read_json(previous_path) if previous_path.exists() else {}
         change = "evidence changed" if previous.get("fingerprint") != fingerprint else "no evidence changes"
         completed = sum(c["status"] == "COMPLETE" for c in snapshot["checks"])
-        summary = f"{args.reason}; {change}; {completed}/{len(snapshot['checks'])} evidence checks complete; twelve-artifact campaign NOT STARTED"
+        campaign = snapshot.get('campaign')
+        campaign_note = (f"{campaign['status']}, {campaign.get('comparative_episodes_completed',0)}/{campaign['potential_episodes']} potential episodes, cap {campaign['initial_h100_budget_seconds']/3600:g} H100 hours" if campaign else 'NOT STARTED')
+        summary = f"{args.reason}; {change}; {completed}/{len(snapshot['checks'])} evidence checks complete; twelve-artifact campaign {campaign_note}"
         if snapshot["problems"]:
             summary += "; ATTENTION: "+"; ".join(snapshot["problems"])
         document = ROOT/DOCUMENT

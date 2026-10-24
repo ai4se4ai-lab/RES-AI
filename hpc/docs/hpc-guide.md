@@ -1,7 +1,10 @@
 # RES-AI Nibi operating and evidence guide
 
-The current milestone ends with an author review of one real artifact pilot.
-The twelve-artifact comparison is a prospective protocol, not a scheduled run.
+The one-artifact/two-model pilot and Qwen3.8 manuscript integration are complete.
+On 2026-10-24 the author authorized the twelve-artifact campaign with an initial
+24 H100 GPU-hour cap. CPU feasibility checks are underway; comparative episodes
+have not run. Current observations and the append-only journal are maintained in
+`docs/EMSE/support/AI_AGENT_PROJECT_EXECUTION_PLAN.md`.
 
 ## Execution layers
 
@@ -25,7 +28,7 @@ walltimes affect backfill feasibility, not the scheduler's priority policy.
 | Nibi allocation accounting | `sacct`, captured after completion | `experiments/results/nibi/logs/sacct.psv` | Allocation elapsed time; exclude `.batch`/`.extern` duplicates |
 | One-artifact self-application | `hpc/mapcoder/config/experiments.json` | `mapcoder/rep*/attempt-*/{evidence.json,task-results.jsonl,calls.json,strategy.log}` under the run results | MapCoder local-model deployment on HumanEval/0 |
 | Readiness before/after | `resai.pipeline`, `experiments/mapcoder/assess.py` | admission decision JSON and complete evidence bundle | Bounded gate decision for the declared plan |
-| Twelve-artifact campaign | prospective manuscript protocol | availability in `experiments/subjects.json`, paper metadata in `experiments/papers.json` | Not executed; no campaign performance results |
+| Twelve-artifact campaign | authorized; CPU feasibility underway | frozen `experiments/campaign/plan.json`; collected `experiments/results/campaign/STATUS.json` | No comparative performance results yet; initial 24 H100 GPU-hour cap |
 
 ## Completed CUDA integration
 

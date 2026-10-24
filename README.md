@@ -48,6 +48,14 @@ expose no shell or submission capability. This is a single-user prototype.
 
 ## Nibi
 
+On 2026-10-24 the author requested the twelve-artifact campaign after Qwen3.8
+paper integration, with an initial 24 H100 GPU-hour cap. See
+[`experiments/campaign/`](experiments/campaign/README.md) and the current
+[execution status](docs/EMSE/support/AI_AGENT_PROJECT_EXECUTION_PLAN.md).
+The review-milestone restrictions below describe the earlier pilot boundary;
+the new authorization permits campaign preparation and execution within its cap.
+Source feasibility is in progress; no comparative campaign outcome is asserted.
+
 See [the operating guide](hpc/docs/hpc-guide.md) for exact run IDs, commands,
 accounting boundaries, and claim-to-evidence mappings. Do not rerun the complete
 prospective twelve-artifact campaign from this review milestone.
