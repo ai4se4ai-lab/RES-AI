@@ -3,7 +3,7 @@
 Read the live snapshot below to see where the project stands. Section 14 is the append-only update history. All timestamps use UTC. The snapshot is generated from collected evidence; the remaining sections record scope, decisions, and operating instructions.
 
 <!-- experiment-status:start -->
-**Last checked: 2026-10-24T16:57:43Z (UTC).**
+**Last checked: 2026-10-24T17:39:16Z (UTC).**
 
 **Where we are: PILOTS COMPLETE; TWELVE-ARTIFACT CAMPAIGN FEASIBILITY_AND_COMPARISON.**
 
@@ -46,7 +46,7 @@ The implemented controller, CUDA, and one-artifact/two-model pipelines have coll
 
 **Data:** [experiments/results/COLLECTION.md](../../../experiments/results/COLLECTION.md); [experiments/results/mapcoder-attempts.csv](../../../experiments/results/mapcoder-attempts.csv); [experiments/results/mapcoder-qwen38/provenance/sacct-final.psv](../../../experiments/results/mapcoder-qwen38/provenance/sacct-final.psv).
 
-**Hourly updater:** Windows Task Scheduler `RES-AI-Experiment-Status-Hourly`; every 1 hour; next nominal update 2026-10-24T17:39:15Z; registration verified 2026-10-24T04:39:17.5174681Z; computer on and user signed in required. Checks collected local evidence and appends section 14 on every invocation, including unchanged checks. It does not authenticate to Nibi, collect new remote outputs, launch jobs, or independently verify the live queue. Future remote runs must supply updated local evidence/status files; queued/running or missing records are flagged for investigation. An hourly document timestamp is an evidence-check timestamp, not a new experiment execution timestamp.
+**Hourly updater:** Windows Task Scheduler `RES-AI-Experiment-Status-Hourly`; every 1 hour; next nominal update 2026-10-24T18:39:15Z; registration verified 2026-10-24T04:39:17.5174681Z; computer on and user signed in required. Checks collected local evidence and appends section 14 on every invocation, including unchanged checks. It does not authenticate to Nibi, collect new remote outputs, launch jobs, or independently verify the live queue. Future remote runs must supply updated local evidence/status files; queued/running or missing records are flagged for investigation. An hourly document timestamp is an evidence-check timestamp, not a new experiment execution timestamp.
 <!-- experiment-status:end -->
 
 ## 1. Project identity
@@ -244,3 +244,4 @@ Every real updater invocation appends one record below, even when the evidence i
 | 2026-10-24T16:51:33Z | Additional dependency screening CPU array 24927936 submitted; shared-filesystem environment-creation timeouts preserved and separate retries prepared; campaign archives now included in integrity checks; evidence changed; 6/6 evidence checks complete; twelve-artifact campaign FEASIBILITY_AND_COMPARISON, 0/1680 potential episodes, cap 24 H100 hours |
 | 2026-10-24T16:56:44Z | Collected and checksum-verified 357-file preparation archive; SWE-agent native GPU validation queued; three GPU jobs pending in 16:55 UTC report; 437 H100 seconds allocated and 4680 reserved; 32 tests and paper claims check passed; evidence changed; 6/6 evidence checks complete; twelve-artifact campaign FEASIBILITY_AND_COMPARISON, 0/1680 potential episodes, cap 24 H100 hours |
 | 2026-10-24T16:57:43Z | Final Nibi queue/accounting refresh; ChatDev subset eligibility recorded separately from remaining artifact preparation; zero comparative outcomes complete; evidence changed; 6/6 evidence checks complete; twelve-artifact campaign FEASIBILITY_AND_COMPARISON, 0/1680 potential episodes, cap 24 H100 hours |
+| 2026-10-24T17:39:16Z | hourly scheduled evidence check; no evidence changes; 6/6 evidence checks complete; twelve-artifact campaign FEASIBILITY_AND_COMPARISON, 0/1680 potential episodes, cap 24 H100 hours |
