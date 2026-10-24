@@ -1,158 +1,107 @@
+% Compile here: pdflatex main; bibtex main; pdflatex main; pdflatex main.
+% All empirical claims distinguish executed tests from the prospective campaign.
 \documentclass[pdflatex,sn-mathphys-num]{sn-jnl}
-\usepackage{url}
-\usepackage{subcaption}
-\usepackage{placeins}
-\usepackage{pgfplots}
-\pgfplotsset{compat=1.18}
-\usepgfplotslibrary{fillbetween}
-\usepgfplotslibrary{statistics}
-\usetikzlibrary{intersections}
-
 \usepackage[T1]{fontenc}
-\usepackage{textcomp}
-\usepackage{upquote}
-
-
-%%%% Standard Packages
-\usepackage{graphicx}%
-\usepackage{multirow}%
-\usepackage{amsmath,amssymb,amsfonts}%
-\usepackage{amsthm}%
-\usepackage{mathrsfs}%
-\usepackage[title]{appendix}%
-\usepackage{xcolor}%
-\usepackage{manyfoot}%
-\usepackage{booktabs}%
-\usepackage{algorithm}%
-\usepackage{algorithmicx}%
-\usepackage[noend]{algpseudocode}%
-\usepackage{listings}%
-\usepackage{tikz}
-\usepackage{tabularx}
-\usepackage{microtype}
+\usepackage{lmodern}
 \usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
+\usepackage{graphicx,booktabs,tabularx,multirow}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage{algorithm,algorithmicx}
+\usepackage[noend]{algpseudocode}
+\usepackage[expansion=false]{microtype}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,fit,calc}
 \usepackage{tcolorbox}
-\tcbuselibrary{skins, breakable}
-\usepackage{threeparttable}
-\usepackage{rotating}
-\usepackage{enumitem}
-\usepackage{pifont}
-\usepackage{stmaryrd}
-\usepackage{hyperref}
-\usetikzlibrary{arrows.meta,positioning,shapes.geometric,fit,backgrounds,calc}
-
-\hypersetup{colorlinks=true, linkcolor=black, urlcolor=black, citecolor=black}
-
-% ---------------- theorem-like environments (sn-jnl styles)
-\theoremstyle{thmstyleone}%
-\newtheorem{theorem}{Theorem}%
-\newtheorem{proposition}[theorem]{Proposition}%
-\theoremstyle{thmstyletwo}%
-\newtheorem{example}{Example}%
-\newtheorem{remark}{Remark}%
-\theoremstyle{thmstylethree}%
-\newtheorem{definition}{Definition}%
-
-\raggedbottom
-\renewcommand{\topfraction}{0.92}
-\renewcommand{\bottomfraction}{0.6}
-\renewcommand{\textfraction}{0.08}
-\renewcommand{\floatpagefraction}{0.85}
-\setcounter{topnumber}{3}
-\setcounter{bottomnumber}{2}
-\setcounter{totalnumber}{5}
-\setlength{\textfloatsep}{12pt plus 2pt minus 4pt}
-\setlength{\floatsep}{10pt plus 2pt minus 2pt}
-
-% ---------------- shorthands
-\newcommand{\tool}{\textsc{AgentHOT}}
-\newcommand{\auto}{\textsc{AutoM2M}}
-\newcommand{\devteam}{\textsc{DevTeam}}
-\newcommand{\Team}{\Theta}
-\newcommand{\W}[1]{\textsf{W#1}}
-\newcommand{\D}[1]{\textsf{D#1}}
-\newcommand{\MM}{\mathit{MM}}
-\newcommand{\Mods}[1]{\mathcal{M}(#1)}
-\newcommand{\TL}{\mathit{TL}}
-\newcommand{\fp}{\mathit{fp}}
-\newcommand{\Stale}{\mathit{Stale}}
-\newcommand{\chk}{\mathit{chk}}
-\newcommand{\cls}[1]{\textsf{#1}}
+\tcbset{rqbox/.style={colback=gray!5, colframe=black!65, colbacktitle=gray!18, coltitle=black,
+  fonttitle=\bfseries\small, fontupper=\small, boxrule=0.5pt, arc=1pt, left=5pt, right=5pt,
+  top=3pt, bottom=3pt, toptitle=2pt, bottomtitle=2pt, before skip=8pt, after skip=8pt}}
+\usepackage{url,placeins,hyperref}
+\hypersetup{colorlinks=true,linkcolor=black,urlcolor=black,citecolor=black,hypertexnames=false}
+\theoremstyle{thmstylethree}
+\newtheorem{definition}{Definition}
+\newcommand{\tool}{\textsc{RES-AI}}
+\newcommand{\upstream}{\texttt{use-hpc}}
 \newcommand{\code}[1]{\texttt{#1}}
-\newcommand{\RQ}[1]{\textbf{RQ#1}}
-\newcommand{\cmark}{\ding{51}}
-\newcommand{\xmark}{\ding{55}}
-\newcommand{\pmark}{\ding{109}}
-\newcommand{\conformsTo}{\mathrel{\chi}}
-\algnewcommand{\LineComment}[1]{\State \(\triangleright\) \textit{#1}}
-
-% ---------------- colours and listings
-\definecolor{rawbg}{RGB}{255,248,230}
-\definecolor{rawbar}{RGB}{214,150,40}
-\definecolor{modelbg}{RGB}{235,244,255}
-\definecolor{modelbar}{RGB}{60,110,180}
-\definecolor{enginebg}{RGB}{236,250,238}
-\definecolor{enginebar}{RGB}{60,145,80}
-\definecolor{llmbg}{RGB}{248,238,252}
-\definecolor{llmbar}{RGB}{140,80,160}
-
-\lstdefinelanguage{ATL}{
-  morekeywords={module,create,from,rule,to,uses,and,or,not,in,handoff,agents,writes,goal,done,tools,views,class,attribute,reference},
-  morekeywords=[2]{@llm,@check}, alsoletter={@},
-  sensitive=true, morecomment=[l]{--}, morestring=[b]'}
-\lstdefinelanguage{KM3}{
-  morekeywords={package,class,attribute,reference,container,enumeration,literal,datatype},
-  sensitive=true, morecomment=[l]{--}}
-\lstset{frame=l, framerule=2pt, framesep=6pt, xleftmargin=9pt, framexleftmargin=0pt,
-        basicstyle=\ttfamily\fontsize{6.8}{7.9}\selectfont, breaklines=false, columns=fullflexible,
-        keepspaces=true, showstringspaces=false, numbers=none, upquote=true,
-        keywordstyle=\bfseries, keywordstyle={[2]\bfseries\color{purple}},
-        commentstyle=\itshape\color{black!55}, captionpos=t, float=tbp, aboveskip=6pt, belowskip=4pt,
-        literate={->}{{$\rightarrow$}}2 {<-}{{$\leftarrow$}}2}
-\lstdefinestyle{raw}{backgroundcolor=\color{rawbg}, rulecolor=\color{rawbar}, literate={}}
-\lstdefinestyle{model}{backgroundcolor=\color{modelbg}, rulecolor=\color{modelbar}}
-\lstdefinestyle{engine}{backgroundcolor=\color{enginebg}, rulecolor=\color{enginebar}, literate={}}
-\renewcommand{\lstlistingname}{Listing}
-
-
-
-% run-in paragraph headings (as in Springer's svjour3 layout used by EMSE)
-\makeatletter
-\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
-  {6pt \@plus 2pt \@minus 1pt}{-0.6em}{\normalfont\normalsize\bfseries}}
-\makeatother
-
+\input{generated/counts}
+\raggedbottom
+\setlength{\textfloatsep}{12pt plus 2pt minus 4pt}
 \begin{document}
-
-\title[RES-AI: Robust Empirical Strategy for AI-Driven Software Engineering Experiments on Shared HPC Infrastructure]{RES-AI: Robust Empirical Strategy for AI-Driven Software Engineering Experiments on Shared HPC Infrastructure}
-
+\title[RES-AI: Evidence-Bound Readiness for Shared HPC]{RES-AI: Evidence-Bound Readiness for AI Software Engineering Experiments on Shared HPC Infrastructure}
 \author*[1]{\fnm{Majid} \sur{Babaei}}\email{majid.babaei@ufv.ca}
 \affil*[1]{\orgdiv{School of Computing}, \orgname{University of the Fraser Valley}, \orgaddress{\state{BC}, \country{Canada}}}
-
-\abstract{}
-
-\keywords{{LLM-based multi-agent systems, team builders, model-driven engineering, model-to-model transformation, ATL, static analysis, failure attribution, empirical study}}
-
+\abstract{Researchers across software engineering increasingly conduct experiments in or for AI systems. Executing them on shared clusters introduces a gap between a successful small test and justified admission of a larger job. Configuration checks alone cannot establish that evidence still describes the submitted workload, that required probes ran, or that a successful process produced valid outputs. We present RES-AI, a research prototype separating the scientific specification from its execution plan and evaluating a bounded readiness contract before production submission. The contract binds evidence to the current plan, requires coverage, freshness, memory headroom and repeated observations, and charges failed attempts against the validation budget. A restricted Model Context Protocol interface exposes assessment and refinement proposals to agents; existing Slurm templates provide execution and auditing. An executed synthetic mutation study comprises \LocalDecisions{} policy decisions over \FaultFamilies{} fault families and clean controls. The full policy blocks all \MutationFaultCases{} faulty variants and accepts all \MutationCleanCases{} clean variants in this deliberately constructed suite, whereas a static validator blocks \StaticBlocked{} and a smoke proxy 60. A leave-one-conjunct-out ablation shows that each of the five contract components detects faults no other check detects. Threshold sweeps, \RefinementEpisodes{} simulated refinement episodes and latency measurements show that decisions follow declared parameters, that charged validation stays within its cap without altering the scientific specification, and that assessment costs milliseconds. They also expose two specification gaps. These results establish implementation behavior under specified inputs, not field failure rates or resource savings. We also provide a real-GPU integration pilot and a prospective paired evaluation protocol for twelve publicly available agent research artifacts. The cross-artifact campaign, production-scale reliability and compute savings remain unestablished.}
+\keywords{empirical software engineering, AI agents, shared HPC, Slurm, experimental validation, reproducibility, Model Context Protocol}
 \maketitle
 
 \section{Introduction}\label{sec:introduction}
+An increasing share of software engineering researchers are becoming researchers in or for AI systems. The speed of AI development and its growing role in software construction make experimental execution part of the research method itself. Evaluations of code generation, repository repair and software development agents execute generated programs, construct environments, and interact with models over many tasks and seeds. SWE-bench and SWE-agent illustrate this move toward repository-level execution, while rigorous code-generation evaluation requires more than superficial output checks \cite{jimenez2024swebench,yang2024sweagent,liu2023evalplus}. Scientific conclusions therefore depend on both the approach under investigation and the infrastructure that actually runs it.
 
+Shared high-performance computing (HPC) makes substantial experiments accessible without requiring each research group to own an accelerator fleet. It introduces constraints absent from a workstation: allocations expire, resources are heterogeneous, software stacks differ across nodes, and admission follows site policy. A malformed configuration can fail quickly; an input-dependent memory fault or broken checkpoint can remain hidden much longer. A process can also exit successfully while writing incomplete data. Repeated submission without a clear validation contract consumes resources and delays both the researcher and other cluster users.
+
+Reproducibility initiatives emphasize executable artifacts and explicit experimental context \cite{pineau2021improving,acm2020badges}. For reviewers, a practical question is whether a result can be regenerated from declared inputs. For an organization considering adoption, it is whether the artifact operates within its resource and deployment constraints. Neither question is answered by a successful scheduler exit code alone. Scientific benchmarking also requires clear measurement conditions and treatment of variation \cite{hoefler2015scientific}. Resource use matters because validation itself has a cost: a preflight consuming more compute than it saves is not automatically beneficial.
+
+Three gaps motivate this work. First, static validity and execution validity differ: a valid job graph can fail to initialize a model or satisfy an output contract. Second, evidence is conditional: a successful smoke run can become irrelevant after a model, input, software or resource change. Third, validation coverage and cost need to be represented together in the admission decision. An agent repeatedly modifying a workflow can amplify these gaps unless changes invalidate corresponding evidence and retries remain bounded.
+
+We address these gaps with \tool{}, an evidence-bound readiness layer above a Slurm execution engine. A scientific specification identifies the intended experiment; an execution plan identifies how it runs. Smoke probes produce observations against declared obligations. The readiness gate accepts only fresh, matching, sufficiently complete evidence within a budget. A permitted refinement creates a new plan identity and requires new evidence. A small Model Context Protocol (MCP) interface lets agents inspect eligibility without unrestricted submission privileges.
+
+The contribution is narrower than a new scheduler or a reproducibility guarantee. We reuse the job-graph, runner and audit templates supplied by \upstream{} and identify their pinned revision. We do not claim priority escalation: a short, accurate time request can improve backfill eligibility, but the scheduler controls admission \cite{schedmdScheduling}. A small probe also cannot establish that a many-node, multi-day experiment will succeed.
+
+We make four contributions: (1) a readiness contract over scientific identity, execution identity, coverage, resource observations and validation cost; (2) a Python prototype with conservative assessment, bounded refinement proposals, an operator-facing submission wrapper and restricted MCP tools; (3) executed controller studies (a mutation study, a component ablation, a threshold sensitivity analysis, a bounded-refinement simulation and an overhead measurement) and a Slurm GPU integration pilot, all regenerated from archived records; and (4) a twelve-artifact evaluation protocol separating infrastructure reliability, scientific preservation and total resource cost. The fourth contribution is a protocol, not a completed generalizability result.
+
+\section{Background and Running Example}\label{sec:background}
+\subsection{Shared resources and empirical AI studies}
+Slurm manages resource requests, allocation and execution \cite{yoo2003slurm}. A partition defines an administrative resource set and its constraints; accounts and quality-of-service policies determine what a user may request. Dependencies express job precedence, and arrays represent repeated experiment cells. Backfill can start a lower-priority request when doing so does not delay a higher-priority job's expected start. It depends on requested resources and time limits rather than an application independently acquiring priority \cite{schedmdScheduling}.
+
+For an AI experiment, allocation is only one part of the context. Weights, tokenizer, data revision, input lengths, precision, prompts, test harness and seeds can affect both demand and outcomes. Serving systems such as vLLM explicitly manage inference memory \cite{kwon2023vllm}; an orchestration layer should not infer numerical reproducibility from available memory. A valid deployment is a prerequisite for evaluating an approach, not evidence of its effectiveness.
+
+Workflow systems already automate dependencies and execution across resources \cite{deelman2015pegasus,molder2021snakemake,babuji2019parsl}, containers improve portability \cite{kurtzer2017singularity}, and context capture supports computational reuse \cite{davison2012sumatra,crusoe2022cwl}. Our question is consequently not whether jobs can be orchestrated, but when validation evidence justifies dispatch of a particular production specification.
+
+\subsection{An illustrative running example}
+Consider a team evaluating a multi-agent code-generation framework across 64 GPUs. Its pipeline loads models, distributes tasks, executes generated programs and aggregates results. A long input could exceed memory, a worker could fail to join a collective, or aggregation could drop unfinished tasks. A fault appearing on the third day would be expensive, but the day and scale in this example are hypothetical, not measurements from our study.
+
+A short single-GPU test exercises imports and loading, but not necessarily maximum input size, checkpoint recovery or inter-node communication. It provides evidence for its exercised obligations, not readiness for the complete 64-GPU plan. \tool{} makes the missing obligations explicit. The team must add representative boundary-input, checkpoint and distributed probes, or narrow its claim. No fixed fifteen-minute turnaround is promised: the queue and required test scale determine the actual time.
+
+Suppose a boundary-input probe approaches the memory limit. Reducing an inference microbatch can be operational if the experiment permits it and preserves intended outcomes. Reducing effective training batch size can change the experiment. The implemented proposal therefore requires a scientific declaration of batch invariance, which must separately be tested. An out-of-memory event never authorizes changing the model, data or evaluation metric.
+
+\subsection{Identity, topology and evidence}
+Definitions are needed because a pass/fail flag without scope is ambiguous. We first distinguish intended science from execution configuration, then identify the evidence connecting them.
+\begin{definition}[Experiment identity]
+Let $S$ be the scientific specification, $X$ the execution plan, $O$ the mandatory probe set, $B$ the validation policy and budget, and $I$ declared input identities. The plan identity is $h=H(S,X,O,B,I)$, using canonical SHA-256. $S$ records scientific choices such as model, data, prompts, seeds and scoring; $X$ records resource shape and operational settings; $I$ binds declared files to full content hashes.
+\end{definition}
+Changing $X$ invalidates old-plan evidence; changing $S$ additionally changes the scientific experiment. Hash equality establishes identity of declared content, not authenticity, exhaustive dependency capture or deterministic execution.
+
+Topology can inform feasible request shapes and probe selection, but scheduler descriptions need not measure physical network performance. Unknown attributes must remain explicit.
+\begin{definition}[Observed resource graph]
+A resource snapshot is $G_t=(V_t,E_t,A_t)$, with timestamp $t$, advertised nodes or accelerators $V_t$, topology relations $E_t$ and attributes $A_t$. Edge bandwidth and latency may be unknown. Scheduler-reported relations and measurements inside allocations are distinct evidence sources.
+\end{definition}
+Discovery archives what the scheduler reports; it neither reconstructs measured link weights nor optimizes placement. In the example, sharing an advertised switch does not replace a distributed probe at the required allocation shape.
+
+Each attempt must identify what it exercised and observed. Otherwise successful execution can be mistaken for comprehensive validation.
+\begin{definition}[Smoke evidence]
+An attempt record $e_i$ contains a distinct identifier, plan hash $h_i$, timestamp $t_i$, process status, passed obligations $C_i$, output validity, peak memory fraction $m_i$ and allocated-instance process time $c_i$. Bundle $E$ retains all supplied attempts, including failed and obsolete attempts.
+\end{definition}
+Obligations can include imports, model initialization, a boundary input, output schema/count, checkpoint round trip and distributed collective completion. Their implementation is workload-specific; names alone do not establish adequate testing. The CUDA pilot implements the first five for a small synthetic network and contains no distributed probe.
+
+Readiness is a conjunction so an obligatory failure cannot be hidden by an average score. With the two most recent matching attempts $e_a,e_b$, lifetime $T$, memory limit $m_{\max}$, stability tolerance $\epsilon$, attempt cap $K$ and compute cap $C$, the rule is
+\begin{align}
+\operatorname{Ready}(P,E,t)={}&\operatorname{Valid}(P)\land |E|\leq K\land\sum_{e_i\in E}c_i\leq C \label{eq:ready}\\
+&\land\bigwedge_{i\in\{a,b\}}[h_i=h\land\operatorname{OK}(e_i)\land O\subseteq C_i\land\operatorname{OutputValid}(e_i)]\nonumber\\
+&\land\bigwedge_{i\in\{a,b\}}[0\leq t-t_i\leq T\land0\leq m_i\leq m_{\max}]\land\Delta_{\mathrm{smoke}}\leq\epsilon,\nonumber
+\end{align}
+where $P=(S,X,O,B,I)$ and $\Delta_{\mathrm{smoke}}=|m_a-m_b|$. Records are ordered by timestamp for selection. All attempt identifiers must be nonempty and unique; every $c_i$ must be positive and finite. Missing evidence blocks readiness. Distinct executions do not establish statistical independence. Memory difference is a stability diagnostic, not a convergence theorem for stochastic agents.
+
+\input{approach}
+\input{evaluation}
+\input{results}
+\input{discussion}
 
 \section*{Declarations}
-
-\textbf{Funding.} [To be completed.]
-\textbf{Conflict of interest.} The author declares no conflict of interest.
-\textbf{Ethical approval.} Not applicable: the study involves no human
-participants; the coders are the author and research assistants acting as
-investigators.
-\textbf{Acknowledgements.} We thank the graduate research assistants who
-coded failures and validated defects [names to be added].
-\textbf{Use of generative AI.} LLMs are the object of study; their use in
-preparing the manuscript is [to be declared according to the journal's
-policy].
-
-
-\bibliography{bibliography}
-
+\textbf{Funding.} Funding and resource acknowledgements require author confirmation before submission.\\
+\textbf{Competing interests.} The author develops the prototype and reused execution framework; no independent evaluator is claimed.\\
+\textbf{Human participants.} The reported controller and GPU-probe experiments involve no human-subject data.\\
+\textbf{Data and code availability.} Code, observations, analysis and the prospective protocol accompany the RES-AI repository. Execution templates originate from \url{https://github.com/ai4se4ai-lab/use-hpc}, pinned in \code{hpc/UPSTREAM.json}. A permanent artifact DOI has not been assigned.\\
+\textbf{Use of generative AI.} AI coding and writing assistance was used to implement the prototype, draft the manuscript and conduct three methodological, architectural and literature reviews. These reviews do not constitute independent human peer review. The author must verify final claims, citations and journal-specific disclosure before submission.
+\bibliography{bibliography,generated/artifact_refs}
 \end{document}

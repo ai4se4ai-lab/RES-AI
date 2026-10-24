@@ -1,0 +1,407 @@
+[
+  {
+    "name": "SWE-agent",
+    "source": "https://arxiv.org/abs/2405.15793",
+    "metadata": {
+      "citation_title": [
+        "SWE-agent: Agent-Computer Interfaces Enable Automated Software Engineering"
+      ],
+      "citation_author": [
+        "Yang, John",
+        "Jimenez, Carlos E.",
+        "Wettig, Alexander",
+        "Lieret, Kilian",
+        "Yao, Shunyu",
+        "Narasimhan, Karthik",
+        "Press, Ofir"
+      ],
+      "citation_date": [
+        "2024/05/06"
+      ],
+      "citation_online_date": [
+        "2024/11/11"
+      ],
+      "citation_pdf_url": [
+        "https://arxiv.org/pdf/2405.15793"
+      ],
+      "citation_arxiv_id": [
+        "2405.15793"
+      ],
+      "citation_abstract": [
+        "Language model (LM) agents are increasingly being used to automate complicated tasks in digital environments. Just as humans benefit from powerful software applications, such as integrated development environments, for complex tasks like software engineering, we posit that LM agents represent a new category of end users with their own needs and abilities, and would benefit from specially-built interfaces to the software they use. We investigate how interface design affects the performance of language model agents. As a result of this exploration, we introduce SWE-agent: a system that facilitates LM agents to autonomously use computers to solve software engineering tasks. SWE-agent's custom agent-computer interface (ACI) significantly enhances an agent's ability to create and edit code files, navigate entire repositories, and execute tests and other programs. We evaluate SWE-agent on SWE-bench and HumanEvalFix, achieving state-of-the-art performance on both with a pass@1 rate of 12.5% and 87.7%, respectively, far exceeding the previous state-of-the-art achieved with non-interactive LMs. Finally, we provide insight on how the design of the ACI can impact agents' behavior and performance."
+      ]
+    }
+  },
+  {
+    "name": "OpenHands",
+    "source": "https://arxiv.org/abs/2407.16741",
+    "metadata": {
+      "citation_title": [
+        "OpenHands: An Open Platform for AI Software Developers as Generalist Agents"
+      ],
+      "citation_author": [
+        "Wang, Xingyao",
+        "Li, Boxuan",
+        "Song, Yufan",
+        "Xu, Frank F.",
+        "Tang, Xiangru",
+        "Zhuge, Mingchen",
+        "Pan, Jiayi",
+        "Song, Yueqi",
+        "Li, Bowen",
+        "Singh, Jaskirat",
+        "Tran, Hoang H.",
+        "Li, Fuqiang",
+        "Ma, Ren",
+        "Zheng, Mingzhang",
+        "Qian, Bill",
+        "Shao, Yanjun",
+        "Muennighoff, Niklas",
+        "Zhang, Yizhe",
+        "Hui, Binyuan",
+        "Lin, Junyang",
+        "Brennan, Robert",
+        "Peng, Hao",
+        "Ji, Heng",
+        "Neubig, Graham"
+      ],
+      "citation_date": [
+        "2024/07/23"
+      ],
+      "citation_online_date": [
+        "2025/04/18"
+      ],
+      "citation_pdf_url": [
+        "https://arxiv.org/pdf/2407.16741"
+      ],
+      "citation_arxiv_id": [
+        "2407.16741"
+      ],
+      "citation_abstract": [
+        "Software is one of the most powerful tools that we humans have at our disposal; it allows a skilled programmer to interact with the world in complex and profound ways. At the same time, thanks to improvements in large language models (LLMs), there has also been a rapid development in AI agents that interact with and affect change in their surrounding environments. In this paper, we introduce OpenHands (f.k.a. OpenDevin), a platform for the development of powerful and flexible AI agents that interact with the world in similar ways to those of a human developer: by writing code, interacting with a command line, and browsing the web. We describe how the platform allows for the implementation of new agents, safe interaction with sandboxed environments for code execution, coordination between multiple agents, and incorporation of evaluation benchmarks. Based on our currently incorporated benchmarks, we perform an evaluation of agents over 15 challenging tasks, including software engineering (e.g., SWE-BENCH) and web browsing (e.g., WEBARENA), among others. Released under the permissive MIT license, OpenHands is a community project spanning academia and industry with more than 2.1K contributions from over 188 contributors."
+      ]
+    }
+  },
+  {
+    "name": "AutoCodeRover",
+    "source": "https://arxiv.org/abs/2404.05427",
+    "metadata": {
+      "citation_title": [
+        "AutoCodeRover: Autonomous Program Improvement"
+      ],
+      "citation_author": [
+        "Zhang, Yuntong",
+        "Ruan, Haifeng",
+        "Fan, Zhiyu",
+        "Roychoudhury, Abhik"
+      ],
+      "citation_date": [
+        "2024/04/08"
+      ],
+      "citation_online_date": [
+        "2024/07/25"
+      ],
+      "citation_pdf_url": [
+        "https://arxiv.org/pdf/2404.05427"
+      ],
+      "citation_arxiv_id": [
+        "2404.05427"
+      ],
+      "citation_abstract": [
+        "Researchers have made significant progress in automating the software development process in the past decades. Recent progress in Large Language Models (LLMs) has significantly impacted the development process, where developers can use LLM-based programming assistants to achieve automated coding. Nevertheless, software engineering involves the process of program improvement apart from coding, specifically to enable software maintenance (e.g. bug fixing) and software evolution (e.g. feature additions). In this paper, we propose an automated approach for solving GitHub issues to autonomously achieve program improvement. In our approach called AutoCodeRover, LLMs are combined with sophisticated code search capabilities, ultimately leading to a program modification or patch. In contrast to recent LLM agent approaches from AI researchers and practitioners, our outlook is more software engineering oriented. We work on a program representation (abstract syntax tree) as opposed to viewing a software project as a mere collection of files. Our code search exploits the program structure in the form of classes/methods to enhance LLM's understanding of the issue's root cause, and effectively retrieve a context via iterative search. The use of spectrum-based fault localization using tests, further sharpens the context, as long as a test-suite is available. Experiments on SWE-bench-lite (300 real-life GitHub issues) show increased efficacy in solving GitHub issues (19% on SWE-bench-lite), which is higher than the efficacy of the recently reported SWE-agent. In addition, AutoCodeRover achieved this efficacy with significantly lower cost (on average, $0.43 USD), compared to other baselines. We posit that our workflow enables autonomous software engineering, where, in future, auto-generated code from LLMs can be autonomously improved."
+      ]
+    }
+  },
+  {
+    "name": "MetaGPT",
+    "source": "https://arxiv.org/abs/2308.00352",
+    "metadata": {
+      "citation_title": [
+        "MetaGPT: Meta Programming for A Multi-Agent Collaborative Framework"
+      ],
+      "citation_author": [
+        "Hong, Sirui",
+        "Zhuge, Mingchen",
+        "Chen, Jiaqi",
+        "Zheng, Xiawu",
+        "Cheng, Yuheng",
+        "Zhang, Ceyao",
+        "Wang, Jinlin",
+        "Wang, Zili",
+        "Yau, Steven Ka Shing",
+        "Lin, Zijuan",
+        "Zhou, Liyang",
+        "Ran, Chenyu",
+        "Xiao, Lingfeng",
+        "Wu, Chenglin",
+        "Schmidhuber, J\u00fcrgen"
+      ],
+      "citation_date": [
+        "2023/08/01"
+      ],
+      "citation_online_date": [
+        "2024/11/01"
+      ],
+      "citation_pdf_url": [
+        "https://arxiv.org/pdf/2308.00352"
+      ],
+      "citation_arxiv_id": [
+        "2308.00352"
+      ],
+      "citation_abstract": [
+        "Remarkable progress has been made on automated problem solving through societies of agents based on large language models (LLMs). Existing LLM-based multi-agent systems can already solve simple dialogue tasks. Solutions to more complex tasks, however, are complicated through logic inconsistencies due to cascading hallucinations caused by naively chaining LLMs. Here we introduce MetaGPT, an innovative meta-programming framework incorporating efficient human workflows into LLM-based multi-agent collaborations. MetaGPT encodes Standardized Operating Procedures (SOPs) into prompt sequences for more streamlined workflows, thus allowing agents with human-like domain expertise to verify intermediate results and reduce errors. MetaGPT utilizes an assembly line paradigm to assign diverse roles to various agents, efficiently breaking down complex tasks into subtasks involving many agents working together. On collaborative software engineering benchmarks, MetaGPT generates more coherent solutions than previous chat-based multi-agent systems. Our project can be found at https://github.com/geekan/MetaGPT"
+      ]
+    }
+  },
+  {
+    "name": "ChatDev",
+    "source": "https://arxiv.org/abs/2307.07924",
+    "metadata": {
+      "citation_title": [
+        "ChatDev: Communicative Agents for Software Development"
+      ],
+      "citation_author": [
+        "Qian, Chen",
+        "Liu, Wei",
+        "Liu, Hongzhang",
+        "Chen, Nuo",
+        "Dang, Yufan",
+        "Li, Jiahao",
+        "Yang, Cheng",
+        "Chen, Weize",
+        "Su, Yusheng",
+        "Cong, Xin",
+        "Xu, Juyuan",
+        "Li, Dahai",
+        "Liu, Zhiyuan",
+        "Sun, Maosong"
+      ],
+      "citation_date": [
+        "2023/07/16"
+      ],
+      "citation_online_date": [
+        "2024/06/05"
+      ],
+      "citation_pdf_url": [
+        "https://arxiv.org/pdf/2307.07924"
+      ],
+      "citation_arxiv_id": [
+        "2307.07924"
+      ],
+      "citation_abstract": [
+        "Software development is a complex task that necessitates cooperation among multiple members with diverse skills. Numerous studies used deep learning to improve specific phases in a waterfall model, such as design, coding, and testing. However, the deep learning model in each phase requires unique designs, leading to technical inconsistencies across various phases, which results in a fragmented and ineffective development process. In this paper, we introduce ChatDev, a chat-powered software development framework in which specialized agents driven by large language models (LLMs) are guided in what to communicate (via chat chain) and how to communicate (via communicative dehallucination). These agents actively contribute to the design, coding, and testing phases through unified language-based communication, with solutions derived from their multi-turn dialogues. We found their utilization of natural language is advantageous for system design, and communicating in programming language proves helpful in debugging. This paradigm demonstrates how linguistic communication facilitates multi-agent collaboration, establishing language as a unifying bridge for autonomous task-solving among LLM agents. The code and data are available at https://github.com/OpenBMB/ChatDev."
+      ]
+    }
+  },
+  {
+    "name": "AgentCoder",
+    "source": "https://arxiv.org/abs/2312.13010",
+    "metadata": {
+      "citation_title": [
+        "AgentCoder: Multi-Agent-based Code Generation with Iterative Testing and Optimisation"
+      ],
+      "citation_author": [
+        "Huang, Dong",
+        "Zhang, Jie M.",
+        "Luck, Michael",
+        "Bu, Qingwen",
+        "Qing, Yuhao",
+        "Cui, Heming"
+      ],
+      "citation_date": [
+        "2023/12/20"
+      ],
+      "citation_online_date": [
+        "2024/05/24"
+      ],
+      "citation_pdf_url": [
+        "https://arxiv.org/pdf/2312.13010"
+      ],
+      "citation_arxiv_id": [
+        "2312.13010"
+      ],
+      "citation_abstract": [
+        "The advancement of natural language processing (NLP) has been significantly boosted by the development of transformer-based large language models (LLMs). These models have revolutionized NLP tasks, particularly in code generation, aiding developers in creating software with enhanced efficiency. Despite their advancements, challenges in balancing code snippet generation with effective test case generation and execution persist. To address these issues, this paper introduces Multi-Agent Assistant Code Generation (AgentCoder), a novel solution comprising a multi-agent framework with specialized agents: the programmer agent, the test designer agent, and the test executor agent. During the coding procedure, the programmer agent will focus on the code generation and refinement based on the test executor agent's feedback. The test designer agent will generate test cases for the generated code, and the test executor agent will run the code with the test cases and write the feedback to the programmer. This collaborative system ensures robust code generation, surpassing the limitations of single-agent models and traditional methodologies. Our extensive experiments on 9 code generation models and 12 enhancement approaches showcase AgentCoder's superior performance over existing code generation models and prompt engineering techniques across various benchmarks. For example, AgentCoder (GPT-4) achieves 96.3\\% and 91.8\\% pass@1 in HumanEval and MBPP datasets with an overall token overhead of 56.9K and 66.3K, while state-of-the-art obtains only 90.2\\% and 78.9\\% pass@1 with an overall token overhead of 138.2K and 206.5K."
+      ]
+    }
+  },
+  {
+    "name": "MapCoder",
+    "source": "https://arxiv.org/abs/2405.11403",
+    "metadata": {
+      "citation_title": [
+        "MapCoder: Multi-Agent Code Generation for Competitive Problem Solving"
+      ],
+      "citation_author": [
+        "Islam, Md. Ashraful",
+        "Ali, Mohammed Eunus",
+        "Parvez, Md Rizwan"
+      ],
+      "citation_date": [
+        "2024/05/18"
+      ],
+      "citation_online_date": [
+        "2024/05/18"
+      ],
+      "citation_pdf_url": [
+        "https://arxiv.org/pdf/2405.11403"
+      ],
+      "citation_arxiv_id": [
+        "2405.11403"
+      ],
+      "citation_abstract": [
+        "Code synthesis, which requires a deep understanding of complex natural language problem descriptions, generation of code instructions for complex algorithms and data structures, and the successful execution of comprehensive unit tests, presents a significant challenge. While large language models (LLMs) demonstrate impressive proficiency in natural language processing, their performance in code generation tasks remains limited. In this paper, we introduce a new approach to code generation tasks leveraging multi-agent prompting that uniquely replicates the full cycle of program synthesis as observed in human developers. Our framework, MapCoder, consists of four LLM agents specifically designed to emulate the stages of this cycle: recalling relevant examples, planning, code generation, and debugging. After conducting thorough experiments, with multiple LLM ablations and analyses across eight challenging competitive problem-solving and program synthesis benchmarks, MapCoder showcases remarkable code generation capabilities, achieving new state-of-the-art results (pass@1) on HumanEval (93.9%), MBPP (83.1%), APPS (22.0%), CodeContests (28.5%), and xCodeEval (45.3%). Moreover, our method consistently delivers superior performance across various programming languages and varying problem difficulties. We open-source our framework at https://github.com/Md-Ashraful-Pramanik/MapCoder."
+      ]
+    }
+  },
+  {
+    "name": "RepairAgent",
+    "source": "https://arxiv.org/abs/2403.17134",
+    "metadata": {
+      "citation_title": [
+        "RepairAgent: An Autonomous, LLM-Based Agent for Program Repair"
+      ],
+      "citation_author": [
+        "Bouzenia, Islem",
+        "Devanbu, Premkumar",
+        "Pradel, Michael"
+      ],
+      "citation_date": [
+        "2024/03/25"
+      ],
+      "citation_online_date": [
+        "2024/10/28"
+      ],
+      "citation_pdf_url": [
+        "https://arxiv.org/pdf/2403.17134"
+      ],
+      "citation_arxiv_id": [
+        "2403.17134"
+      ],
+      "citation_abstract": [
+        "Automated program repair has emerged as a powerful technique to mitigate the impact of software bugs on system reliability and user experience. This paper introduces RepairAgent, the first work to address the program repair challenge through an autonomous agent based on a large language model (LLM). Unlike existing deep learning-based approaches, which prompt a model with a fixed prompt or in a fixed feedback loop, our work treats the LLM as an agent capable of autonomously planning and executing actions to fix bugs by invoking suitable tools. RepairAgent freely interleaves gathering information about the bug, gathering repair ingredients, and validating fixes, while deciding which tools to invoke based on the gathered information and feedback from previous fix attempts. Key contributions that enable RepairAgent include a set of tools that are useful for program repair, a dynamically updated prompt format that allows the LLM to interact with these tools, and a finite state machine that guides the agent in invoking the tools. Our evaluation on the popular Defects4J dataset demonstrates RepairAgent's effectiveness in autonomously repairing 164 bugs, including 39 bugs not fixed by prior techniques. Interacting with the LLM imposes an average cost of 270,000 tokens per bug, which, under the current pricing of OpenAI's GPT-3.5 model, translates to 14 cents of USD per bug. To the best of our knowledge, this work is the first to present an autonomous, LLM-based agent for program repair, paving the way for future agent-based techniques in software engineering."
+      ]
+    }
+  },
+  {
+    "name": "ExecutionAgent",
+    "source": "https://arxiv.org/abs/2412.10133",
+    "metadata": {
+      "citation_title": [
+        "You Name It, I Run It: An LLM Agent to Execute Tests of Arbitrary Projects"
+      ],
+      "citation_author": [
+        "Bouzenia, Islem",
+        "Pradel, Michael"
+      ],
+      "citation_date": [
+        "2024/12/13"
+      ],
+      "citation_online_date": [
+        "2025/04/30"
+      ],
+      "citation_pdf_url": [
+        "https://arxiv.org/pdf/2412.10133"
+      ],
+      "citation_arxiv_id": [
+        "2412.10133"
+      ],
+      "citation_abstract": [
+        "The ability to execute the test suite of a project is essential in many scenarios, e.g., to assess code quality and code coverage, to validate code changes made by developers or automated tools, and to ensure compatibility with dependencies. Despite its importance, executing the test suite of a project can be challenging in practice because different projects use different programming languages, software ecosystems, build systems, testing frameworks, and other tools. These challenges make it difficult to create a reliable, universal test execution method that works across different projects. This paper presents ExecutionAgent, an automated technique that prepares scripts for building an arbitrary project from source code and running its test cases. Inspired by the way a human developer would address this task, our approach is a large language model (LLM)-based agent that autonomously executes commands and interacts with the host system. The agent uses meta-prompting to gather guidelines on the latest technologies related to the given project, and it iteratively refines its process based on feedback from the previous steps. Our evaluation applies ExecutionAgent to 50 open-source projects that use 14 different programming languages and many different build and testing tools. The approach successfully executes the test suites of 33/50 projects, while matching the test results of ground truth test suite executions with a deviation of only 7.5%. These results improve over the best previously available technique by 6.6x. The costs imposed by the approach are reasonable, with an execution time of 74 minutes and LLM costs of USD 0.16, on average per project. We envision ExecutionAgent to serve as a valuable tool for developers, automated programming tools, and researchers that need to execute tests across a wide variety of projects."
+      ]
+    }
+  },
+  {
+    "name": "CodeAct",
+    "source": "https://arxiv.org/abs/2402.01030",
+    "metadata": {
+      "citation_title": [
+        "Executable Code Actions Elicit Better LLM Agents"
+      ],
+      "citation_author": [
+        "Wang, Xingyao",
+        "Chen, Yangyi",
+        "Yuan, Lifan",
+        "Zhang, Yizhe",
+        "Li, Yunzhu",
+        "Peng, Hao",
+        "Ji, Heng"
+      ],
+      "citation_date": [
+        "2024/02/01"
+      ],
+      "citation_online_date": [
+        "2024/06/07"
+      ],
+      "citation_pdf_url": [
+        "https://arxiv.org/pdf/2402.01030"
+      ],
+      "citation_arxiv_id": [
+        "2402.01030"
+      ],
+      "citation_abstract": [
+        "Large Language Model (LLM) agents, capable of performing a broad range of actions, such as invoking tools and controlling robots, show great potential in tackling real-world challenges. LLM agents are typically prompted to produce actions by generating JSON or text in a pre-defined format, which is usually limited by constrained action space (e.g., the scope of pre-defined tools) and restricted flexibility (e.g., inability to compose multiple tools). This work proposes to use executable Python code to consolidate LLM agents' actions into a unified action space (CodeAct). Integrated with a Python interpreter, CodeAct can execute code actions and dynamically revise prior actions or emit new actions upon new observations through multi-turn interactions. Our extensive analysis of 17 LLMs on API-Bank and a newly curated benchmark shows that CodeAct outperforms widely used alternatives (up to 20% higher success rate). The encouraging performance of CodeAct motivates us to build an open-source LLM agent that interacts with environments by executing interpretable code and collaborates with users using natural language. To this end, we collect an instruction-tuning dataset CodeActInstruct that consists of 7k multi-turn interactions using CodeAct. We show that it can be used with existing data to improve models in agent-oriented tasks without compromising their general capability. CodeActAgent, finetuned from Llama2 and Mistral, is integrated with Python interpreter and uniquely tailored to perform sophisticated tasks (e.g., model training) using existing libraries and autonomously self-debug."
+      ]
+    }
+  },
+  {
+    "name": "HyperAgent",
+    "source": "https://arxiv.org/abs/2409.16299",
+    "metadata": {
+      "citation_title": [
+        "HyperAgent: Generalist Software Engineering Agents to Solve Coding Tasks at Scale"
+      ],
+      "citation_author": [
+        "Phan, Huy Nhat",
+        "Nguyen, Tien N.",
+        "Nguyen, Phong X.",
+        "Bui, Nghi D. Q."
+      ],
+      "citation_date": [
+        "2024/09/09"
+      ],
+      "citation_online_date": [
+        "2025/09/05"
+      ],
+      "citation_pdf_url": [
+        "https://arxiv.org/pdf/2409.16299"
+      ],
+      "citation_arxiv_id": [
+        "2409.16299"
+      ],
+      "citation_abstract": [
+        "Large Language Models (LLMs) have revolutionized software engineering (SE), showcasing remarkable proficiency in various coding tasks. Despite recent advancements that have enabled the creation of autonomous software agents utilizing LLMs for end-to-end development tasks, these systems are typically designed for specific SE functions. We introduce HyperAgent, an innovative generalist multi-agent system designed to tackle a wide range of SE tasks across different programming languages by mimicking the workflows of human developers. HyperAgent features four specialized agents-Planner, Navigator, Code Editor, and Executor-capable of handling the entire lifecycle of SE tasks, from initial planning to final verification. HyperAgent sets new benchmarks in diverse SE tasks, including GitHub issue resolution on the renowned SWE-Bench benchmark, outperforming robust baselines. Furthermore, HyperAgent demonstrates exceptional performance in repository-level code generation (RepoExec) and fault localization and program repair (Defects4J), often surpassing state-of-the-art baselines."
+      ]
+    }
+  },
+  {
+    "name": "AgileCoder",
+    "source": "https://arxiv.org/abs/2406.11912",
+    "metadata": {
+      "citation_title": [
+        "AgileCoder: Dynamic Collaborative Agents for Software Development based on Agile Methodology"
+      ],
+      "citation_author": [
+        "Nguyen, Minh Huynh",
+        "Chau, Thang Phan",
+        "Nguyen, Phong X.",
+        "Bui, Nghi D. Q."
+      ],
+      "citation_date": [
+        "2024/06/16"
+      ],
+      "citation_online_date": [
+        "2024/07/14"
+      ],
+      "citation_pdf_url": [
+        "https://arxiv.org/pdf/2406.11912"
+      ],
+      "citation_arxiv_id": [
+        "2406.11912"
+      ],
+      "citation_abstract": [
+        "Software agents have emerged as promising tools for addressing complex software engineering tasks. Existing works, on the other hand, frequently oversimplify software development workflows, despite the fact that such workflows are typically more complex in the real world. Thus, we propose AgileCoder, a multi agent system that integrates Agile Methodology (AM) into the framework. This system assigns specific AM roles - such as Product Manager, Developer, and Tester to different agents, who then collaboratively develop software based on user inputs. AgileCoder enhances development efficiency by organizing work into sprints, focusing on incrementally developing software through sprints. Additionally, we introduce Dynamic Code Graph Generator, a module that creates a Code Dependency Graph dynamically as updates are made to the codebase. This allows agents to better comprehend the codebase, leading to more precise code generation and modifications throughout the software development process. AgileCoder surpasses existing benchmarks, like ChatDev and MetaGPT, establishing a new standard and showcasing the capabilities of multi agent systems in advanced software engineering environments."
+      ]
+    }
+  }
+]

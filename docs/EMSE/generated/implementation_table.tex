@@ -1,0 +1,16 @@
+\begin{tabularx}{\textwidth}{llrY}
+\toprule Module & Origin & LOC & Responsibility \\
+\midrule
+\code{core.py} & New & 130 & Canonical identity, plan validation, readiness (Eq.~\ref{eq:ready}), refinement, discovery \\
+\code{pipeline.py} & New & 99 & Input binding, graph/resource correspondence, dry-run or explicit dispatch \\
+\code{mcp.py} & New & 52 & Stdio JSON-RPC server exposing three read/propose tools \\
+\code{cli.py} & New & 21 & \code{discover}, \code{gate} and \code{refine} commands \\
+\code{hpclib.py} & Inherited & 180 & Matrix expansion, dependency resolution and static graph validation \\
+\code{run\_stage.py} & Inherited & 184 & Step execution, completion markers and manifests \\
+\code{audit.py} & Inherited & 287 & Audit ledger and job watcher \\
+\code{collect\_results.py} & Inherited & 282 & Result collection across array cells \\
+\code{run\_local.py} & Study & 100 & Level A mutation generator and comparator policies \\
+\code{run\_analyses.py} & Study & 176 & Ablation, sensitivity, refinement and overhead analyses \\
+\code{probe\_gpu.py} & Study & 70 & Level B CUDA probes with five obligations \\
+\bottomrule
+\end{tabularx}

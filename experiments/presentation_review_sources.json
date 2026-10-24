@@ -1,0 +1,116 @@
+{
+  "retrieved_utc_date": "2026-10-24",
+  "source": "Crossref registration metadata",
+  "papers": {
+    "10.1109/TSE.2025.3570680": {
+      "title": [
+        "Anchor Attention, Small Cache: Code Generation With Large Language Models"
+      ],
+      "container-title": [
+        "IEEE Transactions on Software Engineering"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2025,
+            6
+          ]
+        ]
+      },
+      "published-online": null,
+      "volume": "51",
+      "issue": "6",
+      "page": "1866-1881",
+      "article-number": null,
+      "DOI": "10.1109/tse.2025.3570680",
+      "URL": "https://doi.org/10.1109/tse.2025.3570680"
+    },
+    "10.1109/TSE.2024.3440503": {
+      "title": [
+        "Chain-of-Thought in Neural Code Generation: From and for Lightweight Language Models"
+      ],
+      "container-title": [
+        "IEEE Transactions on Software Engineering"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2024,
+            9
+          ]
+        ]
+      },
+      "published-online": null,
+      "volume": "50",
+      "issue": "9",
+      "page": "2437-2457",
+      "article-number": null,
+      "DOI": "10.1109/tse.2024.3440503",
+      "URL": "https://doi.org/10.1109/tse.2024.3440503"
+    },
+    "10.1007/s10664-025-10614-4": {
+      "title": [
+        "Bugs in large language models generated code: an empirical study"
+      ],
+      "container-title": [
+        "Empirical Software Engineering"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2025,
+            2,
+            13
+          ]
+        ]
+      },
+      "published-online": {
+        "date-parts": [
+          [
+            2025,
+            2,
+            13
+          ]
+        ]
+      },
+      "volume": "30",
+      "issue": "3",
+      "page": null,
+      "article-number": "65",
+      "DOI": "10.1007/s10664-025-10614-4",
+      "URL": "https://doi.org/10.1007/s10664-025-10614-4"
+    },
+    "10.1007/s10664-026-10904-5": {
+      "title": [
+        "PROBE: Benchmarking code generation in large language models"
+      ],
+      "container-title": [
+        "Empirical Software Engineering"
+      ],
+      "published": {
+        "date-parts": [
+          [
+            2026,
+            8,
+            15
+          ]
+        ]
+      },
+      "published-online": {
+        "date-parts": [
+          [
+            2026,
+            8,
+            15
+          ]
+        ]
+      },
+      "volume": "32",
+      "issue": "1",
+      "page": null,
+      "article-number": "25",
+      "DOI": "10.1007/s10664-026-10904-5",
+      "URL": "https://doi.org/10.1007/s10664-026-10904-5"
+    }
+  }
+}

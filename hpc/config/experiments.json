@@ -1,0 +1,132 @@
+{
+  "project": "resai-nibi-pilot",
+  "require_gpu": true,
+  "vars": {},
+  "smoke": {
+    "time": "00:15:00",
+    "array_throttle": 2
+  },
+  "stages": [
+    {
+      "name": "probe",
+      "description": "Executed GPU integration pilot: synthetic CUDA probes, two independent repeats of four modes",
+      "matrix": {
+        "rep": [
+          0,
+          1
+        ]
+      },
+      "resources": {
+        "gpus": "nvidia_h100_80gb_hbm3_1g.10gb:1",
+        "cpus": 2,
+        "mem": "12G",
+        "time": "00:15:00"
+      },
+      "array_throttle": 2,
+      "steps": [
+        {
+          "name": "check_gpu",
+          "builtin": "check_gpu",
+          "always": true
+        },
+        {
+          "name": "clean",
+          "cmd": "python experiments/probe_gpu.py --rep {rep} --mode clean --out {RESULTS}/gpu/clean_{rep}.json",
+          "produces": [
+            "gpu/clean_{rep}.json"
+          ],
+          "always": true
+        },
+        {
+          "name": "corrupt_output",
+          "cmd": "python experiments/probe_gpu.py --rep {rep} --mode corrupt_output --out {RESULTS}/gpu/corrupt_output_{rep}.json",
+          "produces": [
+            "gpu/corrupt_output_{rep}.json"
+          ],
+          "always": true
+        },
+        {
+          "name": "missing_checkpoint",
+          "cmd": "python experiments/probe_gpu.py --rep {rep} --mode missing_checkpoint --out {RESULTS}/gpu/missing_checkpoint_{rep}.json",
+          "produces": [
+            "gpu/missing_checkpoint_{rep}.json"
+          ],
+          "always": true
+        },
+        {
+          "name": "runtime_failure",
+          "cmd": "python experiments/probe_gpu.py --rep {rep} --mode runtime_failure --out {RESULTS}/gpu/runtime_failure_{rep}.json",
+          "produces": [
+            "gpu/runtime_failure_{rep}.json"
+          ],
+          "always": true
+        }
+      ]
+    },
+    {
+      "name": "analysis",
+      "description": "Controller mutations and GPU evidence analysis; no GPU computation",
+      "cpu_only": true,
+      "depends": [
+        {
+          "stage": "probe",
+          "type": "afterany"
+        }
+      ],
+      "resources": {
+        "cpus": 2,
+        "mem": "4G",
+        "time": "00:15:00"
+      },
+      "sbatch_extra": [
+        "--account=def-mbabaei_cpu"
+      ],
+      "steps": [
+        {
+          "name": "local_mutations",
+          "cmd": "python experiments/run_local.py --out {RESULTS}/local",
+          "produces": [
+            "local/summary.json"
+          ],
+          "always": true
+        },
+        {
+          "name": "gpu_analysis",
+          "cmd": "python experiments/analyze_gpu.py --results {RESULTS} --out {RESULTS}/analysis",
+          "needs": [
+            "gpu/*.json"
+          ],
+          "produces": [
+            "analysis/gpu-summary.json"
+          ],
+          "always": true
+        },
+        {
+          "name": "collect",
+          "builtin": "collect",
+          "always": true
+        }
+      ]
+    }
+  ],
+  "results": {
+    "tables": [
+      {
+        "name": "gpu_probes",
+        "glob": "gpu/*.json"
+      },
+      {
+        "name": "controller",
+        "glob": "local/decisions.csv"
+      }
+    ],
+    "summaries": [],
+    "plots": [],
+    "copy": [
+      "gpu/*.json",
+      "analysis/*.json",
+      "local/*"
+    ],
+    "archive": []
+  }
+}

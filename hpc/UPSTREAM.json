@@ -1,0 +1,21 @@
+{
+  "repository": "https://github.com/ai4se4ai-lab/use-hpc",
+  "commit": "f9dc7d66ad8df3c202f6b72b02630e14fd148756",
+  "retrieved": "2026-10-23",
+  "reused": "hpc execution, validation, audit, collection templates",
+  "local_changes": [
+    "config/cluster.env",
+    "config/experiments.json",
+    "config/requirements.txt"
+  ],
+  "license_note": "No root LICENSE observed in the fetched upstream revision; repository owner supplied this code for use. Public redistribution licensing must be clarified before release.",
+  "additional_instance": {
+    "path": "hpc/mapcoder",
+    "root_adjustments": [
+      "scripts/hpclib.py",
+      "slurm/common.sh"
+    ],
+    "added_runner": "slurm/interactive-smoke.sh",
+    "scope": "one artifact pilot; inherited step runner, GPU guard, software environment and ledgers"
+  }
+}

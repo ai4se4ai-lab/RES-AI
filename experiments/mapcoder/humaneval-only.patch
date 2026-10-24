@@ -1,0 +1,23 @@
+--- upstream/MapCoder.py
++++ adapter/MapCoder.py
+@@ -13,11 +13,8 @@
+ from models.Base import BaseModel
+ 
+ from datasets.Dataset import Dataset
+-from datasets.APPSDataset import APPSDataset
+ from datasets.MBPPDataset import MBPPDataset
+-from datasets.XCodeDataset import XCodeDataset
+ from datasets.HumanEvalDataset import HumanDataset
+-from datasets.CodeContestDataset import CodeContestDataset
+ 
+ from results.Results import Results
+ from evaluations.func_evaluate import evaluate_io
+@@ -317,7 +314,7 @@
+         plannings.sort(key=lambda x: x[1], reverse=True)
+         # time.sleep(1)
+ 
+-        if type(self.data) == APPSDataset or type(self.data) == CodeContestDataset or type(self.data) == XCodeDataset:
++        if False:  # RES-AI HumanEval-only adapter: unused competitive backend
+             std_input_prompt = "## Note: Strictly follow the input and output format. The input should be taken from Standard input and output should be given to standard output. If you are writing a function then after the function definition take input using `input()` function then call the function with specified parameters and finally print the output of the function. Do not add extra print statement otherwise it will failed the test cases."
+         else:
+             std_input_prompt = ""

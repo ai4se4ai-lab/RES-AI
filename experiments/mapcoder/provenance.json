@@ -1,0 +1,17 @@
+{
+  "repository": "https://github.com/Md-Ashraful-Pramanik/MapCoder",
+  "commit": "c87e6d914d196e12fa2b144882122459a4b98007",
+  "paper": "https://aclanthology.org/2024.acl-long.269/",
+  "task": "HumanEval/0",
+  "task_source": "data/HumanEval/HumanEvalWST.jsonl first row",
+  "task_sha256": "4860f28cdbe3b567a937ea3ee13b2ae6fba95e04fbbcb01b7bdba68eb9f58230",
+  "adapter_changes": [
+    "HumanEval-only imports and inactive competitive branch",
+    "local Qwen model backend replaces cloud model",
+    "bounded subprocess execution replaces thread-based code execution"
+  ],
+  "scientific_scope": "Deployment pilot of a local-model adaptation; not reproduction of reported MapCoder accuracy",
+  "k": 3,
+  "t": 5,
+  "pass_at_k": 1
+}

@@ -1,0 +1,19 @@
+{
+  "allocation_source": "experiments/results/nibi/logs/sacct.psv",
+  "probe_source": "experiments/results/nibi/results/gpu/*.json",
+  "time_origin": "common submission; no timezone conversion",
+  "allocated_unit": "one H100 1g.10gb MIG instance-second",
+  "intervals_seconds_since_submission": [
+    [
+      159.0,
+      198.0
+    ],
+    [
+      159.0,
+      201.0
+    ]
+  ],
+  "total_allocated_instance_seconds": 81.0,
+  "total_probe_process_seconds": 3.723379275004845,
+  "comparative_savings_estimated": false
+}

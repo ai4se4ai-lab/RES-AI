@@ -1,0 +1,9 @@
+\begin{tabularx}{\textwidth}{lrrccY}
+\toprule Mode & $t_0$ (s) & $t_1$ (s) & Probes & Output & Assessment / reasons \\
+\midrule
+Clean & 0.599 & 0.585 & 5/5 & 2/2 & Ready \\
+Corrupt output & 0.619 & 0.334 & 4/5 & 0/2 & Blocked: coverage; output validity \\
+No checkpoint & 0.458 & 0.440 & 4/5 & 2/2 & Blocked: coverage \\
+Runtime failure & 0.366 & 0.322 & 3/5 & 0/2 & Blocked: process failure; coverage; output validity \\
+\bottomrule
+\end{tabularx}

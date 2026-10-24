@@ -1,0 +1,68 @@
+{
+  "project": "resai-mapcoder-pilot",
+  "require_gpu": true,
+  "resai_scientific": {
+    "artifact": "MapCoder",
+    "source_revision": "c87e6d914d196e12fa2b144882122459a4b98007",
+    "model": "Qwen/Qwen2.5-Coder-7B-Instruct",
+    "model_revision": "c03e6d358207e414f1eca0bb1891e29f1db0e242",
+    "model_path": "/scratch/mbabaei/use-hpc-eval/hf_cache/hub/models--Qwen--Qwen2.5-Coder-7B-Instruct/snapshots/c03e6d358207e414f1eca0bb1891e29f1db0e242",
+    "task": "HumanEval/0",
+    "decoding": "greedy",
+    "seed": 0,
+    "k": 3,
+    "t": 5,
+    "max_input_tokens": 12288,
+    "max_new_tokens": 4096,
+    "batch_invariant": false,
+    "task_sha256": "4860f28cdbe3b567a937ea3ee13b2ae6fba95e04fbbcb01b7bdba68eb9f58230"
+  },
+  "vars": {
+    "BATCH_SIZE": "1"
+  },
+  "smoke": {
+    "time": "00:15:00",
+    "array_throttle": 1
+  },
+  "stages": [
+    {
+      "name": "mapcoder",
+      "description": "One-artifact pilot: two repeated MapCoder HumanEval/0 executions with cached local Qwen weights",
+      "matrix": {
+        "rep": [
+          0,
+          1
+        ]
+      },
+      "array_throttle": 1,
+      "resources": {
+        "gpus": "h100:1",
+        "cpus": 4,
+        "mem": "48G",
+        "time": "00:15:00",
+        "partition": "gpubase_interac"
+      },
+      "steps": [
+        {
+          "name": "check_gpu",
+          "builtin": "check_gpu",
+          "always": true
+        },
+        {
+          "name": "task",
+          "cmd": "python experiments/mapcoder/run.py --plan experiments/mapcoder/plan.json --rep {rep} --out {RESULTS}/mapcoder/rep{rep}",
+          "produces": [
+            "mapcoder/rep{rep}/attempt-*/evidence.json"
+          ],
+          "always": true
+        }
+      ]
+    }
+  ],
+  "results": {
+    "tables": [],
+    "summaries": [],
+    "plots": [],
+    "copy": []
+  }
+}

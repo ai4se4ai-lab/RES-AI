@@ -1,0 +1,73 @@
+% RES-AI architecture overview (Figure fig:approach-overview); requires tikz.
+\begin{tikzpicture}[
+  font=\tiny, >={Stealth[length=3.5pt,width=2.6pt]}, line width=0.45pt,
+  comp/.style={draw, rounded corners=1pt, fill=white, text width=2.05cm,
+    minimum height=1.5cm, align=center, inner sep=2pt},
+  num/.style={circle, fill=black, text=white, inner sep=0pt, minimum size=7.5pt,
+    font=\tiny\bfseries},
+  term/.style={draw, rounded corners=4pt, fill=gray!8, align=center, inner sep=2.5pt},
+  inherited/.style={draw, fill=gray!15, align=center, inner sep=2.5pt},
+  actor/.style={draw, fill=white, align=left, inner sep=2.5pt},
+  flow/.style={->},
+  rev/.style={->, dashed},
+  lbl/.style={fill=white, inner sep=0.8pt},
+]
+% Readiness layer: (1) plan -> (3) probes -> (4) ledger -> (5) assessment -> (6) dispatch.
+\node[comp] (plan) at (1.05,0) {\textbf{Experiment plan}\\[2pt]
+  $P=(S,X,O,B,I)$\\ science $S$ apart\\ from execution $X$\\ identity $h=H(P)$};
+\node[comp] (smoke) at (3.65,0) {\textbf{Bounded smoke}\\ \textbf{probes}\\[2pt]
+  run obligations $O$\\ in time-limited\\ allocations};
+\node[comp] (ledger) at (6.25,0) {\textbf{Evidence ledger}\\[2pt]
+  records $e_i$ with\\ $h_i,t_i,C_i,m_i,c_i$;\\ failed and obsolete\\ attempts kept};
+\node[comp] (assess) at (8.85,0) {\textbf{Readiness}\\ \textbf{assessment}\\[2pt]
+  Eq.~(\ref{eq:ready}): identity,\\ coverage, outputs,\\ freshness, memory,\\ stability, budgets};
+\node[comp] (dispatch) at (11.45,0) {\textbf{Guarded dispatch}\\[2pt]
+  reassess $(P,E)$;\\ verify inputs,\\ graph, resources;\\ dry run by default};
+\node[comp, minimum height=1.0cm] (discover) at (1.05,-2.05) {\textbf{Resource}\\ \textbf{discovery}\\[2pt]
+  node, partition and\\ topology reads;\\ snapshot $G_t$};
+\node[comp, dashed, minimum height=0.8cm, text width=2.6cm] (refine) at (6.25,1.8)
+  {\textbf{Refinement proposal}\\[1pt] OOM and declared\\ batch invariance\\ $\Rightarrow$ halve batch in $X$;\\ $S$ unchanged};
+\node[term] (blocked) at (9.9,-2.05) {\textbf{BLOCKED}\\ with reasons};
+
+\foreach \n/\k in {plan/1, discover/2, smoke/3, ledger/4, assess/5, dispatch/6}
+  \node[num] at (\n.north west) {\k};
+
+\draw[flow] (plan) -- node[lbl, above=1pt] {$P,h$} (smoke);
+\draw[flow] (smoke) -- node[lbl, above=1pt] {$e_i$} (ledger);
+\draw[flow] (ledger) -- node[lbl, above=1pt] {$E$} (assess);
+\draw[flow] (assess) -- node[lbl, above=1pt] {\textsc{ready}} (dispatch);
+\draw[flow] (discover) -- node[lbl, right=1pt] {$G_t$ informs reviewed $X$} (plan);
+\draw[flow] (assess.south) |- (blocked.west);
+\draw[flow] ([xshift=-0.5cm]dispatch.south) |- node[lbl, pos=0.3, left=1pt] {check fails} (blocked.east);
+\draw[rev] (assess.north) |- node[lbl, pos=0.75, above=1pt] {\textsc{revalidate}} (refine.east);
+\draw[rev] (refine.west) -| node[lbl, pos=0.25, above=1pt, align=center]
+  {$P'$ after operator review;\\ new $h$, fresh evidence} (plan.north);
+
+\node[fit=(plan)(dispatch)(discover)(blocked)(refine), draw, rounded corners=3pt,
+  inner xsep=6pt, inner ysep=7pt, line width=0.7pt] (layer) {};
+\node[anchor=north east, inner sep=3.5pt] at (layer.north east) {\tool{} readiness layer};
+
+% Access tier: agents observe and propose; the operator executes and submits.
+\node[actor, anchor=south west] (agent) at ([yshift=0.6cm]layer.north west)
+  {\textbf{AI agent} (MCP client)\\ tools \code{snapshot}, \code{assess}, \code{propose}; no execution};
+\node[actor, anchor=south east] (operator) at ([yshift=0.6cm]layer.north east)
+  {\textbf{Operator}\\ runs probes, reviews proposals, requests dispatch};
+\draw[->, densely dotted] (agent.south) -- node[lbl, right=1pt] {observe / propose}
+  (agent.south |- layer.north);
+\draw[->] (operator.south) -- node[lbl, left=1pt] {execute / approve}
+  (operator.south |- layer.north);
+
+% Inherited execution substrate.
+\node[inherited, anchor=north east, minimum width=9.8cm] (usehpc)
+  at ([yshift=-0.6cm]layer.south east)
+  {\upstream{} execution templates (inherited, pinned)\\
+   job-graph expansion $\cdot$ Slurm runner $\cdot$ audit records $\cdot$ submitter};
+\node[inherited, fill=gray!30, anchor=north, minimum width=12.6cm] (slurm)
+  at ([yshift=-0.45cm]layer.south |- usehpc.south)
+  {Slurm scheduler on a shared GPU cluster; allocation and admission remain under site policy};
+\draw[flow] (smoke.south) -- node[lbl, pos=0.55, right=1pt] {probe jobs} (smoke.south |- usehpc.north);
+\draw[flow] ([xshift=0.5cm]dispatch.south) -- node[lbl, pos=0.9, left=1pt] {explicit submit}
+  ([xshift=0.5cm]dispatch.south |- usehpc.north);
+\draw[<->] (discover.south) -- node[lbl, pos=0.4, right=1pt] {read-only queries} (discover.south |- slurm.north);
+\draw[flow] (usehpc.south) -- node[lbl, right=1pt] {\code{sbatch}} (usehpc.south |- slurm.north);
+\end{tikzpicture}

@@ -1,0 +1,17 @@
+\begin{tabularx}{\textwidth}{>{\raggedright\arraybackslash}p{2.1cm}>{\raggedright\arraybackslash}Yll>{\raggedright\arraybackslash}p{2.9cm}l}
+\toprule Fault family & Mutation & Violated term & Component & Emitted reason codes & First blocker \\
+\midrule
+GPU request absent & Remove the stage GPU request & $\operatorname{Valid}(P)$ & Graph & --- (graph validator) & Static \\
+Dependency invalid & Depend on a nonexistent stage & $\operatorname{Valid}(P)$ & Graph & --- (graph validator) & Static \\
+Process failed & Set last status to failed & $\operatorname{OK}(e_i)$ & Outcome & \code{execution\_\allowbreak{}failure} & Smoke proxy \\
+Required probe absent & Drop the checkpoint obligation & $O\subseteq C_i$ & Outcome & \code{coverage} & \tool{} \\
+Output invalid & Mark the present output invalid & $\operatorname{OutputValid}(e_i)$ & Outcome & \code{output\_\allowbreak{}contract} & \tool{} \\
+Plan identity changed & Change the scientific model & $h_i=h$ & Identity & \code{two\_\allowbreak{}distinct\_\allowbreak{}attempts} & \tool{} \\
+Attempt ID duplicated & Reuse the first attempt ID & distinct IDs & Identity & \code{duplicate\_\allowbreak{}or\_\allowbreak{}missing\_\allowbreak{}attempt\_\allowbreak{}id}, \code{two\_\allowbreak{}distinct\_\allowbreak{}attempts} & \tool{} \\
+Evidence expired & Move the last record to $t=1$ & $t-t_i\leq T$ & Freshness & \code{stale\_\allowbreak{}evidence} & \tool{} \\
+Memory limit exceeded & Set peak memory to 0.98 (OOM) & $m_i\leq m_{\max}$ & Memory & \code{memory\_\allowbreak{}headroom}, \code{unstable\_\allowbreak{}memory} & \tool{} \\
+Memory unstable & Add 0.12 to the last peak & $\Delta_{\mathrm{smoke}}\leq\epsilon$ & Memory & \code{unstable\_\allowbreak{}memory} & \tool{} \\
+Validation budget exceeded & Charge 1,300 s to the last record & $\sum c_i\leq C$ & Budget & \code{compute\_\allowbreak{}budget} & \tool{} \\
+Accounting absent & Delete the last cost $c_i$ & finite $c_i>0$ & Budget & \code{invalid\_\allowbreak{}telemetry:gpu\_\allowbreak{}seconds} & \tool{} \\
+\bottomrule
+\end{tabularx}

@@ -1,0 +1,45 @@
+# Local dependencies and temporary files
+.external/
+tmp/
+.venv/
+venv/
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# Python bytecode, packaging, and tool caches
+__pycache__/
+*.py[cod]
+*.egg-info/
+/build/
+/dist/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# Experiment outputs and cluster logs
+hpc/logs/
+hpc/mapcoder/logs/
+experiments/results/
+
+# LaTeX build artifacts (keep generated manuscript inputs and figures)
+docs/EMSE/build.txt
+docs/EMSE/build-*.txt
+docs/EMSE/**/*.aux
+docs/EMSE/**/*.log
+docs/EMSE/**/*.out
+docs/EMSE/**/*.bbl
+docs/EMSE/**/*.blg
+docs/EMSE/**/*.toc
+docs/EMSE/**/*.lof
+docs/EMSE/**/*.lot
+docs/EMSE/**/*.fls
+docs/EMSE/**/*.fdb_latexmk
+docs/EMSE/**/*.synctex.gz
+docs/EMSE/**/*.synctex(busy)
+docs/EMSE/**/*.xdv
