@@ -1,0 +1,27 @@
+{
+  "models": [
+    {
+      "model": "Qwen2.5-Coder-7B",
+      "repeats": 2,
+      "solved": 2,
+      "calls": 16,
+      "process_seconds": 335.27553963399987,
+      "allocation_seconds": 383,
+      "gate": true,
+      "memory_0": 0.18168540674835654,
+      "memory_1": 0.18151819786681817
+    },
+    {
+      "model": "Qwen3.8-27B Q4\\_K\\_M",
+      "repeats": 2,
+      "solved": 2,
+      "calls": 16,
+      "process_seconds": 454.07180412398884,
+      "allocation_seconds": 548,
+      "gate": true,
+      "memory_0": 0.23932367979009062,
+      "memory_1": 0.23932367979009062
+    }
+  ],
+  "qwen38_failed_h100_seconds": 86
+}

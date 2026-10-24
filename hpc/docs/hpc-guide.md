@@ -95,6 +95,57 @@ treating them as executed failures or omitting workflow history. The plan's
 partition is explicit: readiness does not transfer to a different partition or a
 larger batch-production plan.
 
+Collection on 2026-10-24 confirmed that allocation `24890766` and collector
+`24890918` completed. Both fresh processes made eight model calls and solved
+HumanEval/0. The collection-time assessment and wrapper dry run passed. The
+allocation consumed 383 H100 seconds; the two timed processes consumed
+335.276 seconds in total. Archived evidence is historical and is not a fresh
+authorization for a later dispatch. Raw results, traces, assessment, accounting,
+and declared source are collected in `experiments/results/mapcoder/`.
+Earlier retired-run logs are retained in `experiments/results/nibi-history/`.
+
+### Additional Qwen3.8 backend
+
+The additional `qwen3.8:27b` run uses Ollama 0.40.10 and Q4_K_M weights, with
+thinking disabled and temperature zero. It retains HumanEval/0, k=3, t=5,
+the input/output envelopes, and two independent repeats. This is a distinct
+scientific/model identity from the Qwen2.5-Coder pilot. Each repeat starts its
+own Ollama server. Memory is sampled with nvidia-smi every 0.5 seconds because
+PyTorch allocator statistics cannot measure a separate inference process.
+
+Prepare this variant in a **separate source copy**, after downloading the model:
+
+```bash
+python experiments/mapcoder/configure_ollama.py --isolated-copy \
+  --manifest /scratch/mbabaei/ollama_models/manifests/registry.ollama.ai/library/qwen3.8/27b \
+  --listing /path/to/archived-api-tags.json
+python experiments/mapcoder/prepare_smoke.py --run-id NEW_RUN_ID \
+  --launch-script ollama-smoke.sh
+# Execute the printed bounded salloc command, then collect:
+python experiments/mapcoder/archive_run.py --run-id NEW_RUN_ID --jobs JOB_IDS
+```
+
+The adapter checks the manifest digest, served model identity, Ollama version,
+GPU loading, response completion, and token limits. It retains full API responses,
+including unsuccessful responses. The archive includes declared source files,
+raw results, logs, assessments, and Slurm records. New-run status and downloaded
+data are stored separately in `experiments/results/mapcoder-qwen38/`.
+The raw manifest checksum and the digest advertised by `/api/tags` are bound
+separately; they differ for this Ollama manifest format. The initial identity-check
+failure is preserved under run `resai-mapcoder-qwen38-20261024`; the corrected
+runner uses fresh run `resai-mapcoder-qwen38-v2-20261024`.
+
+The corrected allocation `24902711` and collector `24902997` completed on
+2026-10-24. Both repeats solved HumanEval/0, made eight model calls, and passed
+all five probes. The collection-time readiness assessment and wrapper dry run
+passed. Successful allocation time was 548 H100 seconds, with 454.072 timed
+process seconds. Initial failed allocation `24900967` consumed 86 H100 seconds
+before inference; include it for a total of 634 H100 seconds for the Qwen3.8
+workflow. Download, preparation, inspection, and collection CPU jobs are accounted
+separately in `provenance/sacct-final.psv`. The final downloaded archive includes
+their logs and checksum records. Neither model's two repeated executions of one
+task establish aggregate benchmark accuracy or comparative resource savings.
+
 Operating commands from the MapCoder project root on Nibi:
 
 ```bash

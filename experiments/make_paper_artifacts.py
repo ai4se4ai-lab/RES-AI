@@ -105,6 +105,9 @@ def main():
             else:
                 text += "The input/graph-verifying wrapper blocked dispatch, so evidence assessment alone did not authorize production. "
         (OUT/"mapcoder_status.tex").write_text(text+"\n")
+    if (ROOT/"experiments/results/mapcoder-qwen38/assessment/assessment.json").exists():
+        from make_mapcoder_results import generate
+        generate(ROOT, OUT)
     implementation_table()
     print("Verified raw counts; generated local results, analyses, subject inventory and plots.")
 

@@ -21,6 +21,8 @@ from resai.pipeline import load_engine, verify_inputs, verify_correspondence, va
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--run-id", required=True)
+    parser.add_argument("--launch-script", choices=("interactive-smoke.sh", "ollama-smoke.sh"),
+                        default="interactive-smoke.sh")
     args = parser.parse_args()
     if not re.fullmatch(r"[A-Za-z0-9_-]+", args.run_id):
         parser.error("run ID must contain only letters, digits, underscores and hyphens")
@@ -45,7 +47,7 @@ def main():
     command = ["salloc", "--account="+cluster["ACCOUNT"], "--partition="+resources["partition"],
         "--gpus="+resources["gpus"], "--cpus-per-task="+str(resources["cpus"]),
         "--mem="+resources["mem"], "--time="+resources["time"], "srun", "--ntasks=1", "bash",
-        str(hpc/"slurm/interactive-smoke.sh"), args.run_id]
+        str(hpc/"slurm"/args.launch_script), args.run_id]
     (log/"launch-command.json").write_text(json.dumps(command, indent=2)+"\n")
     print(shlex.join(command))
     print("Prepared only; no allocation or production job submitted.")

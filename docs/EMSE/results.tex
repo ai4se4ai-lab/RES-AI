@@ -68,7 +68,7 @@ Validation cost is dominated by allocations, not by assessment: the pilot's time
 \subsection{RQ3: Scientific preservation}\label{sec:rq3}
 Across the \RefinementEpisodes{} episodes, \tool{} produced \RefinementProposals{} refinement proposals. The hash of the scientific subdocument $S$ was identical before and after each of them (\RefinementScienceChanged{} changes). All proposals came from batch-invariant contracts, and none from contracts without the declaration. This confirms structural preservation: the implementation never rewrites model, data, prompts, seeds or scoring. Structural preservation is necessary but not sufficient for preserving the scientific estimand. Training batch changes can alter optimization, and inference scheduling and numerical nondeterminism can alter outputs.
 
-\input{generated/mapcoder_status}Semantic preservation therefore remains untested by executed evidence; the campaign tests it with equivalence margins fixed before comparison.
+The deployment case study in Section~\ref{sec:mapcoder-deployment} exercises evidence collection for two model specifications. Semantic preservation under an operational refinement remains untested by executed evidence; the campaign tests it with equivalence margins fixed before comparison.
 
 \begin{tcolorbox}[rqbox, title={Answer to RQ3}]
 No refinement proposal altered the scientific specification, and proposals required an explicit batch-invariance declaration. Whether permitted operational changes preserve experimental outcomes, rather than declared fields, has not yet been measured.
@@ -87,3 +87,12 @@ The refinement study exposes a gap that the ablation cannot. In \HeadroomGapSeed
 \begin{tcolorbox}[rqbox, title={Answer to RQ4}]
 Each of the five components of Equation~\eqref{eq:ready} detects fault families that no other component and no smoke check detects, so none can be removed without reopening an escape path. The refinement rule is narrower than the memory conjunct and misses headroom violations that do not fail with out-of-memory.
 \end{tcolorbox}
+
+
+\subsection{Research-artifact deployment with two local models}\label{sec:mapcoder-deployment}
+\input{generated/mapcoder_status}
+
+\begin{table}[t]
+\caption{Observed MapCoder deployment results on HumanEval/0. Each row contains two fresh repeated processes on one full H100. Process time includes each adapter's initialization and inference; allocation time includes the enclosing setup and job overhead. The Qwen3.8 allocation column excludes its separately reported failed attempt. These are distinct scientific configurations, not a paired model-performance benchmark.}\label{tab:mapcoder-models}
+\small\input{generated/mapcoder_table}
+\end{table}
