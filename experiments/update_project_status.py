@@ -114,6 +114,9 @@ def inspect_evidence(root):
         campaign = read_json(campaign_path)
         if campaign.get('accounting_query_error'):
             problems.append('Nibi accounting query failed; current allocation state is unknown: '+campaign['accounting_query_error'])
+        for name,subset in campaign.get('comparative_subsets',{}).items():
+            if subset.get('status')=='STOPPED_FOR_AUDIT':
+                problems.append(name+' automatic queue stopped for audit: '+str(subset.get('error')))
         plan_path = root/'experiments/campaign/plan.json'
         if hashlib.sha256(plan_path.read_bytes()).hexdigest() != campaign['protocol_sha256']:
             problems.append('Campaign protocol differs from its frozen status identity')
@@ -157,6 +160,8 @@ def render_snapshot(snapshot, stamp, scheduler):
             lines += ['**Native feasibility allocations (not comparative episodes):** '+ '; '.join(f"{r['subject']} job `{r['job_id']}`: {r.get('last_observed_state','unknown')}; {r['reserved_seconds']} H100 seconds originally reserved including termination headroom; collector `{r.get('collector_job_id','not recorded')}`" for r in pending)+'.', '']
         for name,subset in campaign.get('comparative_subsets',{}).items():
             lines += [(f"**{name} comparative subset:** {subset['status']}; {subset['comparative_episodes_completed']}/{subset['potential_episodes']} episodes resolved; {subset['comparative_episodes_submitted']} submitted. "+(subset.get('error') or '')).rstrip(),'']
+            if subset.get('quarantined_episodes'):
+                lines += [f"**{name} data audit:** {subset['execution_receipts_completed']} completed execution receipts retained; {subset['quarantined_episodes']} fault-affected attempts quarantined, including any aborted attempt. Quarantined attempts are excluded from the completed comparative count above.",'']
     if campaign:
         observed=dt.datetime.fromisoformat(campaign['updated_at_utc'].replace('Z','+00:00'))
         checked=dt.datetime.fromisoformat(stamp.replace('Z','+00:00'))
