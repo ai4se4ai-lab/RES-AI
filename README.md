@@ -84,10 +84,17 @@ pdflatex -interaction=nonstopmode -halt-on-error main.tex
 pdflatex -interaction=nonstopmode -halt-on-error main.tex
 ```
 
-The existing `sn-jnl.cls`, `sn-mathphys-num.bst` and `bibliography.bib` are retained.
-Additional candidate-paper metadata is archived and generated from primary arXiv
-records. The supplied support manuscript is context; its results are not reused
-as new RES-AI observations.
+`main.tex` contains the text, tables and architecture diagram. References are in
+`bibliography.bib`, using `sn-mathphys-num.bst`. Five figure PDFs in `figures/` and
+`sn-jnl.cls` complete the project assets. Upload `docs/EMSE/RES-AI-Overleaf.zip` as a new Overleaf project and select
+pdfLaTeX; Overleaf runs BibTeX automatically. No Lua loader, shell escape or
+network access is needed for local compilation.
+Manuscript datasets are preserved separately in `support/MANUSCRIPT_DATA.zip`,
+which is excluded from the Overleaf upload. The reference audit and build
+instructions are in `docs/EMSE/support/`.
+Generation scripts write review outputs to `tmp/manuscript-generated/`; they do not
+overwrite the authoritative manuscript. The supplied support manuscript remains
+context; its results are not reused as new RES-AI observations.
 
 The focused TSE/EMSE evaluation-design review is documented in
 `experiments/PAPER_DESIGN_REVIEW.md`. New diagnostic tables, the grouped fault

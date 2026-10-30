@@ -1,0 +1,35 @@
+{
+  "compiler": "pdfLaTeX",
+  "main": "main.tex",
+  "figures": [
+    {
+      "path": "figures/fault_detection.pdf",
+      "sha256": "7f189784e99e17b5ca595f95b076c32250548de74cdf200a4dbf6ce39e087cd6"
+    },
+    {
+      "path": "figures/threshold_sensitivity.pdf",
+      "sha256": "a90c268746722d3221b421788181095bab5d1770dca02007c447f47b91a879f3"
+    },
+    {
+      "path": "figures/gpu_cost_timeline.pdf",
+      "sha256": "029761e62644112735886f03fcdcb989e2da5a641bbe3b8d0a34334d8ff85931"
+    },
+    {
+      "path": "figures/refinement_bounds.pdf",
+      "sha256": "d4ae0369ba80e2711d0810880c8575d665d20c5f8f3e36b4a49000df9e8da624"
+    },
+    {
+      "path": "figures/assessment_overhead.pdf",
+      "sha256": "57384463ab7e2fab725442955de55f3e550437909978b05ec0609e12d9b788d6"
+    }
+  ],
+  "data_archive": "support/MANUSCRIPT_DATA.zip",
+  "bibliography": "bibliography.bib",
+  "bibliography_style": "sn-mathphys-num.bst",
+  "build": [
+    "pdflatex main",
+    "bibtex main",
+    "pdflatex main",
+    "pdflatex main"
+  ]
+}

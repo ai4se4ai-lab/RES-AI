@@ -1,0 +1,1159 @@
+{
+  "build": "lualatex -interaction=nonstopmode -halt-on-error main.tex (run twice)",
+  "scope": "All manuscript text/tables/diagram, exact plotted PDFs, complete bibliography databases, analysis datasets, pilot evidence/accounting and 140 qualified ChatDev episode receipts. Model weights, full model-call transcripts, upstream sources and immutable remote archive bundles remain external research artifacts; they are not required for compiling the paper.",
+  "inlined_sources": [
+    "generated/counts.tex",
+    "sections/approach.tex",
+    "figures/approach_overview.tex",
+    "sections/evaluation.tex",
+    "generated/implementation_table.tex",
+    "generated/fault_operators.tex",
+    "generated/subjects.tex",
+    "sections/results.tex",
+    "generated/local_table.tex",
+    "generated/gpu_status.tex",
+    "generated/gpu_diagnostics.tex",
+    "generated/refinement_table.tex",
+    "generated/ablation_table.tex",
+    "generated/mapcoder_status.tex",
+    "generated/mapcoder_table.tex",
+    "generated/chatdev_table.tex",
+    "sections/discussion.tex"
+  ],
+  "assets": [
+    {
+      "name": "resai-figure-fault_detection.pdf",
+      "origin": "docs/EMSE/generated/fault_detection.pdf",
+      "bytes": 22323,
+      "sha256": "7f189784e99e17b5ca595f95b076c32250548de74cdf200a4dbf6ce39e087cd6"
+    },
+    {
+      "name": "resai-figure-threshold_sensitivity.pdf",
+      "origin": "docs/EMSE/generated/threshold_sensitivity.pdf",
+      "bytes": 33841,
+      "sha256": "a90c268746722d3221b421788181095bab5d1770dca02007c447f47b91a879f3"
+    },
+    {
+      "name": "resai-figure-gpu_cost_timeline.pdf",
+      "origin": "docs/EMSE/generated/gpu_cost_timeline.pdf",
+      "bytes": 15377,
+      "sha256": "029761e62644112735886f03fcdcb989e2da5a641bbe3b8d0a34334d8ff85931"
+    },
+    {
+      "name": "resai-figure-refinement_bounds.pdf",
+      "origin": "docs/EMSE/generated/refinement_bounds.pdf",
+      "bytes": 22284,
+      "sha256": "d4ae0369ba80e2711d0810880c8575d665d20c5f8f3e36b4a49000df9e8da624"
+    },
+    {
+      "name": "resai-figure-assessment_overhead.pdf",
+      "origin": "docs/EMSE/generated/assessment_overhead.pdf",
+      "bytes": 19037,
+      "sha256": "57384463ab7e2fab725442955de55f3e550437909978b05ec0609e12d9b788d6"
+    },
+    {
+      "name": "resai-sn-jnl.cls",
+      "origin": "docs/EMSE/sn-jnl.cls (ProvidesClass renamed only)",
+      "bytes": 55942,
+      "sha256": "abc13d4e9bec102c9db6fd6c953aa7e8d767b0518c68aab2834d6a64281a7f72"
+    },
+    {
+      "name": "resai-bibliography.bib",
+      "origin": "docs/EMSE/bibliography.bib",
+      "bytes": 34361,
+      "sha256": "ac6cbdfab6c9fc7a96d9903d4ebb614862596fe52e96b0d89a02ddacc085245c"
+    },
+    {
+      "name": "resai-artifact_refs.bib",
+      "origin": "docs/EMSE/generated/artifact_refs.bib",
+      "bytes": 6459,
+      "sha256": "0025c6d6b07849bc5f1373769409a40de6dfbfc86f64c9d449818a53fc98ac29"
+    },
+    {
+      "name": "resai-data-001-chatdev_episodes.csv",
+      "origin": "docs/EMSE/generated/chatdev_episodes.csv",
+      "bytes": 14938,
+      "sha256": "524a25152626ee2f4aef8f84f31223be9c1b1c03275139fb17f0ee07bc409b5c"
+    },
+    {
+      "name": "resai-data-002-chatdev_summary.json",
+      "origin": "docs/EMSE/generated/chatdev_summary.json",
+      "bytes": 1342,
+      "sha256": "c7d5a434da44991eba95b02554d9cd653f064e8fcf217517e295028b1ff2f739"
+    },
+    {
+      "name": "resai-data-003-gpu_cost_timeline.csv",
+      "origin": "docs/EMSE/generated/gpu_cost_timeline.csv",
+      "bytes": 521,
+      "sha256": "f1bf28d51dbd2773648964298360a55ed441d016cac1c6c3bc50179de1c16d1c"
+    },
+    {
+      "name": "resai-data-004-gpu_cost_timeline.json",
+      "origin": "docs/EMSE/generated/gpu_cost_timeline.json",
+      "bytes": 535,
+      "sha256": "4ad8f2a778642713d1b329354337864d7ed14c098e3d18badc8dd34703d7797e"
+    },
+    {
+      "name": "resai-data-005-mapcoder_results.json",
+      "origin": "docs/EMSE/generated/mapcoder_results.json",
+      "bytes": 625,
+      "sha256": "f549381a32f7085a66796740c031b461f163108ceced41f5946d31ccb2a685bf"
+    },
+    {
+      "name": "resai-data-006-REFERENCE_AUDIT.json",
+      "origin": "docs/EMSE/support/REFERENCE_AUDIT.json",
+      "bytes": 136070,
+      "sha256": "efe1b4ca3259b2f19d7838ad47afa3a0c34d1e3dc6e660b02c67cfbae8969d52"
+    },
+    {
+      "name": "resai-data-007-REFERENCE_AUDIT.md",
+      "origin": "docs/EMSE/support/REFERENCE_AUDIT.md",
+      "bytes": 16905,
+      "sha256": "00d60e851b9470af3686042e005d6cd3631a7ff1a669bcd9763b8c5bb6441385"
+    },
+    {
+      "name": "resai-data-008-plan.json",
+      "origin": "experiments/campaign/plan.json",
+      "bytes": 8247,
+      "sha256": "77c120d607f6884c737659eb38d8bb0c78b4f811b755930ed08ca1659c9d49c4"
+    },
+    {
+      "name": "resai-data-009-make_campaign_paper_artifacts.py",
+      "origin": "experiments/make_campaign_paper_artifacts.py",
+      "bytes": 3976,
+      "sha256": "c71863d706a8a28e6a864574f0a0c5c0b162d063acefd8302cceac6a33dfa70b"
+    },
+    {
+      "name": "resai-data-010-make_paper_artifacts.py",
+      "origin": "experiments/make_paper_artifacts.py",
+      "bytes": 17250,
+      "sha256": "114d8df222c32d8464ce353ea99a3f8331314258484cca879b935151d0085a70"
+    },
+    {
+      "name": "resai-data-011-paper_visuals.py",
+      "origin": "experiments/paper_visuals.py",
+      "bytes": 15959,
+      "sha256": "63ad49dcc4f994380e9c75739e42b7a8803b9e7eefcbfee66c56e7b05bdc4194"
+    },
+    {
+      "name": "resai-data-012-collected-results-summary.json",
+      "origin": "experiments/results/campaign/collected-results-summary.json",
+      "bytes": 443,
+      "sha256": "9abe0279b67aafcf18ce8aaabd74daefa6b0b6a7708e6a37f665610baee4e785"
+    },
+    {
+      "name": "resai-data-013-COLLECTED-SHA256SUMS.txt",
+      "origin": "experiments/results/campaign/COLLECTED-SHA256SUMS.txt",
+      "bytes": 23650,
+      "sha256": "f8f7f59497548ce5aa4ad51f33d928ef1c7085b5d4a02c70c2cb2bcb390996f7"
+    },
+    {
+      "name": "resai-data-014-episode.json",
+      "origin": "experiments/results/campaign/comparison/24927183/collected/episode/results/episode.json",
+      "bytes": 2742,
+      "sha256": "56f5a114e13da9b0e74e6993922c1c282d929f63a5627782a8378db5725c9057"
+    },
+    {
+      "name": "resai-data-015-episode.json",
+      "origin": "experiments/results/campaign/comparison/24930376/collected/episode/results/episode.json",
+      "bytes": 7579,
+      "sha256": "c168675a604fbd6fc654eb3c03905052d0b0292543beddf01207f33db6ff4649"
+    },
+    {
+      "name": "resai-data-016-episode.json",
+      "origin": "experiments/results/campaign/comparison/24941043/collected/episode/results/episode.json",
+      "bytes": 7569,
+      "sha256": "60cfa8d58d4676741e4d9e771b1b74d83364ef36cfc56f5a7020a63de6603f4e"
+    },
+    {
+      "name": "resai-data-017-episode.json",
+      "origin": "experiments/results/campaign/comparison/collected-archives/chatdev-0-clean-no_identity_freshness-collector-24948333/episode/results/episode.json",
+      "bytes": 7667,
+      "sha256": "55ecc5ae0f9a5706e5d8136b18de29ae398872aa20417b6b6f213cb0375bbcd2"
+    },
+    {
+      "name": "resai-data-018-episode.json",
+      "origin": "experiments/results/campaign/comparison/collected-archives/chatdev-0-clean-no_refinement-collector-24946536/episode/results/episode.json",
+      "bytes": 7593,
+      "sha256": "738a4c25028ee08be61665325c6d4d81b24d9cc8b621022363de5cfe02463b26"
+    },
+    {
+      "name": "resai-data-019-episode.json",
+      "origin": "experiments/results/campaign/comparison/collected-archives/chatdev-0-clean-upstream_smoke_then_production-collector-24945031/episode/results/episode.json",
+      "bytes": 3142,
+      "sha256": "519586df2ac0f59dababf2d6d9a6cf00dadf352fb5b409ead088ee398d8d1002"
+    },
+    {
+      "name": "resai-data-020-episode.json",
+      "origin": "experiments/results/campaign/comparison/collected-archives/chatdev-0-clean-upstream_static-collector-24941380/episode/results/episode.json",
+      "bytes": 2840,
+      "sha256": "5722d655553ceb8b3c39fdc4ef81d769bf79d93eb93e62063558e4868572b9f2"
+    },
+    {
+      "name": "resai-data-021-episode.json",
+      "origin": "experiments/results/campaign/comparison/collected-archives/chatdev-0-environment_fault-direct_native-collector-24950271/episode/results/episode.json",
+      "bytes": 2814,
+      "sha256": "907d78da51618e098713e6c7655b24c43be172931c79f3c3b0a93b4cec1bb943"
+    },
+    {
+      "name": "resai-data-022-episode.json",
+      "origin": "experiments/results/campaign/comparison/collected-archives/chatdev-0-environment_fault-no_coverage-collector-24949265/episode/results/episode.json",
+      "bytes": 3372,
+      "sha256": "4069f5c1a6894e23c43f880f70659919f0cecbd62a306f81418943685b9d1898"
+    },
+    {
+      "name": "resai-data-023-episode.json",
+      "origin": "experiments/results/campaign/comparison/collected-archives/chatdev-0-environment_fault-no_identity_freshness-collector-24949598/episode/results/episode.json",
+      "bytes": 7681,
+      "sha256": "f8de1747a53511213d8252dc1d2b5d927ca09497faa96f92612ca0e452165cd5"
+    },
+    {
+      "name": "resai-data-024-episode.json",
+      "origin": "experiments/results/campaign/comparison/collected-archives/chatdev-0-environment_fault-no_refinement-collector-24948649/episode/results/episode.json",
+      "bytes": 3380,
+      "sha256": "26a0ef5c880c8e0dcbd5a268901155c723edb4c465cf0d9510a33cc5bd4e2281"
+    },
+    {
+      "name": "resai-data-025-episode.json",
+      "origin": "experiments/results/campaign/comparison/collected-archives/chatdev-0-environment_fault-resai_full-collector-24949978/episode/results/episode.json",
+      "bytes": 3371,
+      "sha256": "0720879ca45ae7b069c451f73feba944b911177b22243821628af7f0062e88c1"
+    },
+    {
+      "name": "resai-data-026-episode.json",
+      "origin": "experiments/results/campaign/comparison/collected-archives/chatdev-0-environment_fault-upstream_smoke_then_production-collector-24949413/episode/results/episode.json",
+      "bytes": 1027,
+      "sha256": "d3b41e6557b35e43313e83c8fe2f79acc70afa65a29be41ea8bf83c643d8ac1a"
+    },
+    {
+      "name": "resai-data-027-episode.json",
+      "origin": "experiments/results/campaign/comparison/collected-archives/chatdev-0-environment_fault-upstream_static-collector-24949776/episode/results/episode.json",
+      "bytes": 2895,
+      "sha256": "0e594ab8bf677516d4b267112331f72f56821c15a06fdaefb9972243353e1095"
+    },
+    {
+      "name": "resai-data-028-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-0-output_contract_fault-direct_native-r2-collector-24995343/episode/results/episode.json",
+      "bytes": 2818,
+      "sha256": "aa105cee400e814e48f684bf22019d25aba8e80f09880761a2bd4078c02c75c7"
+    },
+    {
+      "name": "resai-data-029-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-0-output_contract_fault-no_coverage-r2-collector-24997586/episode/results/episode.json",
+      "bytes": 7675,
+      "sha256": "596a81ee7d8512058adcbde77389edb1d57eb7211ddd862a6cbd33f278cede8f"
+    },
+    {
+      "name": "resai-data-030-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-0-output_contract_fault-no_identity_freshness-r2-collector-24996057/episode/results/episode.json",
+      "bytes": 3477,
+      "sha256": "a95e9906bce05f9e7e9883f7e1bf2522ec278df0f418f74c1a55df859c1949fa"
+    },
+    {
+      "name": "resai-data-031-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-0-output_contract_fault-no_refinement-r2-collector-24995882/episode/results/episode.json",
+      "bytes": 3410,
+      "sha256": "0d82252e85e495650a1ec0dd0fe70028aa9bf9997106e59f9fc7a5a03aae0e38"
+    },
+    {
+      "name": "resai-data-032-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-0-output_contract_fault-resai_full-r2-collector-24997436/episode/results/episode.json",
+      "bytes": 3394,
+      "sha256": "2a39217ff2ae3f02e8375b3cc25c2b7d7f4a2cf232b2f5df6833355a4bc20c27"
+    },
+    {
+      "name": "resai-data-033-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-0-output_contract_fault-upstream_smoke_then_production-r2-collector-24995566/episode/results/episode.json",
+      "bytes": 3221,
+      "sha256": "2c6e7ab671b1d55803a7d1be45c74531eafcc0a791813aa6e74a0457d21a2120"
+    },
+    {
+      "name": "resai-data-034-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-0-output_contract_fault-upstream_static-r2-collector-24997156/episode/results/episode.json",
+      "bytes": 2900,
+      "sha256": "d3b0bdc9f553d271757462076d36053c8f227e228a1c51e4f7932c2616c565bd"
+    },
+    {
+      "name": "resai-data-035-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-0-resource_fault-direct_native-r2-collector-24993807/episode/results/episode.json",
+      "bytes": 2755,
+      "sha256": "bac41ebb63c9b1e1ba58a49dead962db56e63664456b63f529b2b9d3cf4fbc1e"
+    },
+    {
+      "name": "resai-data-036-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-0-resource_fault-no_coverage-r2-collector-24994809/episode/results/episode.json",
+      "bytes": 3364,
+      "sha256": "d22d3a0deb4b1cdbf5ae8cc260a9bdef912330a576261b60b13e87fddc210886"
+    },
+    {
+      "name": "resai-data-037-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-0-resource_fault-no_identity_freshness-r2-collector-24994999/episode/results/episode.json",
+      "bytes": 3436,
+      "sha256": "dde2f567ef5b11dfbb517c021e13258f43fd14081aa9c56cb322dbe96509fdc0"
+    },
+    {
+      "name": "resai-data-038-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-0-resource_fault-no_refinement-r2-collector-24994561/episode/results/episode.json",
+      "bytes": 3398,
+      "sha256": "5a6ec383bcc77b640850058d2be7a6a491469bf78a92c645c73980a9fd8a8d36"
+    },
+    {
+      "name": "resai-data-039-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-0-resource_fault-resai_full-r2-collector-24993656/episode/results/episode.json",
+      "bytes": 3380,
+      "sha256": "cb76ec8b1ec5d9338a46bb40ff93e9889fea8ce299840c545f2c3778da1835c5"
+    },
+    {
+      "name": "resai-data-040-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-0-resource_fault-upstream_smoke_then_production-r2-collector-24995195/episode/results/episode.json",
+      "bytes": 1025,
+      "sha256": "59f421be73f3877e0a1695187650162f7b1ecad5587edc703731a4454ab110ef"
+    },
+    {
+      "name": "resai-data-041-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-0-resource_fault-upstream_static-r2-collector-24994664/episode/results/episode.json",
+      "bytes": 2836,
+      "sha256": "3c21fcd291f2915bf3496982c7f6b18eab834585b0058ca4b608844709bf97c0"
+    },
+    {
+      "name": "resai-data-042-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-1-clean-direct_native-r2-collector-25046830/episode/results/episode.json",
+      "bytes": 2778,
+      "sha256": "3920a2b8056bc20c7509262ff0ecbe68501a28b798d2d7ce81dc845a85c79fc1"
+    },
+    {
+      "name": "resai-data-043-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-1-clean-no_coverage-r2-collector-24997926/episode/results/episode.json",
+      "bytes": 7627,
+      "sha256": "d6435f9f4571a2b0446775ba8c2649824a1cc9abdcf527b4485aa2fc0a012cf5"
+    },
+    {
+      "name": "resai-data-044-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-1-clean-no_identity_freshness-r2-collector-25046309/episode/results/episode.json",
+      "bytes": 7715,
+      "sha256": "9d7e97cb0d3efe7997b68f62fb72e74617bb322062fd92b6a317448aface0938"
+    },
+    {
+      "name": "resai-data-045-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-1-clean-no_refinement-r2-collector-25046069/episode/results/episode.json",
+      "bytes": 3373,
+      "sha256": "98d1c9dbcac5d9b0c9a6950b5923f94989aa0329778d5f9a3b5408dbd8ad7a99"
+    },
+    {
+      "name": "resai-data-046-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-1-clean-resai_full-r2-collector-25045608/episode/results/episode.json",
+      "bytes": 7617,
+      "sha256": "c7e11a1d3557f405b03a7ab206669d4488162e316d8f410b96927129d6bfef29"
+    },
+    {
+      "name": "resai-data-047-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-1-clean-upstream_smoke_then_production-r2-collector-25048131/episode/results/episode.json",
+      "bytes": 3165,
+      "sha256": "e13b6d26a1af03e6ef0ef69c4c21c901c0647cb9c50c37e8419379e4eae8f3ac"
+    },
+    {
+      "name": "resai-data-048-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-1-clean-upstream_static-r2-collector-25047115/episode/results/episode.json",
+      "bytes": 2856,
+      "sha256": "c7be2c47ce50cc6cf3995736e70e1055ae0d85fb1f956699666e900c80e58c9e"
+    },
+    {
+      "name": "resai-data-049-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-1-environment_fault-direct_native-r2-collector-25049510/episode/results/episode.json",
+      "bytes": 2832,
+      "sha256": "c5740022817859a5653335624139a1256a44932de949d5c34b99ecf86f7e0a81"
+    },
+    {
+      "name": "resai-data-050-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-1-environment_fault-no_coverage-r2-collector-25050060/episode/results/episode.json",
+      "bytes": 3391,
+      "sha256": "917f2f9d13da124878d645c7c763e511b4b5848eb765a95b9425a9012a061cca"
+    },
+    {
+      "name": "resai-data-051-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-1-environment_fault-no_identity_freshness-r2-collector-25049666/episode/results/episode.json",
+      "bytes": 7734,
+      "sha256": "a0464c5a59a6c20c04677d3cc2ca1cb7db106ab7c34ee94ef1f66ef3cdc18bcd"
+    },
+    {
+      "name": "resai-data-052-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-1-environment_fault-no_refinement-r2-collector-25049912/episode/results/episode.json",
+      "bytes": 3397,
+      "sha256": "43bf229907bf5cdfc3c3d3124d440edb3bbda1a621a217179644ebbdbaba564e"
+    },
+    {
+      "name": "resai-data-053-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-1-environment_fault-resai_full-r2-collector-25049807/episode/results/episode.json",
+      "bytes": 3387,
+      "sha256": "de4475848a091add5e9726fa53ae221ad51d10757132e59b68d66bfe6d345f13"
+    },
+    {
+      "name": "resai-data-054-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-1-environment_fault-upstream_smoke_then_production-r2-collector-25050448/episode/results/episode.json",
+      "bytes": 1035,
+      "sha256": "cf13239f1f95452e5d43f3690741feda505872ee8a20f1c8f3142cf49eb9ac7c"
+    },
+    {
+      "name": "resai-data-055-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-1-environment_fault-upstream_static-r2-collector-25050257/episode/results/episode.json",
+      "bytes": 2912,
+      "sha256": "ab4d82b25f2dadf9097efe3edb16caf457f944c348f8eea5c4a7406adb5b3760"
+    },
+    {
+      "name": "resai-data-056-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-1-output_contract_fault-direct_native-r2-collector-25051879/episode/results/episode.json",
+      "bytes": 2820,
+      "sha256": "35a380e841d931194bdba4ad3e5ff5daa3c438693d29cae425a2a3a8847f603a"
+    },
+    {
+      "name": "resai-data-057-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-1-output_contract_fault-no_coverage-r2-collector-25053267/episode/results/episode.json",
+      "bytes": 7679,
+      "sha256": "8a7d59a937170a0670312e96fb6301ef03ec235ee66847f2667553ee307968ff"
+    },
+    {
+      "name": "resai-data-058-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-1-output_contract_fault-no_identity_freshness-r2-collector-25051766/episode/results/episode.json",
+      "bytes": 3450,
+      "sha256": "d80fbdc82146504bd7d161075dc2b80fa52cedcb0c12eeba695816fc6c20af79"
+    },
+    {
+      "name": "resai-data-059-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-1-output_contract_fault-no_refinement-r2-collector-25051618/episode/results/episode.json",
+      "bytes": 3409,
+      "sha256": "834888cad46159fde6f7f01743a64cf263db216063377576717421456d1b0e74"
+    },
+    {
+      "name": "resai-data-060-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-1-output_contract_fault-resai_full-r2-collector-25053000/episode/results/episode.json",
+      "bytes": 3394,
+      "sha256": "32622d17d371eedfb53b0b83c3c183b5272d2ab28da4e62d02a913795b10e5e0"
+    },
+    {
+      "name": "resai-data-061-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-1-output_contract_fault-upstream_smoke_then_production-r2-collector-25052010/episode/results/episode.json",
+      "bytes": 3223,
+      "sha256": "b337f725aeb96e53869b1dc3fc2031a325b08fb7419090a38d7ccf28f1250b16"
+    },
+    {
+      "name": "resai-data-062-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-1-output_contract_fault-upstream_static-r2-collector-25053543/episode/results/episode.json",
+      "bytes": 2899,
+      "sha256": "74668478a241eedca7f4a94077eea7489db38b8565551546ef7c41949891c620"
+    },
+    {
+      "name": "resai-data-063-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-1-resource_fault-direct_native-r2-collector-25050610/episode/results/episode.json",
+      "bytes": 2755,
+      "sha256": "16a86ea2fb2380097e4b65a57c4d4cfda21d0737e48b57966bf88c95254ea7d8"
+    },
+    {
+      "name": "resai-data-064-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-1-resource_fault-no_coverage-r2-collector-25050943/episode/results/episode.json",
+      "bytes": 3365,
+      "sha256": "ea3294a60e1368e102cebd2c42845a3b2b758cb357b9a5df59ae99f22214618e"
+    },
+    {
+      "name": "resai-data-065-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-1-resource_fault-no_identity_freshness-r2-collector-25051176/episode/results/episode.json",
+      "bytes": 3435,
+      "sha256": "2e38fbc9840d517388992d1825d8033d8eee24f42d839a9b8ceaabb75ed0c11e"
+    },
+    {
+      "name": "resai-data-066-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-1-resource_fault-no_refinement-r2-collector-25051441/episode/results/episode.json",
+      "bytes": 3397,
+      "sha256": "9e2305ca4157f71ff0e22f081fbcc66dff8202f8fe13e2ded411e38a52de519e"
+    },
+    {
+      "name": "resai-data-067-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-1-resource_fault-resai_full-r2-collector-25050780/episode/results/episode.json",
+      "bytes": 3383,
+      "sha256": "92b03d86d9fcbf5f9e439dde269277193c8544060d141a958e5781d945f51030"
+    },
+    {
+      "name": "resai-data-068-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-1-resource_fault-upstream_smoke_then_production-r2-collector-25051257/episode/results/episode.json",
+      "bytes": 1026,
+      "sha256": "b72f691cb1827eaada81bb5458930e97b7c852341c458e6100c658f17fbaa610"
+    },
+    {
+      "name": "resai-data-069-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-1-resource_fault-upstream_static-r2-collector-25051069/episode/results/episode.json",
+      "bytes": 2837,
+      "sha256": "ad4b7d3e5bfb0f4c9b8350a6cc7df9e92f2d1aebe4cb0fd07619e13ec4acd762"
+    },
+    {
+      "name": "resai-data-070-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-2-clean-direct_native-r2-collector-25057010/episode/results/episode.json",
+      "bytes": 2778,
+      "sha256": "41ff0dbd59790e901a0fb62bd3ad559039c1969a166826bfef9bdef36c634f72"
+    },
+    {
+      "name": "resai-data-071-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-2-clean-no_coverage-r2-collector-25055380/episode/results/episode.json",
+      "bytes": 7627,
+      "sha256": "38294f6eccc54262f6ea4262864c5cabd9d0726ce7ea0232812fa8eb18c17ff1"
+    },
+    {
+      "name": "resai-data-072-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-2-clean-no_identity_freshness-r2-collector-25055832/episode/results/episode.json",
+      "bytes": 7717,
+      "sha256": "ef753d87e01e25b756e8ba83b647d6562834e308fbbabf962e75d319ac1c8cfa"
+    },
+    {
+      "name": "resai-data-073-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-2-clean-no_refinement-r2-collector-25054171/episode/results/episode.json",
+      "bytes": 7644,
+      "sha256": "d70333bec99704a9611de9b9ae0a03205ef15f6b592ba5c73a4c719c149e25e7"
+    },
+    {
+      "name": "resai-data-074-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-2-clean-resai_full-r2-collector-25056186/episode/results/episode.json",
+      "bytes": 7619,
+      "sha256": "ef136b39b09e25cdcecb6bdfb9e71fc136804a13a2c58968cb85b564bf8ef35e"
+    },
+    {
+      "name": "resai-data-075-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-2-clean-upstream_smoke_then_production-r2-collector-25054855/episode/results/episode.json",
+      "bytes": 3165,
+      "sha256": "4eb1775c334b7f049f652f801fe9543fc4cbe2570e3ce63fcee4f9d4aa9a1414"
+    },
+    {
+      "name": "resai-data-076-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-2-clean-upstream_static-r2-collector-25053812/episode/results/episode.json",
+      "bytes": 2857,
+      "sha256": "57201e21a00d1b05dd6fedffd930668e6d1563ce2122edc54d2890fe115be6e9"
+    },
+    {
+      "name": "resai-data-077-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-2-environment_fault-direct_native-r2-collector-25058781/episode/results/episode.json",
+      "bytes": 2832,
+      "sha256": "dbce16d14c26a15b7c66780df883e77de199b69824b6e1ba75dfe6ef2b1b2a64"
+    },
+    {
+      "name": "resai-data-078-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-2-environment_fault-no_coverage-r2-collector-25058130/episode/results/episode.json",
+      "bytes": 3396,
+      "sha256": "4fed733fc317a8a4e308a5d10727ed342fb7a618b6906d40725494e170d8aadd"
+    },
+    {
+      "name": "resai-data-079-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-2-environment_fault-no_identity_freshness-r2-collector-25057154/episode/results/episode.json",
+      "bytes": 7741,
+      "sha256": "3592a88a3138fae47d818e7e1f1a84f93c7325348980f10c2ebb6d34362c9218"
+    },
+    {
+      "name": "resai-data-080-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-2-environment_fault-no_refinement-r2-collector-25059927/episode/results/episode.json",
+      "bytes": 3401,
+      "sha256": "e18e90b53a67219550b6bc3340b2d93a50e59dccd3f8a8dd41c790d8ea27cd21"
+    },
+    {
+      "name": "resai-data-081-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-2-environment_fault-resai_full-r2-collector-25060254/episode/results/episode.json",
+      "bytes": 3392,
+      "sha256": "48499e05070e5825332b0a96d1f4003a4ab6434b0e510dc54f49a05678ed2119"
+    },
+    {
+      "name": "resai-data-082-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-2-environment_fault-upstream_smoke_then_production-r2-collector-25059010/episode/results/episode.json",
+      "bytes": 1034,
+      "sha256": "71831d378984546cd9afb9ab112aeb9778542a34a8916a93e1d0a05345216e84"
+    },
+    {
+      "name": "resai-data-083-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-2-environment_fault-upstream_static-r2-collector-25059534/episode/results/episode.json",
+      "bytes": 2913,
+      "sha256": "9fcdb99239bdd09c7cff84f524da0459a67c8349f20a59e29156d510ec6ae5a5"
+    },
+    {
+      "name": "resai-data-084-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-2-output_contract_fault-direct_native-r2-collector-25064325/episode/results/episode.json",
+      "bytes": 2821,
+      "sha256": "a38bec79abf4139f427c1620f2bf80717923307e2ad40bebe8dc357c59b9fa06"
+    },
+    {
+      "name": "resai-data-085-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-2-output_contract_fault-no_coverage-r2-collector-25063616/episode/results/episode.json",
+      "bytes": 7679,
+      "sha256": "14e0b18a5108b59d661860f8a122f0025245762ae3fd396a4f44ed7b6a2ee418"
+    },
+    {
+      "name": "resai-data-086-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-2-output_contract_fault-no_identity_freshness-r2-collector-25064083/episode/results/episode.json",
+      "bytes": 3450,
+      "sha256": "cd677fcc3f3240c4f0c26e10e0a3a2892a4e0611c01948bc92d685770d4cae7e"
+    },
+    {
+      "name": "resai-data-087-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-2-output_contract_fault-no_refinement-r2-collector-25064539/episode/results/episode.json",
+      "bytes": 3408,
+      "sha256": "768d3ea8c00256f59fb832983ba5091720290a660a1f7f8c342446e63585b37f"
+    },
+    {
+      "name": "resai-data-088-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-2-output_contract_fault-resai_full-r2-collector-25062884/episode/results/episode.json",
+      "bytes": 3394,
+      "sha256": "91dba7eefe4e33fec6557c3e389dc5e869742df1b8cbb7f94e6b9726f52472a5"
+    },
+    {
+      "name": "resai-data-089-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-2-output_contract_fault-upstream_smoke_then_production-r2-collector-25065089/episode/results/episode.json",
+      "bytes": 3220,
+      "sha256": "017f7c3612c5e9b17b7974d998dda3078e83c4609c922a72e174c8bfe662e3a5"
+    },
+    {
+      "name": "resai-data-090-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-2-output_contract_fault-upstream_static-r2-collector-25064875/episode/results/episode.json",
+      "bytes": 2901,
+      "sha256": "f5071b3d33f04ca2e3e2fd9a42f47f5aa7c2335b9ef34c017b2d51e9c727ef70"
+    },
+    {
+      "name": "resai-data-091-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-2-resource_fault-direct_native-r2-collector-25062734/episode/results/episode.json",
+      "bytes": 2758,
+      "sha256": "c8b0cc3c82968f83fcad86a290c44e95ec2adb9a1473c57caf075f297c277327"
+    },
+    {
+      "name": "resai-data-092-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-2-resource_fault-no_coverage-r2-collector-25060472/episode/results/episode.json",
+      "bytes": 3366,
+      "sha256": "02db7f0c27e789a7b71b937c8796a41b87ded1db4773aefc4a2a6800a38db10d"
+    },
+    {
+      "name": "resai-data-093-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-2-resource_fault-no_identity_freshness-r2-collector-25061995/episode/results/episode.json",
+      "bytes": 3436,
+      "sha256": "e64676d00b9550fbd4aaaf96da39d66e975ac0df485859fd6e288c6d871b8bce"
+    },
+    {
+      "name": "resai-data-094-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-2-resource_fault-no_refinement-r2-collector-25062241/episode/results/episode.json",
+      "bytes": 3395,
+      "sha256": "94f35b95c1370b9b05f3872db32a9f4dbc783dd70de2d4dd1791be5394f3e600"
+    },
+    {
+      "name": "resai-data-095-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-2-resource_fault-resai_full-r2-collector-25061622/episode/results/episode.json",
+      "bytes": 3382,
+      "sha256": "6b1aec7e954fadd67c03d7d1d38f754ad087bb0f216062f40379e6ea70d8c85a"
+    },
+    {
+      "name": "resai-data-096-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-2-resource_fault-upstream_smoke_then_production-r2-collector-25060904/episode/results/episode.json",
+      "bytes": 1027,
+      "sha256": "ed799c155b955d4f6326035a5575fce08422515e47b0cdc914146fb6064c2833"
+    },
+    {
+      "name": "resai-data-097-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-2-resource_fault-upstream_static-r2-collector-25062603/episode/results/episode.json",
+      "bytes": 2837,
+      "sha256": "3e8c4882181694d11057508c954a6825a8aee790bc6f964f3c6300f649b37f03"
+    },
+    {
+      "name": "resai-data-098-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-3-clean-direct_native-r2-collector-25066077/episode/results/episode.json",
+      "bytes": 2778,
+      "sha256": "ce4095fa4f4e6f751204b1ab032bfb533eb7164aa0fe8cd30a454906ec977b54"
+    },
+    {
+      "name": "resai-data-099-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-3-clean-no_coverage-r2-collector-25065673/episode/results/episode.json",
+      "bytes": 7625,
+      "sha256": "dd82e6fff2555b148b2541eb116515b66777555e56e5d08c3d8e639270fac3a0"
+    },
+    {
+      "name": "resai-data-100-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-3-clean-no_identity_freshness-r2-collector-25069397/episode/results/episode.json",
+      "bytes": 7717,
+      "sha256": "7020b3d0a1f57ea3401f2a46fb6dd760ebb771a1d8edc9bc4728045c338652d7"
+    },
+    {
+      "name": "resai-data-101-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-3-clean-no_refinement-r2-collector-25066376/episode/results/episode.json",
+      "bytes": 7639,
+      "sha256": "fbc9d272f4cb051d9410f18de5108aa56e8e34edb5d7ae6248a4aac34a754c83"
+    },
+    {
+      "name": "resai-data-102-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-3-clean-resai_full-r2-collector-25068934/episode/results/episode.json",
+      "bytes": 7616,
+      "sha256": "60e15e6b3b4ec60c4053b8c32918bd33e9be1fb6f8e99934a3f7e41a8e5e15f7"
+    },
+    {
+      "name": "resai-data-103-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-3-clean-upstream_smoke_then_production-r2-collector-25065277/episode/results/episode.json",
+      "bytes": 3163,
+      "sha256": "33222ff4821395d74cef49cbe4fdc97e2b94d19ee7398181cdd55c78fdf59c2b"
+    },
+    {
+      "name": "resai-data-104-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-3-clean-upstream_static-r2-collector-25067933/episode/results/episode.json",
+      "bytes": 2859,
+      "sha256": "674f88f81d256ac145fd3438fc3d4ba9cebe0b4bf9df293e3773462fefb15383"
+    },
+    {
+      "name": "resai-data-105-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-3-environment_fault-direct_native-r2-collector-25073154/episode/results/episode.json",
+      "bytes": 2832,
+      "sha256": "1f55651fab81ef7010431991dcedff143b3f48abdc5cb61125ec3803d43bb011"
+    },
+    {
+      "name": "resai-data-106-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-3-environment_fault-no_coverage-r2-collector-25071287/episode/results/episode.json",
+      "bytes": 3429,
+      "sha256": "5aff23316dc1ca6a385a5677a5a5b9dddc38189164ed630c53fd61f7e1939f99"
+    },
+    {
+      "name": "resai-data-107-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-3-environment_fault-no_identity_freshness-r2-collector-25070223/episode/results/episode.json",
+      "bytes": 7767,
+      "sha256": "8b612b681c2cf2237ea446e9194bcc44a4e67385529c8a1fc5fa1c63576859f6"
+    },
+    {
+      "name": "resai-data-108-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-3-environment_fault-no_refinement-r2-collector-25072726/episode/results/episode.json",
+      "bytes": 3436,
+      "sha256": "6801cec19c9e32a883a619248d30da8c0f6d0f81bfcfe1e9efc183dce44c4d15"
+    },
+    {
+      "name": "resai-data-109-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-3-environment_fault-resai_full-r2-collector-25070924/episode/results/episode.json",
+      "bytes": 3426,
+      "sha256": "6bff3fd600c63f27ac14a614840133cb966ff4e78e54727acede68413c39dbc4"
+    },
+    {
+      "name": "resai-data-110-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-3-environment_fault-upstream_smoke_then_production-r2-collector-25073426/episode/results/episode.json",
+      "bytes": 1036,
+      "sha256": "e37e76a281be4137d9c6ad8d1256846b54a4efa265b469b9fb8a01d6d8ac4faa"
+    },
+    {
+      "name": "resai-data-111-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-3-environment_fault-upstream_static-r2-collector-25069837/episode/results/episode.json",
+      "bytes": 2907,
+      "sha256": "4607f8d46b201812e62bb8c8749c77417c136febf9b120f9fa803c179b577597"
+    },
+    {
+      "name": "resai-data-112-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-3-output_contract_fault-direct_native-r2-collector-25077413/episode/results/episode.json",
+      "bytes": 2820,
+      "sha256": "fc5d096c6e88d359643330cf4f6bc5dd963a00ef360667811682b5e55cdff7c8"
+    },
+    {
+      "name": "resai-data-113-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-3-output_contract_fault-no_coverage-r2-collector-25075747/episode/results/episode.json",
+      "bytes": 7678,
+      "sha256": "4f936cda36367a73349a7d934e8e7e23447610042db2b84b3f8249aaebe75c79"
+    },
+    {
+      "name": "resai-data-114-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-3-output_contract_fault-no_identity_freshness-r2-collector-25075624/episode/results/episode.json",
+      "bytes": 3450,
+      "sha256": "120bec818d1b73c6eff3268a82cfc27f9ce60c4dc462e4c1b29d037ef3b4e179"
+    },
+    {
+      "name": "resai-data-115-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-3-output_contract_fault-no_refinement-r2-collector-25077641/episode/results/episode.json",
+      "bytes": 3410,
+      "sha256": "2542b2fd3ab8b66bd05ad4802f766d75795df73e2982ce38808f6c911acd986a"
+    },
+    {
+      "name": "resai-data-116-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-3-output_contract_fault-resai_full-r2-collector-25076148/episode/results/episode.json",
+      "bytes": 3395,
+      "sha256": "689acbdab58507692466b67fc9ecb9e9e87f04bead2be0b9c6f55ff4f325014e"
+    },
+    {
+      "name": "resai-data-117-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-3-output_contract_fault-upstream_smoke_then_production-r2-collector-25075434/episode/results/episode.json",
+      "bytes": 3220,
+      "sha256": "d70578ffcf1ee84f1234fa4fc1af34aaf4e5971bf3fa7ca06a7bea147c2a5115"
+    },
+    {
+      "name": "resai-data-118-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-3-output_contract_fault-upstream_static-r2-collector-25077238/episode/results/episode.json",
+      "bytes": 2898,
+      "sha256": "e85dc6f5f143b44a96bfa471ce8eb6bf5cff4fa1d829481b78045b645d581858"
+    },
+    {
+      "name": "resai-data-119-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-3-resource_fault-direct_native-r2-collector-25074256/episode/results/episode.json",
+      "bytes": 2757,
+      "sha256": "3d68e30b03ac826bdb083c8101b4e8a1b5b2100c85172e9fbe574104f3e6b7ff"
+    },
+    {
+      "name": "resai-data-120-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-3-resource_fault-no_coverage-r2-collector-25075044/episode/results/episode.json",
+      "bytes": 3364,
+      "sha256": "df93b88e21296281fb65864ab55bd5634559b343c68497674fc1d810e1dcf4d2"
+    },
+    {
+      "name": "resai-data-121-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-3-resource_fault-no_identity_freshness-r2-collector-25075222/episode/results/episode.json",
+      "bytes": 3436,
+      "sha256": "c90ba81b5d47dd73ba08bfef952f401b6b8388e1b1e07c0aeb7a7277df7cc541"
+    },
+    {
+      "name": "resai-data-122-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-3-resource_fault-no_refinement-r2-collector-25074607/episode/results/episode.json",
+      "bytes": 3397,
+      "sha256": "6545a3f1d4ef74bed5fe37be67ab3c7bba9d75fb1a8a25b22976bfc1a9b8777b"
+    },
+    {
+      "name": "resai-data-123-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-3-resource_fault-resai_full-r2-collector-25074446/episode/results/episode.json",
+      "bytes": 3379,
+      "sha256": "821138b4505bb4bfa474ffa4db449cde9727e848cff05fe27bc577c7ad70a604"
+    },
+    {
+      "name": "resai-data-124-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-3-resource_fault-upstream_smoke_then_production-r2-collector-25074053/episode/results/episode.json",
+      "bytes": 1027,
+      "sha256": "e77b8bba2ac4f9d26dc395b50a09f0652282b173dc8e1ad8146544e63518d80f"
+    },
+    {
+      "name": "resai-data-125-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-3-resource_fault-upstream_static-r2-collector-25074859/episode/results/episode.json",
+      "bytes": 2838,
+      "sha256": "104e66ff220a99d7e0699cc741f12314f957cb1cf2158d25cbe66e6c6932eebb"
+    },
+    {
+      "name": "resai-data-126-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-4-clean-direct_native-r2-collector-25078356/episode/results/episode.json",
+      "bytes": 2776,
+      "sha256": "9ecbc691bccd1c4ed0802f7ac37f87390aebe5097a88ab6b58889c943c8fe458"
+    },
+    {
+      "name": "resai-data-127-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-4-clean-no_coverage-r2-collector-25080880/episode/results/episode.json",
+      "bytes": 7627,
+      "sha256": "0f5a2247fc886c762c0655a2520d6ffbdad5bede7486597ac7d9fa2dda41da28"
+    },
+    {
+      "name": "resai-data-128-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-4-clean-no_identity_freshness-r2-collector-25080133/episode/results/episode.json",
+      "bytes": 7714,
+      "sha256": "9d95e186806f8e5545d42410e4bfb2dff78a7580f89da42a9830698213420a56"
+    },
+    {
+      "name": "resai-data-129-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-4-clean-no_refinement-r2-collector-25080483/episode/results/episode.json",
+      "bytes": 7642,
+      "sha256": "226b1c9088892d0b68b1f0bd9a5eeaea0e70feaaff1e7b4a9a07b8e559b1df3e"
+    },
+    {
+      "name": "resai-data-130-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-4-clean-resai_full-r2-collector-25084275/episode/results/episode.json",
+      "bytes": 7616,
+      "sha256": "505ea6d14f0c84a84fa0191086d15b642f65d8a22be4b047015ffef33ba07f4b"
+    },
+    {
+      "name": "resai-data-131-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-4-clean-upstream_smoke_then_production-r2-collector-25081595/episode/results/episode.json",
+      "bytes": 3166,
+      "sha256": "bc333b9775e78a3c8f485c53889aab5562aa28843131a7f10f717295b87be07a"
+    },
+    {
+      "name": "resai-data-132-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-4-clean-upstream_static-r2-collector-25077886/episode/results/episode.json",
+      "bytes": 2858,
+      "sha256": "f1d69f8f32f6bda0bc440a30040b9b64aa8712cbc962c610e06e61b1de33860d"
+    },
+    {
+      "name": "resai-data-133-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-4-environment_fault-direct_native-r2-collector-25085411/episode/results/episode.json",
+      "bytes": 2829,
+      "sha256": "1147e8d5946e81d40ed7a480431f91d7a1f8f0657e7a3064321450dd07a8147d"
+    },
+    {
+      "name": "resai-data-134-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-4-environment_fault-no_coverage-r2-collector-25084927/episode/results/episode.json",
+      "bytes": 3410,
+      "sha256": "2b2189c168d23573e7a0a22327f6489d530a4228195dd8d3d2537b97769b49d5"
+    },
+    {
+      "name": "resai-data-135-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-4-environment_fault-no_identity_freshness-r2-collector-25087834/episode/results/episode.json",
+      "bytes": 7768,
+      "sha256": "190c6281f0df7d24ab78fb30e382c1b282dba15eae252ee9425a10b7b178f190"
+    },
+    {
+      "name": "resai-data-136-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-4-environment_fault-no_refinement-r2-collector-25087190/episode/results/episode.json",
+      "bytes": 3415,
+      "sha256": "5a15fa298510827002d5747abb50f28e3a22c2da06ea5d6b53f6a5bf3ab3e60b"
+    },
+    {
+      "name": "resai-data-137-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-4-environment_fault-resai_full-r2-collector-25087396/episode/results/episode.json",
+      "bytes": 3407,
+      "sha256": "3e254ae55047c6ef6d9f170e7f8281d5d98ea7250ff6429b50b064adf2dbf7fe"
+    },
+    {
+      "name": "resai-data-138-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-4-environment_fault-upstream_smoke_then_production-r2-collector-25087628/episode/results/episode.json",
+      "bytes": 1036,
+      "sha256": "d3363ddf2a906ebe027c3449b9dbe6d295ad167bbdb00b913eb58689dc152a11"
+    },
+    {
+      "name": "resai-data-139-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-4-environment_fault-upstream_static-r2-collector-25085820/episode/results/episode.json",
+      "bytes": 2912,
+      "sha256": "c554c48fa10e3d0a8386898195e461c9350f669f91f07c41aa5a7e3aace1c328"
+    },
+    {
+      "name": "resai-data-140-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-4-output_contract_fault-direct_native-r2-collector-25091305/episode/results/episode.json",
+      "bytes": 2819,
+      "sha256": "d77ef0c20e278dc8f9e8f80a5534ee76b88ec3255ee93a03636e71bd5a9ae54e"
+    },
+    {
+      "name": "resai-data-141-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-4-output_contract_fault-no_coverage-r2-collector-25090472/episode/results/episode.json",
+      "bytes": 7674,
+      "sha256": "c42ba6a025f9f53941e6ba3b6ca16d065cbde9acddb1fa092bbfcaea06aa87f3"
+    },
+    {
+      "name": "resai-data-142-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-4-output_contract_fault-no_identity_freshness-r2-collector-25090290/episode/results/episode.json",
+      "bytes": 3450,
+      "sha256": "30712e62c980c11711bd98cc4eae8423557911c0fb3b4211692176840d01dd79"
+    },
+    {
+      "name": "resai-data-143-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-4-output_contract_fault-no_refinement-r2-collector-25091997/episode/results/episode.json",
+      "bytes": 3408,
+      "sha256": "5160f1fc1b73c5cca5ab981b0155f0cce500a2b1d9838594f8e56d0e095f0830"
+    },
+    {
+      "name": "resai-data-144-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-4-output_contract_fault-resai_full-r2-collector-25090889/episode/results/episode.json",
+      "bytes": 3392,
+      "sha256": "75a5c613a43c813aeb9c6ab540210e2fc8fc53192566891eaa33986b0f5ab4c2"
+    },
+    {
+      "name": "resai-data-145-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-4-output_contract_fault-upstream_smoke_then_production-r2-collector-25089977/episode/results/episode.json",
+      "bytes": 3221,
+      "sha256": "5730a5db5dc80f00fcb7b00c759a7284a06afb5b4fb643bef5afcfda4ddd4675"
+    },
+    {
+      "name": "resai-data-146-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-4-output_contract_fault-upstream_static-r2-collector-25091801/episode/results/episode.json",
+      "bytes": 2901,
+      "sha256": "9f430009ee07dba8b8a5a269283b6748ca3a84ac263790b2f5f859a9da9e7029"
+    },
+    {
+      "name": "resai-data-147-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-4-resource_fault-direct_native-r2-collector-25089055/episode/results/episode.json",
+      "bytes": 2757,
+      "sha256": "306af1806d2454fe6a3a24bade6c863b6f17ebabfef2e4fede0f6b94c1fc0791"
+    },
+    {
+      "name": "resai-data-148-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-4-resource_fault-no_coverage-r2-collector-25089473/episode/results/episode.json",
+      "bytes": 3365,
+      "sha256": "50be5e31224fbf42ee3551274aa34ea030a606de9d0f623a77416042b98b8ccc"
+    },
+    {
+      "name": "resai-data-149-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-4-resource_fault-no_identity_freshness-r2-collector-25089251/episode/results/episode.json",
+      "bytes": 3435,
+      "sha256": "4ba20973444aeef238d2cbb68815f9b6cc9e2bd59d456b0f530eae3d9aed7a60"
+    },
+    {
+      "name": "resai-data-150-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-4-resource_fault-no_refinement-r2-collector-25088610/episode/results/episode.json",
+      "bytes": 3397,
+      "sha256": "25863c962fa3ad52fb2c950fe534f605daece5bbd906c42bb203d713ab63a91f"
+    },
+    {
+      "name": "resai-data-151-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-4-resource_fault-resai_full-r2-collector-25088252/episode/results/episode.json",
+      "bytes": 3379,
+      "sha256": "ec2ec60f7e972828532d5c17bf671d41659f0772aeb32e4604c3a58835c87960"
+    },
+    {
+      "name": "resai-data-152-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-4-resource_fault-upstream_smoke_then_production-r2-collector-25089720/episode/results/episode.json",
+      "bytes": 1025,
+      "sha256": "c3a85d84b05b17c8615bbaf9dd07ea760eb38d9f807727fe47194e83bb410dda"
+    },
+    {
+      "name": "resai-data-153-episode.json",
+      "origin": "experiments/results/campaign/comparison-v2/chatdev-4-resource_fault-upstream_static-r2-collector-25088049/episode/results/episode.json",
+      "bytes": 2834,
+      "sha256": "1d03add12c3e02dcd63d5b2170adf8f8d36c4cc0255d7f6e3efe3344044a6d45"
+    },
+    {
+      "name": "resai-data-154-issue-status.json",
+      "origin": "experiments/results/campaign/live-check-20261028/issue-status.json",
+      "bytes": 1967,
+      "sha256": "21a438e7a246803cd9aa7b5ffba16cfb4aefce220633ab476c0ed6554430a249"
+    },
+    {
+      "name": "resai-data-155-verified-audit.json",
+      "origin": "experiments/results/campaign/live-check-20261028/verified-audit.json",
+      "bytes": 631,
+      "sha256": "e79b40039c46c5764a715785b72959127a8a292e13347c0319e51bbad77b7fbe"
+    },
+    {
+      "name": "resai-data-156-STATUS.json",
+      "origin": "experiments/results/campaign/STATUS.json",
+      "bytes": 581621,
+      "sha256": "1fd40d97c247c1698e1d174d83589c5b7746722aec1a3a1b336d926be04d0ccf"
+    },
+    {
+      "name": "resai-data-157-ablation.csv",
+      "origin": "experiments/results/local/ablation.csv",
+      "bytes": 12766,
+      "sha256": "2e806c4910911fcb995a0ed39cc461951e863eb17fa8f25c2dcc90a1957ee647"
+    },
+    {
+      "name": "resai-data-158-analyses-manifest.json",
+      "origin": "experiments/results/local/analyses-manifest.json",
+      "bytes": 640,
+      "sha256": "d7828dbf56ea23370ebd22bbe4dea895c80da6afb7be9712a229e3d974642b28"
+    },
+    {
+      "name": "resai-data-159-decisions.csv",
+      "origin": "experiments/results/local/decisions.csv",
+      "bytes": 102984,
+      "sha256": "953b2c78d6ff34d6e58011720749aa17bcff27518260d6ba389d75a6c8442c82"
+    },
+    {
+      "name": "resai-data-160-manifest.json",
+      "origin": "experiments/results/local/manifest.json",
+      "bytes": 530,
+      "sha256": "bd996f564353c1e400067d76317564635c9e57d8a8db4c66a288f2d902bade1c"
+    },
+    {
+      "name": "resai-data-161-overhead.csv",
+      "origin": "experiments/results/local/overhead.csv",
+      "bytes": 993,
+      "sha256": "383dfdfc3d6cbf7a0b8d12de64c48d1ce72f76015ee5cd16a7eb9deca8ba5c90"
+    },
+    {
+      "name": "resai-data-162-refinement.csv",
+      "origin": "experiments/results/local/refinement.csv",
+      "bytes": 76426,
+      "sha256": "8e04e38da050ab49684b6fb3e8b5c8bd5d4c926c787a78e3d726bbedf97e2d0d"
+    },
+    {
+      "name": "resai-data-163-sensitivity.csv",
+      "origin": "experiments/results/local/sensitivity.csv",
+      "bytes": 15738,
+      "sha256": "cb73c61afc9446a9a12bfa8b82d1ca656f81a2b082432fea197ff7708bffcd25"
+    },
+    {
+      "name": "resai-data-164-summary.json",
+      "origin": "experiments/results/local/summary.json",
+      "bytes": 718,
+      "sha256": "f12be1fee2aa710a7b020681f1d142d9106f0fc800945a126a34b6f4fde54d0a"
+    },
+    {
+      "name": "resai-data-165-windows-discovery.json",
+      "origin": "experiments/results/local/windows-discovery.json",
+      "bytes": 299,
+      "sha256": "db738bc145d1023e2c9ae34d5229b9e23d87b238b8ac0be1cfb5000abf835bf1"
+    },
+    {
+      "name": "resai-data-166-assessment.json",
+      "origin": "experiments/results/mapcoder/assessment/assessment.json",
+      "bytes": 393,
+      "sha256": "4bc6015ca528896ee8f335b3d871b97e4b871841834d4b9e37fe4cb672d62e00"
+    },
+    {
+      "name": "resai-data-167-evidence.json",
+      "origin": "experiments/results/mapcoder/assessment/evidence.json",
+      "bytes": 1567,
+      "sha256": "bcd2d7b18564301c88233a6b13a4cf35f91d43da847ac532a258f0512e412732"
+    },
+    {
+      "name": "resai-data-168-mapcoder-attempts.csv",
+      "origin": "experiments/results/mapcoder-attempts.csv",
+      "bytes": 1422,
+      "sha256": "b4356825a4269455e3abcf8d4d6af34bffd251e8e4c35925b6a94516af216188"
+    },
+    {
+      "name": "resai-data-169-assessment.json",
+      "origin": "experiments/results/mapcoder-qwen38/assessment/assessment.json",
+      "bytes": 393,
+      "sha256": "0c5dfc2b85f384225689be4e2e878b3879f5f18ce2e98fef6a6f91ed4385fcde"
+    },
+    {
+      "name": "resai-data-170-evidence.json",
+      "origin": "experiments/results/mapcoder-qwen38/assessment/evidence.json",
+      "bytes": 1769,
+      "sha256": "96bcab10681be22978679d61c9128880a8d5e84f7e3418486a1f14c289c7fd80"
+    },
+    {
+      "name": "resai-data-171-sacct-final.psv",
+      "origin": "experiments/results/mapcoder-qwen38/provenance/sacct-final.psv",
+      "bytes": 5683,
+      "sha256": "d38a063518172e519350768db24467e0af260544eb9a18b01cfc606e4a03d254"
+    },
+    {
+      "name": "resai-data-172-sacct.psv",
+      "origin": "experiments/results/nibi/logs/sacct.psv",
+      "bytes": 1460,
+      "sha256": "abc4ace94da4cdb97003a44d670db221d0d60f757c878cd232ac0e5ac2bbed47"
+    },
+    {
+      "name": "resai-data-173-gpu-summary.json",
+      "origin": "experiments/results/nibi/reanalysis/gpu-summary.json",
+      "bytes": 1097,
+      "sha256": "d26700179bbb46c22eefa7648461f943e04f3e0719848f131ae751313056ffc3"
+    },
+    {
+      "name": "resai-data-174-clean_0.json",
+      "origin": "experiments/results/nibi/results/gpu/clean_0.json",
+      "bytes": 712,
+      "sha256": "dce56b6ee26f60ce59733ca2dbcca46963faa07aa843d7a55bd337ff39a7e32c"
+    },
+    {
+      "name": "resai-data-175-clean_1.json",
+      "origin": "experiments/results/nibi/results/gpu/clean_1.json",
+      "bytes": 713,
+      "sha256": "595e397d2961337dd8d5e768026f24c82407f624f19fb7cde9f17807cbff5fcb"
+    },
+    {
+      "name": "resai-data-176-corrupt_output_0.json",
+      "origin": "experiments/results/nibi/results/gpu/corrupt_output_0.json",
+      "bytes": 717,
+      "sha256": "a1b84adae0847da72263df8be4f680e3b7218254dd0304887bf6673f3aeae107"
+    },
+    {
+      "name": "resai-data-177-corrupt_output_1.json",
+      "origin": "experiments/results/nibi/results/gpu/corrupt_output_1.json",
+      "bytes": 719,
+      "sha256": "c54c36d8a492d768f9b270e1c5e4b0a9c56d6be13ee5ff50646d5744fc7a5c6b"
+    },
+    {
+      "name": "resai-data-178-missing_checkpoint_0.json",
+      "origin": "experiments/results/nibi/results/gpu/missing_checkpoint_0.json",
+      "bytes": 720,
+      "sha256": "202d2d1d920ebfb16c840790176b716ae3eecdfeac2507fc2d591e1bf17f752d"
+    },
+    {
+      "name": "resai-data-179-missing_checkpoint_1.json",
+      "origin": "experiments/results/nibi/results/gpu/missing_checkpoint_1.json",
+      "bytes": 722,
+      "sha256": "de9d02a5d0bc2a7042cb6d6529135cde6b4161aa87161b2a5a551783d4be5d76"
+    },
+    {
+      "name": "resai-data-180-runtime_failure_0.json",
+      "origin": "experiments/results/nibi/results/gpu/runtime_failure_0.json",
+      "bytes": 748,
+      "sha256": "43c8e86769e9444b3777333bbc193cc9041aff2bf803c88e360d856d4235643d"
+    },
+    {
+      "name": "resai-data-181-runtime_failure_1.json",
+      "origin": "experiments/results/nibi/results/gpu/runtime_failure_1.json",
+      "bytes": 749,
+      "sha256": "ae04233d9d5e7b0d114da34ec7f81218e3445ef501076f1685a34eda5bffb617"
+    }
+  ]
+}

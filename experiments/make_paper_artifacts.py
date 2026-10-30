@@ -10,7 +10,7 @@ from paper_visuals import (ABLATIONS, POLICY_GROUPS, fault_heatmap, gpu_diagnost
 style()
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT/"docs/EMSE/generated"
+OUT = ROOT/"tmp/manuscript-generated"
 OUT.mkdir(exist_ok=True)
 LABELS = {"direct": "Direct", "upstream_static": "Static", "upstream_smoke": "Smoke proxy", "resai": "RES-AI"}
 

@@ -1,3 +1,4 @@
+% Local formatting adjustment: omit unavailable optional publisher locations.
 %% This is file `bmc-mathphys.bst' (created: 2011-12-27)
 %% Compatible with bibtex version 0.99d.
 %%
@@ -403,7 +404,7 @@ FUNCTION {format.pub.address}
           if$ 
            "publisher" make.tag
           #1 bother =
-            {", \blocation{???}" *  }
+            {"" *  }
             'skip$
            if$
            output   

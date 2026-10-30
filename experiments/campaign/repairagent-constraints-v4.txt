@@ -1,0 +1,12 @@
+# Versioned compatibility constraints for the pinned RepairAgent's legacy imports.
+# All satisfy its requirements-core.txt; upstream source and old environments stay intact.
+langchain==0.1.5
+langchain-core==0.1.23
+langchain-community==0.0.17
+langchain-anthropic==0.1.0
+anthropic==0.28.1
+pydantic==1.10.15
+spacy==3.7.2
+numpy==1.26.4
+httpx==0.27.2
+langsmith==0.0.87

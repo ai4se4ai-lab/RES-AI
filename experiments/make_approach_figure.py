@@ -4,7 +4,7 @@ import math
 from reportlab.pdfgen import canvas
 from reportlab.lib.colors import HexColor, white
 
-OUT = Path(__file__).resolve().parents[1] / 'docs/EMSE/generated/approach_overview.pdf'
+OUT = Path(__file__).resolve().parents[1] / 'tmp/manuscript-generated/approach_overview.pdf'
 OUT.parent.mkdir(parents=True, exist_ok=True)
 c = canvas.Canvas(str(OUT), pagesize=(690, 680), invariant=1)
 c.setTitle('RES-AI: components, contracts and decision paths')

@@ -37,5 +37,7 @@ if __name__ == "__main__":
         authors = " and ".join(meta["citation_author"])
         year = meta.get("citation_date", meta.get("citation_publication_date", ["2024"]))[0][:4]
         entries.append(f"@misc{{resaiartifact{i},\n  author = {{{authors}}},\n  title = {{{{{title}}}}},\n  year = {{{year}}},\n  howpublished = {{\\url{{{row['source']}}}}}\n}}\n")
-    (ROOT/"docs/EMSE/generated/artifact_refs.bib").write_text("\n".join(entries), encoding="utf-8")
+    out = ROOT/"tmp/manuscript-generated"
+    out.mkdir(parents=True, exist_ok=True)
+    (out/"artifact_refs.bib").write_text("\n".join(entries), encoding="utf-8")
     print(f"Archived primary metadata for {len(records)} papers.")

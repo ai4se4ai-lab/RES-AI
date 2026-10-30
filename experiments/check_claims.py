@@ -3,6 +3,7 @@ import csv
 import hashlib
 import json
 import math
+import io
 import re
 import sys
 from pathlib import Path
@@ -31,23 +32,45 @@ if __name__ == "__main__":
     assert all(float(r["charged_seconds"]) <= 60*int(r["max_attempts"]) for r in refinement)
     assert not any(int(r["proposals"]) for r in refinement if r["batch_invariant"] == "0")
     paper = ROOT/"docs/EMSE"
-    files = [paper/name for name in ("main.tex", "approach.tex", "evaluation.tex", "results.tex", "discussion.tex")]+list((paper/"generated").glob("*.tex"))
-    text = "\n".join(p.read_text(encoding="utf-8") for p in files)
+    main_source = (paper/"main.tex").read_text(encoding="utf-8")
+    text = main_source.split(r'\end{document}', 1)[0]
+    embedded = {}
+    if '% RESAI_ASSET_BEGIN ' in main_source:
+        from manuscript_assets import read_embedded_assets
+        embedded = read_embedded_assets(main_source)
+        manifest = json.loads(embedded['resai-data-manifest.json'])
+        for asset in manifest['assets']:
+            assert hashlib.sha256(embedded[asset['name']]).hexdigest() == asset['sha256']
+        readable = main_source.split(r'\end{document}', 1)[0]
+        assert not re.search(r'\\(?:input|bibliography)\{', readable)
+        bibitems = set(re.findall(r'\\bibitem(?:\[[^]]*\])?\{([^}]+)\}', readable))
+        cited = {key.strip() for group in re.findall(r'\\cite\{([^}]+)\}', readable) for key in group.split(',')}
+        assert cited <= bibitems, cited-bibitems
+    from manuscript_assets import embedded_sources
+    sources = embedded_sources()
+    bibitems = set(re.findall(r'\\bibitem(?:\[[^]]*\])?\{([^}]+)\}', text))
+    cited = {key.strip() for group in re.findall(r'\\cite\{([^}]+)\}', text) for key in group.split(',')}
+    if not re.search(r'\\bibliography\{', text):
+        assert cited <= bibitems, cited-bibitems
+
+    def manuscript_input(relative):
+        return sources['docs/EMSE/'+relative].decode('utf-8')
     keys = {k.strip() for value in re.findall(r"\\cite\{([^}]+)\}", text) for k in value.split(",")}
-    bib = (paper/"bibliography.bib").read_text(encoding="utf-8")+(paper/"generated/artifact_refs.bib").read_text(encoding="utf-8")
+    bib = ((paper/'bibliography.bib').read_text(encoding='utf-8') if (paper/'bibliography.bib').exists()
+           else manuscript_input('bibliography.bib')+manuscript_input('generated/artifact_refs.bib'))
     assert not keys-set(re.findall(r"@\w+\{([^,]+),", bib))
     for relative in re.findall(r"\\input\{([^}]+)\}", text):
         assert (paper/(relative+".tex")).is_file(), relative
     for relative in re.findall(r"\\includegraphics(?:\[[^]]*\])?\{([^}]+)\}", text):
-        assert (paper/relative).is_file(), relative
+        assert relative in embedded or (paper/relative).is_file(), relative
     # Curves must describe actual archived allocations and probe records.
-    timeline = json.loads((paper/"generated/gpu_cost_timeline.json").read_text())
+    timeline = json.loads(manuscript_input('generated/gpu_cost_timeline.json'))
     accounting = list(csv.DictReader((ROOT/"experiments/results/nibi/logs/sacct.psv").open(), delimiter="|"))
     cells = [r for r in accounting if "." not in r["JobID"] and r["JobID"].startswith("24888989_")]
     assert timeline["total_allocated_instance_seconds"] == sum(int(r["ElapsedRaw"]) for r in cells)
     probes = [json.loads(p.read_text()) for p in (ROOT/"experiments/results/nibi/results/gpu").glob("*.json")]
     assert math.isclose(timeline["total_probe_process_seconds"], sum(r["gpu_seconds"] for r in probes))
-    plotted = list(csv.DictReader((paper/"generated/gpu_cost_timeline.csv").open()))
+    plotted = list(csv.DictReader(io.StringIO(manuscript_input('generated/gpu_cost_timeline.csv'))))
     assert len(plotted) == len(probes) == 8
     assert {(r["mode"], int(r["rep"])) for r in plotted} == {(r["mode"], r["rep"]) for r in probes}
     for rep in (0, 1):

@@ -1,0 +1,31 @@
+{
+  "amendment_id": "20261026-chatdev-stage-2",
+  "campaign_id": "resai-campaign-20261024",
+  "master_protocol_sha256": "77c120d607f6884c737659eb38d8bb0c78b4f811b755930ed08ca1659c9d49c4",
+  "global_h100_cap_seconds": 86400,
+  "artifact_ceilings_seconds": {
+    "ChatDev": 28800
+  },
+  "authorization": "User: do what is required and continue; existing initial 24 H100-hour global cap remains in force.",
+  "reason": "Initial per-candidate staging guard stopped after 29 qualified cases despite unused global allowance. Prospectively allocate an eight-hour cumulative ceiling to the validated runnable ChatDev subset; no episode, model, task, source or case ordering changes.",
+  "allocation_semantics": "Ceilings are admission maxima, not reservations or guaranteed shares. The unchanged global cap supersedes all candidate ceilings; past setup, failures and quarantined runs remain charged. Other candidate ceilings remain unchanged.",
+  "activated_at_utc": "2026-10-26T13:55:12.104343+00:00",
+  "ledger_before_activation_sha256": "0bda49f334967bed2f281e5fa89a52b81373973796886a1c355a2a3c077dac8e",
+  "scientific_protocol_sha256": "e6f752d29788e8042d453cc4e0988571f2f99d2c01777fd59322447f3bd6960a",
+  "budget_guard_sha256": "d1ca62a5378d52eda5062f58383c642c406366f50858d9d27f10fc912a912393",
+  "charged_seconds_at_activation": {
+    "SWE-agent": 1031,
+    "OpenHands": 0,
+    "AutoCodeRover": 0,
+    "MetaGPT": 0,
+    "ChatDev": 6385,
+    "AgentCoder": 1199,
+    "MapCoder": 0,
+    "RepairAgent": 0,
+    "ExecutionAgent": 0,
+    "CodeAct": 0,
+    "HyperAgent": 0,
+    "AgileCoder": 0
+  },
+  "global_charged_seconds_at_activation": 8615
+}

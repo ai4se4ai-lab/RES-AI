@@ -43,3 +43,11 @@ docs/EMSE/**/*.fdb_latexmk
 docs/EMSE/**/*.synctex.gz
 docs/EMSE/**/*.synctex(busy)
 docs/EMSE/**/*.xdv
+
+# Assets restored from the self-contained LuaLaTeX manuscript at build time
+docs/EMSE/resai-unpack.lua
+docs/EMSE/resai-sn-jnl.cls
+docs/EMSE/resai-figure-*.pdf
+docs/EMSE/resai-data-*
+docs/EMSE/resai-bibliography.bib
+docs/EMSE/resai-artifact_refs.bib

@@ -8,7 +8,8 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def generate(root=ROOT, out=None):
-    out = out or root/"docs/EMSE/generated"
+    out = out or root/"tmp/manuscript-generated"
+    out.mkdir(parents=True, exist_ok=True)
     rows = []
     accounting = root/"experiments/results/mapcoder-qwen38/provenance/sacct-final.psv"
     with accounting.open(newline="") as stream:

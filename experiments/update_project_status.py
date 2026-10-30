@@ -24,6 +24,36 @@ def evidence_link(path):
     return f"[{path}](../../../{path})"
 
 
+def candidate_campaign_status(subject, campaign, archives_verified, root=ROOT):
+    subset=campaign.get('comparative_subsets',{}).get(subject['name'])
+    if not subset:
+        return 'NOT STARTED'
+    if subset.get('status')=='STOPPED_FOR_AUDIT' or subset.get('quarantined_episodes'):
+        return 'STOPPED FOR AUDIT'
+    if subset.get('status')=='INITIAL_BUDGET_LIMITED':
+        return 'BUDGET LIMITED'
+    expected,remainder=divmod(campaign['potential_episodes'],len(campaign['subjects']))
+    if remainder or subset.get('comparative_episodes_completed')!=expected or subset.get('status')!='SUBSET_RESOLVED':
+        return 'INCOMPLETE'
+    rows=subset.get('queue',[])
+    resolved={'PRODUCTION_VALID','PRODUCTION_INVALID','POLICY_BLOCKED'}
+    if len(rows)!=expected or len({r['episode_id'] for r in rows})!=expected or any(r['status'] not in resolved for r in rows):
+        return 'REVIEW REQUIRED'
+    reservations=[r for r in campaign.get('gpu_budget_ledger',{}).get('reservations',[]) if r.get('subject')==subject['name']]
+    if not archives_verified or not subject.get('native_validation_passed') or campaign.get('accounting_query_error') or not reservations or any(not r.get('settled') for r in reservations):
+        return 'COLLECTION / ACCOUNTING PENDING'
+    collected=set()
+    receipt_paths = (path for folder in ('comparison', 'comparison-v2')
+                     for path in (root/'experiments/results/campaign'/folder).rglob('episode.json'))
+    for path in receipt_paths:
+        record=read_json(path)
+        if record.get('artifact')==subject['name']:
+            collected.add((record.get('episode_id'),record.get('job_id'),record.get('status')))
+    if any((r['episode_id'],r.get('job_id'),r['status']) not in collected for r in rows):
+        return 'COLLECTION / ACCOUNTING PENDING'
+    return 'COMPLETE'
+
+
 def inspect_evidence(root):
     results = root/"experiments/results"
     checks, problems, active = [], [], []
@@ -149,10 +179,12 @@ def render_snapshot(snapshot, stamp, scheduler):
     lines += [f"| Twelve-artifact comparison | {campaign_state} | {campaign_detail} |", ""]
     if campaign and campaign.get('subjects'):
         lines += [f"**Campaign preparation:** {campaign.get('source_snapshots_acquired',0)}/{len(campaign['subjects'])} source snapshots acquired; {campaign.get('dependency_import_checks_passed',0)} dependency import checks passed. These are preparation checks, not completed comparative episodes.","",
-                  '| Candidate | Source check | Latest dependency check | Native validation | Comparative episodes |',
-                  '|---|---|---|---|---|']
+                  '| Candidate | Campaign status | Source check | Latest dependency check | Native validation | Comparative episodes |',
+                  '|---|---|---|---|---|---|']
+        archives_verified=any(c['name']=='Campaign collection integrity' and c['status']=='COMPLETE' for c in snapshot['checks'])
         for subject in campaign['subjects']:
-            values=[subject['name'],subject['campaign_status'],subject.get('latest_dependency_status','NOT_VALIDATED'),subject.get('latest_native_status','NOT_RUN'),str(subject.get('comparative_episodes_completed',0))]
+            completion=candidate_campaign_status(subject,campaign,archives_verified)
+            values=[subject['name'],completion,subject['campaign_status'],subject.get('latest_dependency_status','NOT_VALIDATED'),subject.get('latest_native_status','NOT_RUN'),str(subject.get('comparative_episodes_completed',0))]
             lines.append('| '+' | '.join(v.replace('|','/').replace('\n',' ') for v in values)+' |')
         lines.append('')
         pending=[r for r in campaign.get('gpu_budget_ledger',{}).get('reservations',[]) if r.get('job_id') and not r.get('settled') and r.get('purpose')=='native_validation']
@@ -162,6 +194,13 @@ def render_snapshot(snapshot, stamp, scheduler):
             lines += [(f"**{name} comparative subset:** {subset['status']}; {subset['comparative_episodes_completed']}/{subset['potential_episodes']} episodes resolved; {subset['comparative_episodes_submitted']} submitted. "+(subset.get('error') or '')).rstrip(),'']
             if subset.get('quarantined_episodes'):
                 lines += [f"**{name} data audit:** {subset['execution_receipts_completed']} completed execution receipts retained; {subset['quarantined_episodes']} fault-affected attempts quarantined, including any aborted attempt. Quarantined attempts are excluded from the completed comparative count above.",'']
+            if subset.get('status')=='INITIAL_BUDGET_LIMITED' and 'per-artifact' in str(subset.get('error')):
+                charged=sum(r['allocated_seconds'] if r.get('settled') else r['reserved_seconds'] for r in campaign['gpu_budget_ledger']['reservations'] if r['subject']==name)
+                ceiling=campaign.get('artifact_allocation_ceilings_seconds',{}).get(name,read_json(ROOT/'experiments/campaign/plan.json')['maximum_reserved_h100_seconds_per_artifact'])
+                lines += [f"**{name} reservation stop:** {charged:,} H100 seconds charged against its initial {ceiling:,}-second candidate ceiling. The next 960-second reservation would exceed that ceiling. The overall 24-hour campaign allowance is separate; this stop is not candidate completion.",'']
+        if campaign.get('budget_allocation_amendment'):
+            ceilings=campaign['artifact_allocation_ceilings_seconds']
+            lines += [f"**Active budget amendment:** {campaign['budget_allocation_amendment']['amendment_id']}; ChatDev cumulative ceiling {ceilings['ChatDev']/3600:g} H100 hours. This is an admission ceiling, not an advance reservation. The overall {campaign['initial_h100_budget_seconds']/3600:g}-hour cap and all previous charges remain in force.",'']
     if campaign:
         observed=dt.datetime.fromisoformat(campaign['updated_at_utc'].replace('Z','+00:00'))
         checked=dt.datetime.fromisoformat(stamp.replace('Z','+00:00'))

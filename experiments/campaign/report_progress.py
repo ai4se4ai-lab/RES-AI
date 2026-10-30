@@ -10,6 +10,7 @@ import re
 import subprocess
 import time
 from reconcile_budget import reconcile
+from budget import allocation_for
 
 ROOT=Path(__file__).resolve().parents[2]
 
@@ -53,7 +54,8 @@ def main():
             os.close(descriptor)
             lock.unlink()
     native_records=[json.loads(p.read_text()) for p in sorted((ROOT/'validation').glob('**/validation.json'))]
-    comparison_path=ROOT/'comparison/chatdev/status.json'
+    amended_comparison=ROOT/'comparison/chatdev-v2/status.json'
+    comparison_path=amended_comparison if amended_comparison.exists() else ROOT/'comparison/chatdev/status.json'
     comparison=json.loads(comparison_path.read_text()) if comparison_path.exists() else None
     records=[]
     for subject in plan['subjects']:
@@ -103,6 +105,8 @@ def main():
     data=dict(campaign_id=plan['campaign_id'],status=state,
         protocol_sha256=hashlib.sha256(plan_path.read_bytes()).hexdigest(),
         initial_h100_budget_seconds=plan['initial_h100_budget_seconds'],
+        artifact_allocation_ceilings_seconds={s['name']:allocation_for(plan,s['name'])[0] for s in plan['subjects']},
+        budget_allocation_amendment=allocation_for(plan,'ChatDev')[1],
         h100_allocated_seconds=allocated,h100_reserved_seconds=reserved,
         potential_episodes=plan['potential_episodes'],comparative_episodes_completed=comparison['comparative_episodes_completed'] if comparison else 0,
         source_audit_job_id='24904387',environment_array_job_id='24904649',
