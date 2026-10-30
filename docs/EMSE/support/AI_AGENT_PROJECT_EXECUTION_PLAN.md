@@ -3,7 +3,7 @@
 Read the live snapshot below to see where the project stands. Section 14 is the append-only update history. All timestamps use UTC. The snapshot is generated from collected evidence; the remaining sections record scope, decisions, and operating instructions.
 
 <!-- experiment-status:start -->
-**Last checked: 2026-10-30T17:51:07Z (UTC).**
+**Last checked: 2026-10-30T18:39:16Z (UTC).**
 
 **Where we are: PILOTS COMPLETE; TWELVE-ARTIFACT CAMPAIGN FEASIBILITY_AND_COMPARISON.**
 
@@ -40,7 +40,7 @@ The implemented controller, CUDA, and one-artifact/two-model pipelines have coll
 
 **Active budget amendment:** 20261026-chatdev-stage-2; ChatDev cumulative ceiling 8 H100 hours. This is an admission ceiling, not an advance reservation. The overall 24-hour cap and all previous charges remain in force.
 
-**Nibi observation is stale:** the latest collected campaign report is 61.2 hours old. Current queue state and progress are unknown until a fresh report is collected.
+**Nibi observation is stale:** the latest collected campaign report is 62.0 hours old. Current queue state and progress are unknown until a fresh report is collected.
 
 **Current next step:** ChatDev comparative subset: SUBSET_RESOLVED. Finish remaining artifact native environment/workflow and oracle checks; collect comparative data under the frozen per-artifact protocols and initial GPU cap.
 
@@ -48,7 +48,7 @@ The implemented controller, CUDA, and one-artifact/two-model pipelines have coll
 
 **Data:** [experiments/results/COLLECTION.md](../../../experiments/results/COLLECTION.md); [experiments/results/mapcoder-attempts.csv](../../../experiments/results/mapcoder-attempts.csv); [experiments/results/mapcoder-qwen38/provenance/sacct-final.psv](../../../experiments/results/mapcoder-qwen38/provenance/sacct-final.psv).
 
-**Hourly updater:** Windows Task Scheduler `RES-AI-Experiment-Status-Hourly`; every 1 hour; next nominal update 2026-10-30T18:39:15Z; registration verified 2026-10-24T04:39:17.5174681Z; computer on and user signed in required. Checks collected local evidence and appends section 14 on every invocation, including unchanged checks. It does not authenticate to Nibi, collect new remote outputs, launch jobs, or independently verify the live queue. Future remote runs must supply updated local evidence/status files; queued/running or missing records are flagged for investigation. An hourly document timestamp is an evidence-check timestamp, not a new experiment execution timestamp.
+**Hourly updater:** Windows Task Scheduler `RES-AI-Experiment-Status-Hourly`; every 1 hour; next nominal update 2026-10-30T19:39:15Z; registration verified 2026-10-24T04:39:17.5174681Z; computer on and user signed in required. Checks collected local evidence and appends section 14 on every invocation, including unchanged checks. It does not authenticate to Nibi, collect new remote outputs, launch jobs, or independently verify the live queue. Future remote runs must supply updated local evidence/status files; queued/running or missing records are flagged for investigation. An hourly document timestamp is an evidence-check timestamp, not a new experiment execution timestamp.
 <!-- experiment-status:end -->
 
 ## 1. Project identity
@@ -417,3 +417,4 @@ Every real updater invocation appends one record below, even when the evidence i
 | 2026-10-30T18:21:08Z | Consolidated manuscript into one LuaLaTeX main.tex with inline text/tables/diagram/references and 190 embedded assets including manifest; retained manuscript data and 140 qualified receipts; audited 70 bibliography plus 12 artifact records, corrected published metadata, and marked two official documentation sources access-limited; two clean-directory builds and 189 restored-asset SHA-256 checks passed; 38-page PDF visually checked. |
 | 2026-10-30T18:29:10Z | Corrected oversized single-file packaging after user reported Overleaf failure: main.tex reduced from 3,998,522 to 129,970 bytes; removed Lua/hex payloads and preserved evidence in support/MANUSCRIPT_DATA.zip; restored only five required PDF figures and original journal class. Eight-file RES-AI-Overleaf.zip (152,395 bytes) passed two clean-directory pdfLaTeX builds, claim audit and visual review; 38-page PDF updated. |
 | 2026-10-30T18:31:42Z | Moved all 82 audited reference records into bibliography.bib and replaced inline bibliography with a BibTeX reference in main.tex (774 lines). Restored the journal .bst with missing optional locations omitted; updated ten-file Overleaf ZIP. Clean-directory pdfLaTeX/BibTeX/two-pdfLaTeX build passed with zero BibTeX warnings, no undefined references or overflowing boxes; 38-page PDF and reference pages verified. |
+| 2026-10-30T18:39:16Z | hourly scheduled evidence check; no evidence changes; 6/6 evidence checks complete; twelve-artifact campaign FEASIBILITY_AND_COMPARISON, 140/1680 potential episodes, cap 24 H100 hours |
